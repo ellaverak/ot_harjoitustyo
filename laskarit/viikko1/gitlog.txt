@@ -1,0 +1,93 @@
+commit 7bb8634bcc26100ee7a6d7f8dc240fa3df213bd4
+Author: ellaverak <ella.korkeaaho@gmail.com>
+Date:   Tue Mar 22 21:59:10 2022 +0200
+
+    tiedostoja
+
+ tiedostoja/file22 | 0
+ tiedostoja/file3  | 1 +
+ 2 files changed, 1 insertion(+)
+
+commit ff9c17dd0189f072af15a98d6f067a77d41122f2
+Author: ellaverak <ella.korkeaaho@gmail.com>
+Date:   Tue Mar 22 21:44:46 2022 +0200
+
+    Muokkaus toka.txt
+
+ toka.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit fd0baea5773fdaf5431ba52a479ac3cb706320eb
+Author: ellaverak <ella.korkeaaho@gmail.com>
+Date:   Tue Mar 22 21:43:52 2022 +0200
+
+    Muokkaa eka.txt, toka.txt
+
+ eka.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+commit 4e19adae387165eaa3eedf7c8a07744169d92e30
+Author: ellaverak <ella.korkeaaho@gmail.com>
+Date:   Tue Mar 22 01:14:12 2022 +0200
+
+    Nimen muutos ja poisto
+
+ tiedosto.txt => eka.txt | 0
+ toinen.txt              | 1 -
+ 2 files changed, 1 deletion(-)
+
+commit a62c31b577e0edd46500c04f98a7669954842464
+Author: ellaverak <ella.korkeaaho@gmail.com>
+Date:   Mon Mar 21 21:19:21 2022 +0200
+
+    Paljon tekstiä
+
+ tiedosto.txt | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+commit f5cea018fb794abf8444ca5ffffcaaf18f8722fc
+Author: ellaverak <ella.korkeaaho@gmail.com>
+Date:   Mon Mar 21 21:13:43 2022 +0200
+
+    Sisältö tiedostoihin
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 5af60da23728f2552525b5f7871467f6fb5a8043
+Author: ellaverak <ella.korkeaaho@gmail.com>
+Date:   Mon Mar 21 17:53:22 2022 +0200
+
+    hakemisto
+
+ stuff/testi.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 136e4bf496a64128c313a899228138dbb312270c
+Author: ellaverak <ella.korkeaaho@gmail.com>
+Date:   Mon Mar 21 17:52:36 2022 +0200
+
+    lisäts
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 3a1833d3f2160aba9f57e3230b9c51e993de79e4
+Author: ellaverak <ella.korkeaaho@gmail.com>
+Date:   Mon Mar 21 17:50:46 2022 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 0b6c3d828c486ce8fe7a8978563b32515d205b80
+Author: ellaverak <ella.korkeaaho@gmail.com>
+Date:   Mon Mar 21 17:45:49 2022 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
