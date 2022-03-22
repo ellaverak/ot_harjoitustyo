@@ -1,10 +1,10 @@
 # ot_harjoitustyo
 
-testi
+This is a test
 
-**testi**
+**Laskarit**
 
-*testi*
+*viikko1*
 
 [komentorivi.txt](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko1/komentorivi.txt)
 
