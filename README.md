@@ -11,3 +11,5 @@ This is a test
 [gitlog.txt](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko1/gitlog.txt)
 
 testi
+
+epäsynkrooni testi
