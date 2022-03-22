@@ -4,7 +4,7 @@ This is a test
 
 ## **Laskarit**
 
-*viikko1*
+### *viikko1*
 
 [komentorivi.txt](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko1/komentorivi.txt)
 
