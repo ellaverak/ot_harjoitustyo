@@ -1,7 +1,5 @@
 # ot_harjoitustyo
 
-This is a test
-
 ## **Laskarit**
 
 ### *viikko1*
