@@ -10,6 +10,6 @@
 
 testi
 
-epäsynkrooni testi
+epäsynkroonitesti
 
 ### *viikko2*
