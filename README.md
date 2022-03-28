@@ -1,5 +1,12 @@
 # ot_harjoitustyo
 
+## **Harjoitustyö**
+
+[vaatimusmaarittely.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+
+[tuntikirjanpito.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
+
+
 ## **Laskarit**
 
 ### *viikko1*
@@ -15,9 +22,3 @@ epäsynkroonitesti
 ### *viikko2*
 
 [coverage_raportti.jpg](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko2/coverage_raportti.jpg)
-
-## **Harjoitustyö**
-
-[vaatimusmaarittely.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
-
-[tuntikirjanpito.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
