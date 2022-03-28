@@ -13,3 +13,5 @@ testi
 epäsynkroonitesti
 
 ### *viikko2*
+
+[coverage_raportti.jpg](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko2/coverage_raportti.jpg)
