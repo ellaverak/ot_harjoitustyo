@@ -16,7 +16,7 @@ epäsynkroonitesti
 
 [coverage_raportti.jpg](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko2/coverage_raportti.jpg)
 
-## **Hatjoitustyö**
+## **Harjoitustyö**
 
 [vaatimusmaarittely.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
