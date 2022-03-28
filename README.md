@@ -6,7 +6,6 @@
 
 [tuntikirjanpito.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
 
-
 ## **Laskarit**
 
 ### *viikko1*
