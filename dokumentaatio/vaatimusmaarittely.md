@@ -5,7 +5,7 @@
 - tavallinen käyttäjä
 - ylläpitäjä
 
-Toiminnot:
+## Toiminnot:
 - luo käyttäjä
 - kirjaudu sisään ja ulos
 - nimeä oma lemmikki
@@ -20,7 +20,7 @@ Toiminnot:
 Lisäksi ylläpitäjä voi:
 - hoitaa muiden lemmikkejä
 
-Mahdolliset lisätoiminnot:
+## Mahdolliset lisätoiminnot:
 - rahasysteemi?
 - hattuja lemmikeille
 - lemmikkejä on erinäköisiä
