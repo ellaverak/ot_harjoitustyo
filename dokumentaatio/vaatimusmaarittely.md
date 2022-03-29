@@ -4,6 +4,8 @@
 ### Ylläpitäjä voi oman lemmikkinsä lisäksi huolehtia muiden lemmikeistä.
 
 Toiminnot:
+- luo käyttäjä
+- kirjaudu sisään ja ulos
 - nimeä oma lemmikki
 - ruoki lemmikkiä
 - silitä lemmikkiä
@@ -11,6 +13,7 @@ Toiminnot:
 - siivoa lemmikin jätökset
 - opeta lemmikille temppuja
 - katsele muiden lemmikkejä
+- seuraa lemmikin hyvinvointia tilastoista
 
 Mahdolliset lisätoiminnot:
 - rahasysteemi?
