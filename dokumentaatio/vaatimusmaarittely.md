@@ -1,6 +1,7 @@
 # Virtuaalilemmikki
 
 ### Sovelluksessa voi hoitaa ja puuhailla oman virtuaalilemmikin kanssa.
+(Netissä tietokannat, jotka pitävät kirjaa käyttäjistä sekä käyttäjien lemmikeistä ja niihin liittyvistä tiedoista.)
 ## Käyttäjäroolit
 - tavallinen käyttäjä
 - ylläpitäjä
@@ -26,5 +27,3 @@ Lisäksi ylläpitäjä voi:
 - lemmikkejä on erinäköisiä
 - pyydä toista käyttäjää kaveriksi?
 - ylläpitäjille lisää toimintoja?
-
-(Netissä tietokannat, jotka pitävät kirjaa käyttäjistä sekä käyttäjien lemmikeistä ja niihin liittyvistä tiedoista.)
