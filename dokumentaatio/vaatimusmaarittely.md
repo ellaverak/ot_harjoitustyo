@@ -1,7 +1,9 @@
 # Virtuaalilemmikki
 
-### Käyttäjä voi rekisteröityä sovellukseen, jolloin hän saa oman virtuaalilemmikin.
-### Ylläpitäjä voi oman lemmikkinsä lisäksi huolehtia muiden lemmikeistä.
+### Sovelluksessa voi hoitaa ja puuhailla oman virtuaalilemmikin kanssa.
+## Käyttäjäroolit
+- tavallinen käyttäjä
+- ylläpitäjä
 
 Toiminnot:
 - luo käyttäjä
@@ -15,10 +17,14 @@ Toiminnot:
 - katsele muiden lemmikkejä
 - seuraa lemmikin hyvinvointia tilastoista
 
+Lisäksi ylläpitäjä voi:
+- hoitaa muiden lemmikkejä
+
 Mahdolliset lisätoiminnot:
 - rahasysteemi?
 - hattuja lemmikeille
 - lemmikkejä on erinäköisiä
 - pyydä toista käyttäjää kaveriksi?
+- ylläpitäjille lisää toimintoja?
 
 (Netissä tietokannat, jotka pitävät kirjaa käyttäjistä sekä käyttäjien lemmikeistä ja niihin liittyvistä tiedoista.)
