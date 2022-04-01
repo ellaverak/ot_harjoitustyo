@@ -2,4 +2,4 @@
 
 | päivä | aika (h) | mitä tein  |
 | :----:|    :-----| :-----|
-| 0.0. | 0         | x |
+| 29.3. | 1         | Tein sovelluksen alustavan suunnitelman |
