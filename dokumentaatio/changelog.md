@@ -5,4 +5,5 @@
 - ensimmäinen versio päänäkymästä luotu
 - ensimmäinen versio uuden käyttäjän luominen -näkymästä luotu
 - ensimmäinen versio kirjautumisnäkymästä luotu
-- uuden käyttäjän luominen -toiminnallisuus lisätty
+- uuden käyttäjän luominen -toiminto lisätty
+- krjautumistoiminto lisätty
