@@ -16,13 +16,13 @@ class LoginView:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        label = ttk.Label(master=self._frame, text="Kirjaudu sisään")
+        login_label = ttk.Label(master=self._frame, text="Kirjaudu sisään")
 
-        button = ttk.Button(
+        main_button = ttk.Button(
             master=self._frame,
             text="Takaisin päävalikkoon",
             command=self.start
         )
 
-        label.grid(row=0, column=0)
-        button.grid(row=1, column=0)
+        login_label.grid(row=0, column=0)
+        main_button.grid(row=1, column=0)
