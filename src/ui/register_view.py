@@ -3,23 +3,23 @@ from services.user_service import user_service
 
 class RegisterView:
     def __init__(self, root, start):
-        self._root = root
+        self.root = root
         self.start = start
-        self._frame = None
-        self._username_entry = None
-        self._password_entry = None
+        self.frame = None
+        self.username_entry = None
+        self.password_entry = None
 
-        self._initialize()
+        self.initialize()
 
     def pack(self):
-        self._frame.pack(fill=constants.X)
+        self.frame.pack(fill=constants.X)
 
     def destroy(self):
-        self._frame.destroy()
+        self.frame.destroy()
 
-    def _create_user(self):
-        username = self._username_entry.get()
-        password = self._password_entry.get()
+    def register_user(self):
+        username = self.username_entry.get()
+        password = self.password_entry.get()
 
         if len(username) == 0 or len(password) == 0:
             #error
@@ -32,40 +32,40 @@ class RegisterView:
             #error
             pass
 
-    def _initialize_username_field(self):
-        username_label = ttk.Label(master=self._frame, text='Anna uusi käyttäjätunnus')
+    def initialize_username_field(self):
+        username_label = ttk.Label(master=self.frame, text='Anna uusi käyttäjätunnus')
 
-        self._username_entry = ttk.Entry(master=self._frame)
+        self.username_entry = ttk.Entry(master=self.frame)
 
         username_label.grid(row=1, column=0)
-        self._username_entry.grid(row=2, column=0)
+        self.username_entry.grid(row=2, column=0)
 
-    def _initialize_password_field(self):
-        password_label = ttk.Label(master=self._frame, text='Anna uusi salasana')
+    def initialize_password_field(self):
+        password_label = ttk.Label(master=self.frame, text='Anna uusi salasana')
 
-        self._password_entry = ttk.Entry(master=self._frame)
+        self.password_entry = ttk.Entry(master=self.frame)
 
         password_label.grid(row=3, column=0)
-        self._password_entry.grid(row=4, column=0)
+        self.password_entry.grid(row=4, column=0)
 
 
-    def _initialize(self):
-        self._frame = ttk.Frame(master=self._root)
-        register_label = ttk.Label(master=self._frame, text="Luo käyttäjä")
+    def initialize(self):
+        self.frame = ttk.Frame(master=self.root)
+        register_label = ttk.Label(master=self.frame, text="Luo käyttäjä")
 
-        self._initialize_username_field()
-        self._initialize_password_field()
+        self.initialize_username_field()
+        self.initialize_password_field()
 
         main_button = ttk.Button(
-            master=self._frame,
+            master=self.frame,
             text="Takaisin päävalikkoon",
             command=self.start
         )
 
         accept_button = ttk.Button(
-            master=self._frame,
+            master=self.frame,
             text="Hyväksy",
-            command=self._create_user
+            command=self.register_user
         )
 
         register_label.grid(row=0, column=0)

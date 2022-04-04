@@ -2,24 +2,24 @@ from tkinter import ttk, constants
 
 class LoginView:
     def __init__(self, root, start):
-        self._root = root
+        self.root = root
         self.start = start
-        self._frame = None
+        self.frame = None
 
-        self._initialize()
+        self.initialize()
 
     def pack(self):
-        self._frame.pack(fill=constants.X)
+        self.frame.pack(fill=constants.X)
 
     def destroy(self):
-        self._frame.destroy()
+        self.frame.destroy()
 
-    def _initialize(self):
-        self._frame = ttk.Frame(master=self._root)
-        login_label = ttk.Label(master=self._frame, text="Kirjaudu sisään")
+    def initialize(self):
+        self.frame = ttk.Frame(master=self.root)
+        login_label = ttk.Label(master=self.frame, text="Kirjaudu sisään")
 
         main_button = ttk.Button(
-            master=self._frame,
+            master=self.frame,
             text="Takaisin päävalikkoon",
             command=self.start
         )
