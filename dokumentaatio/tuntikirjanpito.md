@@ -8,3 +8,4 @@
 | 4.4. | 3         | Tein ensimmäiset graafiset elementit sovellukseen |
 | 4.4. | 1         | Tein alustavat tietokantatoiminnot |
 | 4.4. | 2         | Tein ensimmäisen version uuden käyttäjän luomisesta |
+| 5.4. | 1         | Tein ensimmäisen version kirjautumisesta |
