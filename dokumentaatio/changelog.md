@@ -8,3 +8,4 @@
 - uuden käyttäjän luominen -toiminto lisätty
 - krjautumistoiminto lisätty
 - configuraatio lisätty
+- alustava mömmö-näkymä ja alustava uusi mömmö -näkymä lisätty
