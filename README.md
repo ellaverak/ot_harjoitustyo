@@ -1,8 +1,8 @@
 # ot_harjoitutustyo
 
-## **Mömmöystävä**
+## **Virtuaalilemmikki Mömmöystävä**
 
-### Virtuaalilemmikki Mömmöystävä
+## Dokumentaatio
 
 [vaatimusmaarittely.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
