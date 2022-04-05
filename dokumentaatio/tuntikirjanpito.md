@@ -10,3 +10,4 @@
 | 4.4. | 2         | Tein ensimmäisen version uuden käyttäjän luomisesta |
 | 5.4. | 1         | Tein ensimmäisen version kirjautumisesta |
 | 5.4. | 1         | Lisäsin configuraation ja ympäristömuuttujan tietokannalle |
+| 5.4. | 1         | Lisäsin alustavan oman mömmön näkymän ja alustavan näkymän uuden mömmön luomiseen |
