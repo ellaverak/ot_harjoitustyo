@@ -20,11 +20,15 @@ git clone https://github.com/ellaverak/ot_harjoitustyo
 ```bash
 poetry install
 ```
-3. Siirry src-hakemistoon ja rakenna tietokanta komennolla:
+3. Käynnistä poetry-virtuaaliympäristö komennolla:
+```bash
+poetry shell
+```
+4. Siirry src-hakemistoon ja rakenna tietokanta komennolla:
 ```bash
 python3 build.py
 ```
-4. Siirry src-hakemistoon ja avaa sovellus komennolla:
+5. Siirry src-hakemistoon ja avaa sovellus komennolla:
 ```bash
 python3 main.py
 ```
