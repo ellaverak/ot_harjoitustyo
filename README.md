@@ -81,3 +81,5 @@ coverage report -m
 [coverage_raportti.jpg](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko2/coverage_raportti.jpg)
 
 ### *viikko3*
+
+[monopoly_luokkakaavio.md](https://github.com/ellaverak/ot_harjoitustyo/tree/main/laskarit/viikko3)
