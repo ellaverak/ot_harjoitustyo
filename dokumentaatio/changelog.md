@@ -7,3 +7,4 @@
 - ensimmäinen versio kirjautumisnäkymästä luotu
 - uuden käyttäjän luominen -toiminto lisätty
 - krjautumistoiminto lisätty
+- configuraatio lisätty
