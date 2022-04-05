@@ -12,9 +12,21 @@
 
 ## **Sovelluksen asennus- ja käyttöohje:**
 
-1. kloonaa git repositorio haluamaasi repositoriaan komennolla:
+1. Kloonaa git-repositorio haluamaasi hakemistoon komennolla:
 ```bash
 git clone https://github.com/ellaverak/ot_harjoitustyo
+```
+2. Asenna poetry komennolla:
+```bash
+poetry install
+```
+3. Siirry src-hakemistoon ja rakenna tietokanta komennolla:
+```bash
+python3 build.py
+```
+4. Siirry src-hakemistoon ja avaa sovellus komennolla:
+```bash
+python3 main.py
 ```
 
 ## **Laskarit**
