@@ -10,7 +10,7 @@
 
 [changelog.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/changelog.md)
 
-## **Sovelluksen asennus- ja käyttöohje:**
+## **Sovelluksen asennus:**
 
 1. Kloonaa git-repositorio haluamaasi hakemistoon komennolla:
 ```bash
@@ -35,6 +35,7 @@ python3 main.py
 
 ## **Sovelluksen testaaminen:**
 1. Siirry sovelluksen juurihakemistoon
+ 
 2. Käynnistä poetry-virtuaaliympäristö komennolla:
 ```bash
 poetry shell
