@@ -82,4 +82,4 @@ coverage report -m
 
 ### *viikko3*
 
-[monopoly_luokkakaavio.md](https://github.com/ellaverak/ot_harjoitustyo/tree/main/laskarit/viikko3)
+[monopoly_luokkakaavio.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko3/monoply_luokkakaavio.md)
