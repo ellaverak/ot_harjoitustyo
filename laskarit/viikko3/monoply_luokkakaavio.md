@@ -1,6 +1,6 @@
 Pelin alussa luodaan yksi kortit olio, joka pitää kirjaa pelin korteista. Kortit-olio vastaa korttien toiminnoista ja siitä,
-mikä kortti kuuluu kullekkin pelaajalle ja mitkä ovat vielä pakassa. Pelin alussa luodaan myös yksi Kadut-olio, joka pitää
-kirjaa siitä, mikä katu kuuluu kullekin pelaajalle.
+mikä kortti kuuluu kullekkin pelaajalle ja mitkä ovat vielä pakassa. Pelin alussa luodaan myös yksi Tontit-olio, joka pitää
+kirjaa siitä, mikä tontti kuuluu kullekin pelaajalle.
 Pelaajilla ei ole erillistä luokkaa tai moduulia vaan luodut Pelinappula-oliot kuvaavat pelaajia.
 Jokaiseen Pelinappulaan liittyy Ruutu-olio ja OmatKortit-olio.
 
@@ -26,7 +26,7 @@ Jokaiseen Pelinappulaan liittyy Ruutu-olio ja OmatKortit-olio.
           kortit
           toiminto()
       }
-      Kortit --> Kadut
+      Kortit --> Tontit
       class Kortit{
           yhteismaat
           sattumat
