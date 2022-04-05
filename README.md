@@ -28,13 +28,13 @@ poetry install
 ```bash
 poetry shell
 ```
-4. Siirry src-hakemistoon ja rakenna tietokanta komennolla:
+4. Rakenna tietokanta komennolla:
 ```bash
-python3 build.py
+invoke build
 ```
-5. Siirry src-hakemistoon ja avaa sovellus komennolla:
+5. Avaa sovellus komennolla:
 ```bash
-python3 main.py
+invoke start
 ```
 
 ## Sovelluksen testaaminen
@@ -47,7 +47,7 @@ poetry shell
 ```
 3. Suorita testit komennolla:
 ```bash
-pytest src
+invoke test
 ```
 
 ## **Laskarit**
