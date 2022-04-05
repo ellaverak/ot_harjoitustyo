@@ -6,7 +6,7 @@ def main():
     window.title('a_test')
 
     ui_view = UI(window)
-    ui_view.main()
+    ui_view.main_view()
 
     window.mainloop()
 

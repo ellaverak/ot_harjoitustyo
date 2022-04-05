@@ -3,6 +3,7 @@ from tkinter import ttk, constants
 class NewMommoView:
     def __init__(self, root):
         self.root = root
+
         self.frame = None
 
         self.initialize()

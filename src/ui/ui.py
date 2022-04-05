@@ -7,18 +7,11 @@ from ui.mommo_view import MommoView
 class UI:
     def __init__(self, root):
         self.root = root
+
         self.current_view = None
 
-    def main(self):
+    def main_view(self):
         self.show_main_view()
-
-
-    def hide_current_view(self):
-        if self.current_view:
-            self.current_view.destroy()
-
-        self.current_view = None
-
 
     def login_view(self):
         self.show_login_view()
@@ -48,7 +41,7 @@ class UI:
 
         self.current_view = LoginView(
             self.root,
-            self.main,
+            self.main_view,
             self.mommo_view
         )
 
@@ -59,7 +52,7 @@ class UI:
 
         self.current_view = RegisterView(
             self.root,
-            self.main,
+            self.main_view,
             self.new_mommo_view
         )
 
@@ -82,3 +75,9 @@ class UI:
         )
 
         self.current_view.pack()
+
+    def hide_current_view(self):
+        if self.current_view:
+            self.current_view.destroy()
+
+        self.current_view = None
