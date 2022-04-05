@@ -1,7 +1,9 @@
 import sqlite3
-#from config import DATABASE_FILE_PATH
+from config import DATABASE_FILE_PATH
 
-db = sqlite3.connect("/home/korkella/projektit/ot_harjoitustyo/src/base.db")
+print(DATABASE_FILE_PATH)
+
+db = sqlite3.connect(DATABASE_FILE_PATH)
 
 
 def get_db():
