@@ -2,8 +2,7 @@
 __pycache__
 .coverage
 htmlcov
-src/data/database.db
-src/data/test_database.db
+/data
 
 
 
