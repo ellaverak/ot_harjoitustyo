@@ -2,9 +2,10 @@ from tkinter import ttk, constants
 from services.user_service import user_service
 
 class LoginView:
-    def __init__(self, root, start):
+    def __init__(self, root, main, mommo):
         self.root = root
-        self.start = start
+        self.main = main
+        self.mommo = mommo
         self.frame = None
         self.username_entry = None
         self.password_entry = None
@@ -23,16 +24,16 @@ class LoginView:
 
         if len(username) == 0 or len(password) == 0:
             #error
-            print("error")
+            print("length error")
             return
 
         try:
-            user_service.login(username, password)
-            self.start()
+            result = user_service.login(username, password)
+            self.mommo()
         except:
             #error
-            print("error")
-            pass
+            print("login error")
+            return
 
     def initialize_username_field(self):
         username_label = ttk.Label(master=self.frame, text='Anna käyttäjätunnus')
@@ -60,7 +61,7 @@ class LoginView:
         main_button = ttk.Button(
             master=self.frame,
             text="Takaisin päävalikkoon",
-            command=self.start
+            command=self.main
         )
 
         accept_button = ttk.Button(

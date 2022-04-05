@@ -2,9 +2,10 @@ from tkinter import ttk, constants
 from services.user_service import user_service
 
 class RegisterView:
-    def __init__(self, root, start):
+    def __init__(self, root, main, new_mommo):
         self.root = root
-        self.start = start
+        self.main = main
+        self.new_mommo = new_mommo
         self.frame = None
         self.username_entry = None
         self.password_entry = None
@@ -23,14 +24,16 @@ class RegisterView:
 
         if len(username) == 0 or len(password) == 0:
             #error
+            print("length error")
             return
 
         try:
             user_service.create_user(username, password, 0)
-            self.start()
+            self.new_mommo()
         except:
             #error
-            pass
+            print("register error")
+            return
 
     def initialize_username_field(self):
         username_label = ttk.Label(master=self.frame, text='Anna uusi käyttäjätunnus')
@@ -59,7 +62,7 @@ class RegisterView:
         main_button = ttk.Button(
             master=self.frame,
             text="Takaisin päävalikkoon",
-            command=self.start
+            command=self.main
         )
 
         accept_button = ttk.Button(

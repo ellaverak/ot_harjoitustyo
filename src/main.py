@@ -3,10 +3,10 @@ from ui.ui import UI
 
 def main():
     window = Tk()
-    window.title('Tkt_test')
+    window.title('a_test')
 
     ui_view = UI(window)
-    ui_view.start()
+    ui_view.main()
 
     window.mainloop()
 

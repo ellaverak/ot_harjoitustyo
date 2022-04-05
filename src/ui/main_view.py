@@ -1,34 +1,34 @@
 from tkinter import ttk, constants
 
 class MainView:
-    def __init__(self, root, handle_login_view, handle_register_view):
-        self._root = root
-        self._handle_login_view = handle_login_view
-        self._handle_register_view = handle_register_view
-        self._frame = None
+    def __init__(self, root, login_view, register_view):
+        self.root = root
+        self.login_view = login_view
+        self.register_view = register_view
+        self.frame = None
 
-        self._initialize()
+        self.initialize()
 
     def pack(self):
-        self._frame.pack(fill=constants.X)
+        self.frame.pack(fill=constants.X)
 
     def destroy(self):
-        self._frame.destroy()
+        self.frame.destroy()
 
-    def _initialize(self):
-        self._frame = ttk.Frame(master=self._root)
-        main_title = ttk.Label(master=self._frame, text="Mömmöystävä")
+    def initialize(self):
+        self.frame = ttk.Frame(master=self.root)
+        main_title = ttk.Label(master=self.frame, text="Mömmöystävä")
 
         login_button = ttk.Button(
-            master=self._frame,
+            master=self.frame,
             text="Kirjaudu sisään",
-            command=self._handle_login_view
+            command=self.login_view
         )
 
         register_button = ttk.Button(
-            master=self._frame,
+            master=self.frame,
             text="Luo käyttäjä",
-            command=self._handle_register_view
+            command=self.register_view
         )
 
         main_title.grid(row=0, column=0)
