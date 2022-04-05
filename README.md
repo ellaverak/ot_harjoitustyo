@@ -14,6 +14,8 @@ Mömmöystävä on ikioma virtuaalilemmikkisi!
 
 [kayttöohje.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/kaytt%C3%B6ohje.md)
 
+Sovellus noudattaa kerrosarkkitehtuuria.
+
 ## Sovelluksen asennus
 
 1. Kloonaa git-repositorio haluamaasi hakemistoon komennolla:
