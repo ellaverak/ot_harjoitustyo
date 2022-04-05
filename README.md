@@ -10,6 +10,13 @@
 
 [changelog.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/changelog.md)
 
+## **Sovelluksen asennus- ja käyttöohje:**
+
+1. kloonaa git repositorio haluamaasi repositoriaan komennolla:
+```bash
+git clone https://github.com/ellaverak/ot_harjoitustyo
+```
+
 ## **Laskarit**
 
 ### *viikko1*
