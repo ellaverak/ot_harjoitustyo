@@ -36,7 +36,10 @@ def create_tables(db):
             id INTEGER PRIMARY KEY,
             user_id INTEGER REFERENCES users ON DELETE CASCADE,
             name TEXT,
-            hunger INTEGER
+            hunger INTEGER,
+            thirst INTEGER,
+            clenliness INTEGER,
+            happiness INTEGER
         );
     """)
 
@@ -47,12 +50,6 @@ def create_tables(db):
             trick INTEGER
         );
     """)
-
-    cursor.execute("""INSERT INTO users
-               (username, password, role) VALUES ('testi', 'testi', 0)""")
-
-    cursor.execute("""INSERT INTO mommo
-               (user_id, name, hunger) VALUES ('1', 'mommo', 100)""")
 
     db.commit()
 
