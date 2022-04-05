@@ -9,3 +9,4 @@
 - krjautumistoiminto lisätty
 - configuraatio lisätty
 - alustava mömmö-näkymä ja alustava uusi mömmö -näkymä lisätty
+- sovellukseen on lisätty ensimmäinen testi, joka testaa uuden käyttäjän luomista
