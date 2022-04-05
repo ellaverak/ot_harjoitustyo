@@ -1,6 +1,8 @@
 # ot_harjoitutustyo
 
-## **Virtuaalilemmikki Mömmöystävä**
+## Mömmöystävä
+
+Mömmöystävä on ikioma virtuaalilemmikkisi!
 
 ## Dokumentaatio
 
@@ -12,7 +14,7 @@
 
 [kayttöohje.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/kaytt%C3%B6ohje.md)
 
-## **Sovelluksen asennus:**
+## Sovelluksen asennus
 
 1. Kloonaa git-repositorio haluamaasi hakemistoon komennolla:
 ```bash
@@ -35,7 +37,8 @@ python3 build.py
 python3 main.py
 ```
 
-## **Sovelluksen testaaminen:**
+## Sovelluksen testaaminen
+
 1. Siirry sovelluksen juurihakemistoon
  
 2. Käynnistä poetry-virtuaaliympäristö komennolla:
