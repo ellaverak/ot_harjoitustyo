@@ -33,6 +33,17 @@ python3 build.py
 python3 main.py
 ```
 
+## **Sovelluksen testaaminen:**
+1. Siirry sovelluksen juurihakemistoon
+2. Käynnistä poetry-virtuaaliympäristö komennolla:
+```bash
+poetry shell
+```
+3. Suorita testit komennolla:
+```bash
+pytest src
+```
+
 ## **Laskarit**
 
 ### *viikko1*
