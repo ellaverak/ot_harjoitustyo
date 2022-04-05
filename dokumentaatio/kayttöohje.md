@@ -1,4 +1,3 @@
-
 ### Aloitus
 Aloitusnäkymästä käyttäjä voi siirtyä:
 - uuden käyttäjän luomiseen
