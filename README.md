@@ -50,6 +50,22 @@ poetry shell
 invoke test
 ```
 
+## Testikattavuuden tarkistaminen
+1. Siirry sovelluksen juurihakemistoon
+ 
+2. Käynnistä poetry-virtuaaliympäristö komennolla:
+```bash
+poetry shell
+```
+3. Suorita testikattavuuden tarkistaminen ja tallentaminen komennolla:
+```bash
+invoke coverage-report
+```
+4. Katsele testikattavuusraportti komennolla
+```bash
+coverage report -m
+```
+
 ## **Laskarit**
 
 ### *viikko1*
