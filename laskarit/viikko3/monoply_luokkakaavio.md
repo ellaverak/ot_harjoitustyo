@@ -49,5 +49,6 @@ Jokaiseen Pelinappulaan liittyy Ruutu-olio ja OmatKortit-olio.
           laitokset
           rakenna_talo()
           rakenna_hotelli()
+      }
 ```
 
