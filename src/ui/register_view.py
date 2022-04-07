@@ -1,6 +1,7 @@
 from tkinter import ttk, constants
 from services.user_service import user_service
 
+
 class RegisterView:
     def __init__(self, root, main, new_mommo):
         self.root = root
@@ -43,7 +44,8 @@ class RegisterView:
         accept_button.grid(row=5, column=0)
 
     def initialize_username_field(self):
-        username_label = ttk.Label(master=self.frame, text='Anna uusi käyttäjätunnus')
+        username_label = ttk.Label(
+            master=self.frame, text='Anna uusi käyttäjätunnus')
 
         self.username_entry = ttk.Entry(master=self.frame)
 
@@ -51,7 +53,8 @@ class RegisterView:
         self.username_entry.grid(row=2, column=0)
 
     def initialize_password_field(self):
-        password_label = ttk.Label(master=self.frame, text='Anna uusi salasana')
+        password_label = ttk.Label(
+            master=self.frame, text='Anna uusi salasana')
 
         self.password_entry = ttk.Entry(master=self.frame)
 
@@ -63,7 +66,7 @@ class RegisterView:
         password = self.password_entry.get()
 
         if len(username) == 0 or len(password) == 0:
-            #error
+            # error
             print("length error")
             return
 
@@ -71,6 +74,6 @@ class RegisterView:
             user_service.create_user(username, password, 0)
             self.new_mommo()
         except:
-            #error
+            # error
             print("register error")
             return

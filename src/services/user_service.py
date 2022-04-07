@@ -4,6 +4,7 @@ from repositories.user_repository import (
     user_repository as default_user_repository
 )
 
+
 class UserService():
     def __init__(self, user_repository=default_user_repository):
         self.user = None
@@ -20,7 +21,7 @@ class UserService():
         user = self.user_repository.find_user(username)
 
         if not user or user.password != password:
-            #error
+            # error
             print("error")
             return
 

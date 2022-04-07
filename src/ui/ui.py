@@ -4,6 +4,7 @@ from ui.register_view import RegisterView
 from ui.new_mommo_view import NewMommoView
 from ui.mommo_view import MommoView
 
+
 class UI:
     def __init__(self, root):
         self.root = root

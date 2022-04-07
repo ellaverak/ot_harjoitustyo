@@ -1,11 +1,13 @@
 from entities.user import User
 from db_connection import get_db
 
+
 def get_user(result):
     if result:
         return User(result[1], result[2], result[3])
     else:
         return None
+
 
 class UserRepository:
     def __init__(self, db):
@@ -34,5 +36,6 @@ class UserRepository:
         result = cursor.fetchone()
 
         return get_user(result)
+
 
 user_repository = UserRepository(get_db())

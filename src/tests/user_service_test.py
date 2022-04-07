@@ -3,6 +3,7 @@ from services.user_service import user_service
 from repositories.user_repository import user_repository
 from build import build
 
+
 class TestUserService(unittest.TestCase):
     def setUp(self):
         build()

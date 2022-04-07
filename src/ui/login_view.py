@@ -1,6 +1,7 @@
 from tkinter import ttk, constants
 from services.user_service import user_service
 
+
 class LoginView:
     def __init__(self, root, main, mommo):
         self.root = root
@@ -42,7 +43,8 @@ class LoginView:
         accept_button.grid(row=5, column=0)
 
     def initialize_username_field(self):
-        username_label = ttk.Label(master=self.frame, text='Anna käyttäjätunnus')
+        username_label = ttk.Label(
+            master=self.frame, text='Anna käyttäjätunnus')
 
         self.username_entry = ttk.Entry(master=self.frame)
 
@@ -62,7 +64,7 @@ class LoginView:
         password = self.password_entry.get()
 
         if len(username) == 0 or len(password) == 0:
-            #error
+            # error
             print("length error")
             return
 
@@ -70,6 +72,6 @@ class LoginView:
             result = user_service.login(username, password)
             self.mommo()
         except:
-            #error
+            # error
             print("login error")
             return
