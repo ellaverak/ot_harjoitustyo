@@ -7,8 +7,8 @@
 - ylläpitäjä
 
 ## Toiminnot:
-- luo käyttäjä "tehty"
-- kirjaudu sisään ja ulos "tehty"
+- luo käyttäjä **tehty**
+- kirjaudu sisään ja ulos **tehty**
 - nimeä oma lemmikki
 - ruoki lemmikkiä
 - silitä lemmikkiä
