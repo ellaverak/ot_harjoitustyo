@@ -1,4 +1,3 @@
-
 ## Sovelluslogiikka
 
 Selitys:
@@ -31,11 +30,11 @@ Selitys:
           mommo
           mommo_repository
       }
-      UserReposity "1" --> "*" User
+      UserRepository "1" --> "*" User
       class UserRepository{
           db_
       }
-      MommoReposity "1" --> "*" Mommo
+      MommoRepository "1" --> "*" Mommo
       class MommoRepository{
           db_
       }
