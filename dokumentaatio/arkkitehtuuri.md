@@ -24,7 +24,6 @@ Selitys:
           user_repository
       }
       MommoService "1" --> "1" MommoRepository
-      MommoService "1" --> "1" UserRepository
       MommoService "1" --> "1" UserService
       class MommoService{
           mommo
