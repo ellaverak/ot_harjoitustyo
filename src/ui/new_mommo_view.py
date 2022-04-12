@@ -20,7 +20,7 @@ class NewMommoView:
         name = self.name_entry.get()
 
         if len(name) == 0:
-            #error
+            # error
             print("length error")
             return
 
