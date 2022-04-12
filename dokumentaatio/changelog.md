@@ -5,3 +5,4 @@
 - uuden käyttäjän luominen -toiminto lisätty
 - krjautumistoiminto lisätty
 - alustava mömmö-näkymä ja alustava uusi mömmö -näkymä lisätty
+- uuden mömmön voi luoda uuden käyttäjän luomisen yhteydessä
