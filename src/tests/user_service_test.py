@@ -2,6 +2,7 @@ import unittest
 from services.user_service import user_service
 from repositories.user_repository import user_repository
 from build import build
+from entities.user import User
 
 
 class TestUserService(unittest.TestCase):
@@ -17,3 +18,11 @@ class TestUserService(unittest.TestCase):
         user = user_repository.find_user(new_user.username)
 
         self.assertEqual(new_user.username, user.username)
+
+    def test_login(self):
+        user = User("login_test", "login_test", 1)
+        self.user_service.create_user(user.username, user.password, user.role)
+
+        logged_in_user = self.user_service.login(user.username, user.password)
+
+        self.assertEqual(logged_in_user.username, user.username)
