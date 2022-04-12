@@ -1,6 +1,5 @@
 from entities.mommo import Mommo
 from services.user_service import user_service
-from repositories.user_repository import user_repository
 
 from repositories.mommo_repository import (
     mommo_repository as default_mommo_repository

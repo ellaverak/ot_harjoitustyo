@@ -35,4 +35,5 @@ class UserService():
         user_id = self.user_repository.get_id(self.user.username)
         return user_id
 
+
 user_service = UserService()
