@@ -12,4 +12,5 @@
 | 5.4. | 1         | Lisäsin configuraation ja ympäristömuuttujan tietokannalle |
 | 5.4. | 1         | Lisäsin alustavan oman mömmön näkymän ja alustavan näkymän uuden mömmön luomiseen |
 | 5.4. | 0.5       | Lisäsin sovellukseen ensimmäisen testin |
-| yht. | 13.5       | |
+| 12.4. | 3       | Toiminto "uuden mömmön luominen" lisätty |
+| yht. | 16.5       | |
