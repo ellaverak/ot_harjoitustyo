@@ -13,8 +13,7 @@ class MommoService():
         self.mommo_repository = mommo_repository
 
     def create_mommo(self, name):
-        user = user_service.user
-        user_id = user_repository.get_id(user.username)
+        user_id = user_service.get_user_id()
 
         mommo = self.mommo_repository.create(Mommo(user_id, name))
 
