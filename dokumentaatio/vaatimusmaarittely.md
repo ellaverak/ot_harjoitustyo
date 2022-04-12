@@ -9,7 +9,7 @@
 ## Toiminnot:
 - luo käyttäjä **tehty**
 - kirjaudu sisään ja ulos **tehty**
-- nimeä oma lemmikki
+- nimeä oma lemmikki **tehty**
 - ruoki lemmikkiä
 - silitä lemmikkiä
 - juota lemmikkiä
