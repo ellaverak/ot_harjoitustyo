@@ -13,4 +13,5 @@
 | 5.4. | 1         | Lisäsin alustavan oman mömmön näkymän ja alustavan näkymän uuden mömmön luomiseen |
 | 5.4. | 0.5       | Lisäsin sovellukseen ensimmäisen testin |
 | 12.4. | 3       | Toiminto "uuden mömmön luominen" lisätty |
-| yht. | 16.5       | |
+| 12.4. | 2       | Lisäsin kirjautumistestin |
+| yht. | 18.5       | |
