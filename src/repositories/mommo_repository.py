@@ -5,16 +5,16 @@ from db_connection import get_db
 def get_mommo(result):
     if result:
         return Mommo(result[1], result[2], result[3])
-    else:
-        return None
+
+    return None
 
 
 class MommoRepository:
-    def __init__(self, db):
-        self.db = db
+    def __init__(self, db_):
+        self.db_ = db_
 
     def create(self, mommo):
-        cursor = self.db.cursor()
+        cursor = self.db_.cursor()
 
         cursor.execute(
             """INSERT INTO mommo
@@ -24,7 +24,7 @@ class MommoRepository:
              mommo.thirst, mommo.clenliness, mommo.happiness)
         )
 
-        self.db.commit()
+        self.db_.commit()
 
         return
 

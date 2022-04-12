@@ -1,8 +1,8 @@
 from db_connection import get_db
 
 
-def drop_tables(db):
-    cursor = db.cursor()
+def drop_tables(db_):
+    cursor = db_.cursor()
 
     cursor.execute("""
         DROP TABLE IF EXISTS users
@@ -16,11 +16,11 @@ def drop_tables(db):
         DROP TABLE IF EXISTS tricks
     """)
 
-    db.commit()
+    db_.commit()
 
 
-def create_tables(db):
-    cursor = db.cursor()
+def create_tables(db_):
+    cursor = db_.cursor()
 
     cursor.execute("""
         CREATE TABLE users (
@@ -51,14 +51,14 @@ def create_tables(db):
         );
     """)
 
-    db.commit()
+    db_.commit()
 
 
 def initialize_database():
-    db = get_db()
+    db_ = get_db()
 
-    drop_tables(db)
-    create_tables(db)
+    drop_tables(db_)
+    create_tables(db_)
 
 
 if __name__ == '__main__':

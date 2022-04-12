@@ -16,6 +16,3 @@ class TestUserService(unittest.TestCase):
         self.user_service = user_service
 
         self.user = user_service.create_user("create_mommo", "create_mommo", 0)
-
-
-
