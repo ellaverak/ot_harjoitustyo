@@ -3,10 +3,10 @@ from services.user_service import user_service
 
 
 class LoginView:
-    def __init__(self, root, main, mommo):
+    def __init__(self, root, main_view, mommo_view):
         self.root = root
-        self.main = main
-        self.mommo = mommo
+        self.main_view = main_view
+        self.mommo_view = mommo_view
         self.frame = None
         self.username_entry = None
         self.password_entry = None
@@ -19,6 +19,18 @@ class LoginView:
     def destroy(self):
         self.frame.destroy()
 
+    def login_user(self):
+        username = self.username_entry.get()
+        password = self.password_entry.get()
+
+        if len(username) == 0 or len(password) == 0:
+            # error
+            print("length error")
+            return
+
+        user_service.login(username, password)
+        self.mommo_view()
+
     def initialize(self):
         self.frame = ttk.Frame(master=self.root)
         login_label = ttk.Label(master=self.frame, text="Kirjaudu sisään")
@@ -29,7 +41,7 @@ class LoginView:
         main_button = ttk.Button(
             master=self.frame,
             text="Takaisin päävalikkoon",
-            command=self.main
+            command=self.main_view
         )
 
         accept_button = ttk.Button(
@@ -58,20 +70,3 @@ class LoginView:
 
         password_label.grid(row=3, column=0)
         self.password_entry.grid(row=4, column=0)
-
-    def login_user(self):
-        username = self.username_entry.get()
-        password = self.password_entry.get()
-
-        if len(username) == 0 or len(password) == 0:
-            # error
-            print("length error")
-            return
-
-        try:
-            result = user_service.login(username, password)
-            self.mommo()
-        except:
-            # error
-            print("login error")
-            return

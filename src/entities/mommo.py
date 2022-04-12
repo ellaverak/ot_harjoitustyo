@@ -1,5 +1,5 @@
 class Mommo:
-    def __init__(self, user_id, name, hunger, thirst, clenliness, happiness):
+    def __init__(self, user_id, name, hunger=100, thirst=100, clenliness=100, happiness=100):
         self.user_id = user_id
         self.name = name
         self.hunger = hunger

@@ -63,7 +63,8 @@ class UI:
         self.hide_current_view()
 
         self.current_view = NewMommoView(
-            self.root
+            self.root,
+            self.mommo_view
         )
 
         self.current_view.pack()

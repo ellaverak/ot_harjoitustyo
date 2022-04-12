@@ -3,11 +3,10 @@ from services.user_service import user_service
 
 
 class RegisterView:
-    def __init__(self, root, main, new_mommo):
+    def __init__(self, root, main_view, new_mommo_view):
         self.root = root
-        self.main = main
-        self.new_mommo = new_mommo
-
+        self.main_view = main_view
+        self.new_mommo_view = new_mommo_view
         self.frame = None
         self.username_entry = None
         self.password_entry = None
@@ -20,6 +19,18 @@ class RegisterView:
     def destroy(self):
         self.frame.destroy()
 
+    def register_user(self):
+        username = self.username_entry.get()
+        password = self.password_entry.get()
+
+        if len(username) == 0 or len(password) == 0:
+            # error
+            print("length error")
+            return
+
+        user_service.create_user(username, password, 0)
+        self.new_mommo_view()
+
     def initialize(self):
         self.frame = ttk.Frame(master=self.root)
         register_label = ttk.Label(master=self.frame, text="Luo käyttäjä")
@@ -30,7 +41,7 @@ class RegisterView:
         main_button = ttk.Button(
             master=self.frame,
             text="Takaisin päävalikkoon",
-            command=self.main
+            command=self.main_view
         )
 
         accept_button = ttk.Button(
@@ -60,20 +71,3 @@ class RegisterView:
 
         password_label.grid(row=3, column=0)
         self.password_entry.grid(row=4, column=0)
-
-    def register_user(self):
-        username = self.username_entry.get()
-        password = self.password_entry.get()
-
-        if len(username) == 0 or len(password) == 0:
-            # error
-            print("length error")
-            return
-
-        try:
-            user_service.create_user(username, password, 0)
-            self.new_mommo()
-        except:
-            # error
-            print("register error")
-            return

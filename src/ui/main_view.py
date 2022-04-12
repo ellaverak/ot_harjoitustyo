@@ -2,10 +2,10 @@ from tkinter import ttk, constants
 
 
 class MainView:
-    def __init__(self, root, login, register):
+    def __init__(self, root, login_view, register_view):
         self.root = root
-        self.login = login
-        self.register = register
+        self.login_view = login_view
+        self.register_view = register_view
         self.frame = None
 
         self.initialize()
@@ -23,13 +23,13 @@ class MainView:
         login_button = ttk.Button(
             master=self.frame,
             text="Kirjaudu sisään",
-            command=self.login
+            command=self.login_view
         )
 
         register_button = ttk.Button(
             master=self.frame,
             text="Luo käyttäjä",
-            command=self.register
+            command=self.register_view
         )
 
         main_title.grid(row=0, column=0)
