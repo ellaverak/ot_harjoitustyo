@@ -69,19 +69,3 @@ invoke coverage-report
 ```bash
 coverage report -m
 ```
-
-## **Laskarit**
-
-### *viikko1*
-
-[komentorivi.txt](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko1/komentorivi.txt)
-
-[gitlog.txt](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko1/gitlog.txt)
-
-### *viikko2*
-
-[coverage_raportti.jpg](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko2/coverage_raportti.jpg)
-
-### *viikko3*
-
-[monopoly_luokkakaavio.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/laskarit/viikko3/monoply_luokkakaavio.md)
