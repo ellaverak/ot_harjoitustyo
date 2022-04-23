@@ -15,4 +15,5 @@
 | 12.4. | 3       | Toiminto "uuden mömmön luominen" lisätty |
 | 12.4. | 2       | Lisäsin kirjautumistestin |
 | 12.4. | 1       | Tein alustavan luokkakaavion |
-| yht. | 19.5       | |
+| 23.4. | 2       | Lisäsin mömmönäkymään mömmön tiedot |
+| yht. | 21.5       | |
