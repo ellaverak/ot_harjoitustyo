@@ -4,7 +4,7 @@ from db_connection import get_db
 
 def get_mommo(result):
     if result:
-        return Mommo(result[1], result[2], result[3])
+        return Mommo(result[1], result[2], result[3], result[4], result[5], result[6])
 
     return None
 
@@ -27,6 +27,18 @@ class MommoRepository:
         self.db_.commit()
 
         return
+
+    def get(self, user_id):
+        cursor = self.db_.cursor()
+
+        cursor.execute(
+            """SELECT * FROM mommo WHERE user_id = ?""",
+            (user_id,)
+        )
+
+        result = cursor.fetchone()
+
+        return get_mommo(result)
 
 
 mommo_repository = MommoRepository(get_db())

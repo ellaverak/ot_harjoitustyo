@@ -12,9 +12,9 @@ class UserService():
 
     def create_user(self, username, password, role):
 
-        user = self.user_repository.create(User(username, password, role))
+        self.user_repository.create(User(username, password, role))
 
-        self.user = user
+        user = self.login(username, password)
 
         return user
 

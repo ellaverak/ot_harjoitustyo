@@ -16,6 +16,17 @@ class MommoService():
 
         mommo = self.mommo_repository.create(Mommo(user_id, name))
 
+        self.mommo = mommo
+
+        return mommo
+
+    def login_mommo(self):
+        user_id = user_service.get_user_id()
+
+        mommo = self.mommo_repository.get(user_id)
+
+        self.mommo = mommo
+
         return mommo
 
 
