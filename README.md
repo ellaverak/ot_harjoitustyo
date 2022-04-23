@@ -28,17 +28,13 @@ git clone https://github.com/ellaverak/ot_harjoitustyo
 ```bash
 poetry install
 ```
-3. Käynnistä poetry-virtuaaliympäristö komennolla:
+3. Rakenna tietokanta komennolla:
 ```bash
-poetry shell
+poetry run invoke build
 ```
-4. Rakenna tietokanta komennolla:
+4. Avaa sovellus komennolla:
 ```bash
-invoke build
-```
-5. Avaa sovellus komennolla:
-```bash
-invoke start
+poetry run invoke start
 ```
 
 ## Sovelluksen testaaminen
