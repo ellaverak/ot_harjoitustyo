@@ -41,27 +41,19 @@ poetry run invoke start
 
 1. Siirry sovelluksen juurihakemistoon
  
-2. Käynnistä poetry-virtuaaliympäristö komennolla:
+2. Suorita testit komennolla:
 ```bash
-poetry shell
-```
-3. Suorita testit komennolla:
-```bash
-invoke test
+poetry run invoke test
 ```
 
 ## Testikattavuuden tarkistaminen
 1. Siirry sovelluksen juurihakemistoon
  
-2. Käynnistä poetry-virtuaaliympäristö komennolla:
+2. Suorita testikattavuuden tarkistaminen ja tallentaminen komennolla:
 ```bash
-poetry shell
+poetry run invoke coverage-report
 ```
-3. Suorita testikattavuuden tarkistaminen ja tallentaminen komennolla:
+3. Katsele testikattavuusraportti komennolla
 ```bash
-invoke coverage-report
-```
-4. Katsele testikattavuusraportti komennolla
-```bash
-coverage report -m
+poetry run coverage report -m
 ```
