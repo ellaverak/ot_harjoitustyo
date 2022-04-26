@@ -1,7 +1,6 @@
 from tkinter import ttk, constants
 from services.mommo_service import mommo_service
 from services.user_service import user_service
-#from threading import Timer
 
 class MommoView:
     def __init__(self, root, main_view):
@@ -11,7 +10,6 @@ class MommoView:
         self.root = root
         self.frame = None
         self.main_view = main_view
-#        self.hunger_t = Timer(1000, mommo_service.hunger())
 
         self.initialize()
 
@@ -22,7 +20,6 @@ class MommoView:
         self.frame.destroy()
 
     def quit(self):
-#        self.hunger_t.cancel()
         mommo_service.logout_mommo()
         user_service.logout()
         self.main_view()
@@ -48,7 +45,7 @@ class MommoView:
         mommo_clenliness_stat.grid(row=4, column=1)
         mommo_happiness_stat.grid(row=5, column=1)
 
-#        self.frame.after(5000, self.initialize_mommo)
+        self.frame.after(1000, self.initialize_mommo)
 
 
     def initialize(self):
@@ -60,7 +57,6 @@ class MommoView:
         mommo_clenliness_label = ttk.Label(master=self.frame, text="Puhtaus:")
         mommo_happiness_label = ttk.Label(master=self.frame, text="Onnellisuus:")
 
-#        self.hunger_t.start()
         self.initialize_mommo()
 
         quit_button = ttk.Button(
