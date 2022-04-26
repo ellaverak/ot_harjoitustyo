@@ -16,4 +16,6 @@
 | 12.4. | 2       | Lisäsin kirjautumistestin |
 | 12.4. | 1       | Tein alustavan luokkakaavion |
 | 23.4. | 2       | Lisäsin mömmönäkymään mömmön tiedot |
-| yht. | 21.5       | |
+| 24.4. | 6       | Yritin saada nälkäisyysmittarin toimimaan |
+| 26.4. | 0.5       | Lisäsin ruoki- ja juota-toiminnon |
+| yht. | 28.5       | |
