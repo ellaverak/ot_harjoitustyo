@@ -13,7 +13,7 @@
 - ruoki lemmikkiä **tehty**
 - silitä lemmikkiä
 - juota lemmikkiä **tehty**
-- siivoa lemmikin jätökset
+- siivoa lemmikin jätökset **tehty**
 - opeta lemmikille temppuja
 - katsele muiden lemmikkejä
 - seuraa lemmikin hyvinvointia tilastoista
