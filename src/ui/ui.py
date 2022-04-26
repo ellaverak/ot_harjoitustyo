@@ -8,7 +8,6 @@ from ui.mommo_view import MommoView
 class UI:
     def __init__(self, root):
         self.root = root
-
         self.current_view = None
 
     def main_view(self):
@@ -73,7 +72,8 @@ class UI:
         self.hide_current_view()
 
         self.current_view = MommoView(
-            self.root
+            self.root,
+            self.main_view
         )
 
         self.current_view.pack()

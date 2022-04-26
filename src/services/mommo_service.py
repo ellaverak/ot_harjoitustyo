@@ -29,5 +29,25 @@ class MommoService():
 
         return mommo
 
+    def logout_mommo(self):
+        self.mommo_repository.save_mommo(self.mommo)
+        self.mommo = None
+
+    def hunger(self):
+        if self.mommo.hunger - 10 > 0:
+            self.mommo.hunger = self.mommo.hunger - 10
+        else:
+            self.mommo.hunger = 0
+
+    def feed_mommo(self):
+        #limit!
+        self.mommo.hunger+=20
+        self.mommo_repository.save_mommo(self.mommo)
+
+    def water_mommo(self):
+        #limit!
+        self.mommo.thirst+=30
+        self.mommo_repository.save_mommo(self.mommo)
+
 
 mommo_service = MommoService()

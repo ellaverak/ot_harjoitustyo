@@ -40,5 +40,20 @@ class MommoRepository:
 
         return get_mommo(result)
 
+    def save_mommo(self, mommo):
+        cursor = self.db_.cursor()
+
+        cursor.execute(
+            """UPDATE mommo SET
+            hunger = ?, thirst = ?, clenliness = ?, happiness = ? WHERE user_id = ?""",
+            (mommo.hunger,
+             mommo.thirst, mommo.clenliness, mommo.happiness, mommo.user_id)
+        )
+
+        self.db_.commit()
+
+        return
+
+
 
 mommo_repository = MommoRepository(get_db())

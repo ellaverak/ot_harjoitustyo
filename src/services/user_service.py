@@ -14,7 +14,7 @@ class UserService():
 
         self.user_repository.create(User(username, password, role))
 
-        user = self.login(username, password)
+        user = self.login(username,password)
 
         return user
 
@@ -30,6 +30,9 @@ class UserService():
         self.user = user
 
         return user
+
+    def logout(self):
+        self.user = None
 
     def get_user_id(self):
         user_id = self.user_repository.get_id(self.user.username)
