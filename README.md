@@ -24,19 +24,18 @@ Sovellus noudattaa kerrosarkkitehtuuria.
 
 ## Sovelluksen asennus
 
-1. Kloonaa git-repositorio haluamaasi hakemistoon komennolla:
-```bash
-git clone https://github.com/ellaverak/ot_harjoitustyo
-```
-2. Asenna poetry komennolla:
+1. Lataa zip-tiedosto koneelle kohdasta **Release:
+2. Pura zip-tiedosto haluamassasi hakemistossa
+3. Siirry terminaalissa puretun hakemiston sisälle
+4. Asenna poetry komennolla:
 ```bash
 poetry install
 ```
-3. Rakenna tietokanta komennolla:
+5. Rakenna tietokanta komennolla:
 ```bash
 poetry run invoke build
 ```
-4. Avaa sovellus komennolla:
+6. Avaa sovellus komennolla:
 ```bash
 poetry run invoke start
 ```
