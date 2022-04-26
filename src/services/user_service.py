@@ -25,7 +25,7 @@ class UserService():
         if not user or user.password != password:
             # error
             print("error")
-            return
+            return None
 
         self.user = user
 
