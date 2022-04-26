@@ -26,8 +26,6 @@ class MommoRepository:
 
         self.db_.commit()
 
-        return
-
     def get(self, user_id):
         cursor = self.db_.cursor()
 
@@ -51,9 +49,6 @@ class MommoRepository:
         )
 
         self.db_.commit()
-
-        return
-
 
 
 mommo_repository = MommoRepository(get_db())
