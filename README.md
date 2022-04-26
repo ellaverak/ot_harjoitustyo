@@ -18,6 +18,9 @@ Mömmöystävä on ikioma virtuaalilemmikkisi!
 
 Sovellus noudattaa kerrosarkkitehtuuria.
 
+###
+[release viikko 5](https://github.com/ellaverak/ot_harjoitustyo/releases/tag/viikko5)
+
 ## Sovelluksen asennus
 
 1. Kloonaa git-repositorio haluamaasi hakemistoon komennolla:
