@@ -8,3 +8,4 @@
 - uuden mömmön voi luoda uuden käyttäjän luomisen yhteydessä
 - mömmön tiedot ovat nähtävissä mömmönäkymässä
 - mömmöä voi ruokkia ja juottaa
+- nälkäisyys- ja janoisuusmittarit toimivat
