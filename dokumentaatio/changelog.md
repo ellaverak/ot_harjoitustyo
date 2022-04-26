@@ -9,3 +9,5 @@
 - mömmön tiedot ovat nähtävissä mömmönäkymässä
 - mömmöä voi ruokkia ja juottaa
 - nälkäisyys- ja janoisuusmittarit toimivat
+- puhtaus- ja onnellisuusmittarit toimivat
+- mömmön jätökset voi siivota
