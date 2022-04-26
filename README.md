@@ -24,7 +24,7 @@ Sovellus noudattaa kerrosarkkitehtuuria.
 
 ## Sovelluksen asennus
 
-1. Lataa zip-tiedosto koneelle kohdasta **Release:
+1. Lataa zip-tiedosto koneelle kohdasta **Release**:
 2. Pura zip-tiedosto haluamassasi hakemistossa
 3. Siirry terminaalissa puretun hakemiston sisälle
 4. Asenna poetry komennolla:
