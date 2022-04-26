@@ -18,4 +18,5 @@
 | 23.4. | 2       | Lisäsin mömmönäkymään mömmön tiedot |
 | 24.4. | 6       | Yritin saada nälkäisyysmittarin toimimaan |
 | 26.4. | 0.5       | Lisäsin ruoki- ja juota-toiminnon |
-| yht. | 28.5       | |
+| 26.4. | 3       | Lisäsin toimivan nälkäisyy- ja janoisuusmittarin |
+| yht. | 31       | |
