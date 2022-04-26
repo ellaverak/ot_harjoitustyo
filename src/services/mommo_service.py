@@ -1,5 +1,5 @@
 from time import sleep
-from threading import Thread
+import pytest
 from entities.mommo import Mommo
 from services.user_service import user_service
 
@@ -8,23 +8,42 @@ from repositories.mommo_repository import (
 )
 
 
+@pytest.mark.skip(reason="Threads don't need to run while testing")
+def get_thread():
+    from threading import Thread
+    return Thread
+
+
+thread_ = get_thread()
+
+
 class MommoService():
     def __init__(self, mommo_repository=default_mommo_repository):
         self.mommo = None
         self.mommo_repository = mommo_repository
+        self.stop_threads = False
 
-        self.hunger_thread = Thread(target=self.increase_hunger)
-        self.thirst_thread = Thread(target=self.increase_thirst)
-        self.clenliness_thread = Thread(target=self.decrease_clenliness)
-        self.happiness_thread = Thread(target=self.decrease_happiness)
+        self.hunger_thread = None
+        self.thirst_thread = None
+        self.clenliness_thread = None
+        self.happiness_thread = None
 
         self.start()
 
+    @pytest.mark.skip(reason="Threads don't need to run while testing")
     def start(self):
+        self.hunger_thread = thread_(target=self.increase_hunger)
+        self.thirst_thread = thread_(target=self.increase_thirst)
+        self.clenliness_thread = thread_(target=self.decrease_clenliness)
+        self.happiness_thread = thread_(target=self.decrease_happiness)
+
         self.hunger_thread.start()
         self.thirst_thread.start()
         self.clenliness_thread.start()
         self.happiness_thread.start()
+
+    def stop(self):
+        self.stop_threads = True
 
     def create_mommo(self, name):
         user_id = user_service.get_user_id()
@@ -50,6 +69,8 @@ class MommoService():
 
     def increase_hunger(self):
         while True:
+            if self.stop_threads:
+                break
             sleep(120)
             if self.mommo and self.mommo.hunger > 0:
                 if self.mommo.hunger - 10 > 0:
@@ -59,6 +80,8 @@ class MommoService():
 
     def increase_thirst(self):
         while True:
+            if self.stop_threads:
+                break
             sleep(30)
             if self.mommo and self.mommo.thirst > 0:
                 if self.mommo.thirst - 10 > 0:
@@ -68,6 +91,8 @@ class MommoService():
 
     def decrease_clenliness(self):
         while True:
+            if self.stop_threads:
+                break
             sleep(360)
             if self.mommo and self.mommo.clenliness > 0:
                 if self.mommo.clenliness - 40 > 0:
@@ -77,6 +102,8 @@ class MommoService():
 
     def decrease_happiness(self):
         while True:
+            if self.stop_threads:
+                break
             sleep(1)
             if self.mommo and self.mommo.happiness > 0:
                 self.mommo.happiness = int(

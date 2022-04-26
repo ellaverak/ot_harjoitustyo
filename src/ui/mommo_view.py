@@ -23,6 +23,7 @@ class MommoView:
     def quit(self):
         mommo_service.logout_mommo()
         user_service.logout()
+        mommo_service.stop()
         self.main_view()
 
     def feed_mommo(self):

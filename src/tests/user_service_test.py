@@ -26,3 +26,18 @@ class TestUserService(unittest.TestCase):
         logged_in_user = self.user_service.login(user.username, user.password)
 
         self.assertEqual(logged_in_user.username, user.username)
+
+    def test_logout(self):
+        user = User("login_test", "login_test", 1)
+        self.user_service.create_user(user.username, user.password, user.role)
+
+        self.user_service.logout()
+
+        self.assertEqual(user_service.user, None)
+
+    def test_get_user_id(self):
+        user = User("login_test", "login_test", 1)
+        self.user_service.create_user(user.username, user.password, user.role)
+
+        self.assertEqual(user_service.get_user_id(),
+                         user_repository.get_id(user_service.user.username))
