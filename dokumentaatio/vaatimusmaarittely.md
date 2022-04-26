@@ -10,9 +10,9 @@
 - luo käyttäjä **tehty**
 - kirjaudu sisään ja ulos **tehty**
 - nimeä oma lemmikki **tehty**
-- ruoki lemmikkiä
+- ruoki lemmikkiä **tehty**
 - silitä lemmikkiä
-- juota lemmikkiä
+- juota lemmikkiä **tehty**
 - siivoa lemmikin jätökset
 - opeta lemmikille temppuja
 - katsele muiden lemmikkejä
