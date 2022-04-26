@@ -19,4 +19,5 @@
 | 24.4. | 6       | Yritin saada nälkäisyysmittarin toimimaan |
 | 26.4. | 0.5       | Lisäsin ruoki- ja juota-toiminnon |
 | 26.4. | 3       | Lisäsin toimivan nälkäisyy- ja janoisuusmittarin |
-| yht. | 31       | |
+| 26.4. | 0.5       | Lisäsin toimivan puhtaus- ja onnellisuusmittarin |
+| yht. | 31.5       | |
