@@ -7,3 +7,4 @@
 - alustava mömmö-näkymä ja alustava uusi mömmö -näkymä lisätty
 - uuden mömmön voi luoda uuden käyttäjän luomisen yhteydessä
 - mömmön tiedot ovat nähtävissä mömmönäkymässä
+- mömmöä voi ruokkia ja juottaa
