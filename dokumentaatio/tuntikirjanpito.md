@@ -22,4 +22,6 @@
 | 26.4. | 0.5       | Lisäsin toimivan puhtaus- ja onnellisuusmittarin |
 | 2.5. | 1       | Lisäsin error-viestejä kirjautumisen ja rekisteröitymisen yhteyteen |
 | 2.5. | 2       | Lisäsin silitä mömmöä -toiminnon |
-| yht. | 34.5       | |
+| 2.5. | 3       | Lisäsin listan muista mömmöistä |
+| 2.5. | 1       | aloitin tekemään funktioita toisen mömmön katselua varten |
+| yht. | 38.5       | |
