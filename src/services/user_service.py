@@ -28,6 +28,7 @@ class UserNonexistingError(Exception):
 class UserService():
     def __init__(self, user_repository=default_user_repository):
         self.user = None
+        self.visit_id = None
         self.user_repository = user_repository
 
     def create_user(self, username, password, role):
@@ -69,5 +70,15 @@ class UserService():
         user_id = self.user_repository.get_id(self.user.username)
         return user_id
 
+    def get_username(self, user_id):
+        user_name = self.user_repository.get_username(user_id)
+        return user_name
+
+    def get_role(self):
+        role = self.user_repository.get_role(self.user.username)
+        return role
+
+    def visit(self, user_id):
+        self.user_id = user_id
 
 user_service = UserService()

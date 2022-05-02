@@ -40,6 +40,18 @@ class MommoRepository:
 
         return get_mommo(result)
 
+    def get_all(self, user_id):
+        cursor = self.db_.cursor()
+
+        cursor.execute(
+            """SELECT user_id, name FROM mommo WHERE user_id != ?""",
+            (user_id,)
+        )
+
+        result = cursor.fetchall()
+
+        return list(result)
+
     def save_mommo(self, mommo):
         cursor = self.db_.cursor()
 

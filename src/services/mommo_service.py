@@ -61,8 +61,11 @@ class MommoService():
 
         return mommo
 
-    def login_mommo(self):
-        user_id = user_service.get_user_id()
+    def login_mommo(self, visit_user_id=None, visit=False):
+        if not visit:
+            user_id = user_service.get_user_id()
+        else:
+            user_id = visit_user_id
 
         mommo = self.mommo_repository.get(user_id)
 
@@ -73,6 +76,19 @@ class MommoService():
     def logout_mommo(self):
         self.mommo_repository.save_mommo(self.mommo)
         self.mommo = None
+
+    def get_all_mommos(self):
+        user_id = user_service.get_user_id()
+        result = self.mommo_repository.get_all(user_id)
+        all_mommos = []
+
+        for mommo in result:
+            mommo = list(mommo)
+            mommo.append(user_service.get_username(mommo[0]))
+
+            all_mommos.append(mommo)
+
+        return all_mommos
 
     def increase_hunger(self):
         while True:

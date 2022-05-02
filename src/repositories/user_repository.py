@@ -48,5 +48,27 @@ class UserRepository:
         result = cursor.fetchone()[0]
         return result
 
+    def get_username(self, user_id):
+        cursor = self.db_.cursor()
+
+        cursor.execute(
+            """SELECT username FROM users WHERE id = ?""",
+            (user_id,)
+        )
+
+        result = cursor.fetchone()[0]
+        return result
+
+    def get_role(self, username):
+        cursor = self.db_.cursor()
+
+        cursor.execute(
+            """SELECT role FROM users WHERE username = ?""",
+            (username,)
+        )
+
+        result = cursor.fetchone()[0]
+        return result
+
 
 user_repository = UserRepository(get_db())
