@@ -11,12 +11,12 @@
 - kirjaudu sisään ja ulos **tehty**
 - nimeä oma lemmikki **tehty**
 - ruoki lemmikkiä **tehty**
-- silitä lemmikkiä
+- silitä lemmikkiä **alustava version tehty**
 - juota lemmikkiä **tehty**
 - siivoa lemmikin jätökset **tehty**
 - opeta lemmikille temppuja
 - katsele muiden lemmikkejä
-- seuraa lemmikin hyvinvointia tilastoista
+- seuraa lemmikin hyvinvointia tilastoista **tehty**
 
 Lisäksi ylläpitäjä voi:
 - hoitaa muiden lemmikkejä
