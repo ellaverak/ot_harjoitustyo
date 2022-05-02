@@ -45,12 +45,7 @@ class MommoService():
     def create_mommo(self, name):
         user_id = user_service.get_user_id()
 
-        print(user_id)
-        print(name)
-
         mommo = self.mommo_repository.create(Mommo(user_id, name))
-
-        print(mommo)
 
         self.mommo = mommo
 

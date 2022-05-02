@@ -26,6 +26,8 @@ class MommoRepository:
 
         self.db_.commit()
 
+        return mommo
+
     def get(self, user_id):
         cursor = self.db_.cursor()
 

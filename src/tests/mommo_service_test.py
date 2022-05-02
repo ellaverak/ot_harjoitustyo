@@ -14,5 +14,11 @@ class TesMommoService(unittest.TestCase):
         self.mommo_repository = mommo_repository
         self.mommo_service = mommo_service
 
+        self.user = user_service.create_user("test", "test", 0)
+
     def test_create_mommo(self):
-        return
+        new_mommo = self.mommo_service.create_mommo("test_mommo")
+
+        mommo = self.mommo_repository.get(user_service.get_user_id())
+
+        self.assertEqual(new_mommo.name, mommo.name)
