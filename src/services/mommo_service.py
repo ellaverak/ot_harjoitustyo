@@ -1,7 +1,6 @@
 import sys
 from threading import Thread
 from time import sleep
-import pytest
 from entities.mommo import Mommo
 from services.user_service import user_service
 
@@ -9,8 +8,6 @@ from repositories.mommo_repository import (
     mommo_repository as default_mommo_repository
 )
 
-
-@pytest.mark.skip(reason="Threads don't need to run while testing")
 def get_thread():
     from threading import Thread
     return Thread
@@ -39,7 +36,6 @@ class MommoService():
         if "pytest" not in sys.modules:
             self.start()
 
-    @pytest.mark.skip(reason="Threads don't need to run while testing")
     def start(self):
         self.hunger_thread = Thread(target=self.increase_hunger)
         self.thirst_thread = Thread(target=self.increase_thirst)
@@ -80,16 +76,18 @@ class MommoService():
 
     def increase_hunger(self):
         while True:
-            sleep(120)
+            if "pytest" not in sys.modules:
+                sleep(360)
             if self.mommo and self.mommo.hunger > 0:
                 if self.mommo.hunger - 10 > 0:
                     self.mommo.hunger = self.mommo.hunger - 10
                 else:
                     self.mommo.hunger = 0
 
+
     def increase_thirst(self):
         while True:
-            sleep(30)
+            sleep(60)
             if self.mommo and self.mommo.thirst > 0:
                 if self.mommo.thirst - 10 > 0:
                     self.mommo.thirst = self.mommo.thirst - 10
@@ -98,7 +96,7 @@ class MommoService():
 
     def decrease_clenliness(self):
         while True:
-            sleep(360)
+            sleep(120)
             if self.mommo and self.mommo.clenliness > 0:
                 if self.mommo.clenliness - 40 > 0:
                     self.mommo.clenliness = self.mommo.clenliness - 40

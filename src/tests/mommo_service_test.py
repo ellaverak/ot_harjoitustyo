@@ -3,9 +3,6 @@ from services.mommo_service import mommo_service
 from services.user_service import user_service
 from repositories.mommo_repository import mommo_repository
 from build import build
-from entities.user import User
-from entities.mommo import Mommo
-
 
 class TesMommoService(unittest.TestCase):
     def setUp(self):
@@ -28,3 +25,10 @@ class TesMommoService(unittest.TestCase):
         self.mommo_service.login_mommo()
 
         self.assertEqual(new_mommo.name, self.mommo_service.mommo.name)
+
+    def test_logout_mommo(self):
+        self.mommo_service.create_mommo("test_mommo")
+        self.mommo_service.login_mommo()
+        self.mommo_service.logout_mommo()
+
+        self.assertEqual(self.mommo_service.mommo, None)

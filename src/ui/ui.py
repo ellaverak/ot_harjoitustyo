@@ -3,6 +3,7 @@ from ui.login_view import LoginView
 from ui.register_view import RegisterView
 from ui.new_mommo_view import NewMommoView
 from ui.mommo_view import MommoView
+from ui.all_mommos_view import AllMommosView
 
 
 class UI:
@@ -24,6 +25,9 @@ class UI:
 
     def mommo_view(self):
         self.show_mommo_view()
+
+    def all_mommos_view(self):
+        self.show_all_mommos_view()
 
     def show_main_view(self):
         self.hide_current_view()
@@ -73,7 +77,18 @@ class UI:
 
         self.current_view = MommoView(
             self.root,
-            self.main_view
+            self.main_view,
+            self.all_mommos_view
+        )
+
+        self.current_view.pack()
+
+    def show_all_mommos_view(self):
+        self.hide_current_view()
+
+        self.current_view = AllMommosView(
+            self.root,
+            self.mommo_view
         )
 
         self.current_view.pack()
