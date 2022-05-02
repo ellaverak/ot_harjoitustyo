@@ -1,10 +1,8 @@
 import unittest
-from services.user_service import user_service
+from services.user_service import UserNonexistingError, user_service
 from repositories.user_repository import user_repository
 from build import build
-from build import build as build_
 from entities.user import User
-import db_connection
 
 
 class TestUserService(unittest.TestCase):
@@ -29,13 +27,6 @@ class TestUserService(unittest.TestCase):
 
         self.assertEqual(logged_in_user.username, user.username)
 
-    def test_login_failure(self):
-
-        result = self.user_service.login(
-            user_service.user.username, user_service.user.password)
-
-        self.assertEqual(result, None)
-
     def test_logout(self):
         user = User("login_test", "login_test", 1)
         self.user_service.create_user(user.username, user.password, user.role)
@@ -44,13 +35,16 @@ class TestUserService(unittest.TestCase):
 
         self.assertEqual(user_service.user, None)
 
+#    def test_login_username_failure(self):
+
+#        self.user_service.login(
+#            user_service.user.username, user_service.user.password)
+
+#        self.assertRaises(UserNonexistingError, user_service.login)
+
     def test_get_user_id(self):
         user = User("login_test", "login_test", 1)
         self.user_service.create_user(user.username, user.password, user.role)
 
         self.assertEqual(user_service.get_user_id(),
                          user_repository.get_id(user_service.user.username))
-
-    def test_build(self):
-        build_()
-        self.assertNotEqual(db_connection.get_db, None)

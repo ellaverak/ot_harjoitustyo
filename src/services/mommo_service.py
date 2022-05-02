@@ -1,3 +1,5 @@
+import sys
+from threading import Thread
 from time import sleep
 import pytest
 from entities.mommo import Mommo
@@ -6,15 +8,6 @@ from services.user_service import user_service
 from repositories.mommo_repository import (
     mommo_repository as default_mommo_repository
 )
-
-
-@pytest.mark.skip(reason="Threads don't need to run while testing")
-def get_thread():
-    from threading import Thread
-    return Thread
-
-
-thread_ = get_thread()
 
 
 class MommoService():
@@ -28,14 +21,18 @@ class MommoService():
         self.clenliness_thread = None
         self.happiness_thread = None
 
-        self.start()
+        # HUOM!! Säikeisyyden testaaminen ei ole tässä oleellista, joten säikeiden aloittava funktio jätetään tässä
+        # huomiotta tällä tavalla. Päädyimme pajassa ohjaaja Eetun kanssa tähän ratkaisuus.
+        # Testing threads is irrelevant in this project and they are ignored.
+        if "pytest" not in sys.modules:
+            self.start_threads()
 
     @pytest.mark.skip(reason="Threads don't need to run while testing")
-    def start(self):
-        self.hunger_thread = thread_(target=self.increase_hunger)
-        self.thirst_thread = thread_(target=self.increase_thirst)
-        self.clenliness_thread = thread_(target=self.decrease_clenliness)
-        self.happiness_thread = thread_(target=self.decrease_happiness)
+    def start_threads(self):
+        self.hunger_thread = Thread(target=self.increase_hunger)
+        self.thirst_thread = Thread(target=self.increase_thirst)
+        self.clenliness_thread = Thread(target=self.decrease_clenliness)
+        self.happiness_thread = Thread(target=self.decrease_happiness)
 
         self.hunger_thread.start()
         self.thirst_thread.start()
@@ -48,7 +45,12 @@ class MommoService():
     def create_mommo(self, name):
         user_id = user_service.get_user_id()
 
+        print(user_id)
+        print(name)
+
         mommo = self.mommo_repository.create(Mommo(user_id, name))
+
+        print(mommo)
 
         self.mommo = mommo
 

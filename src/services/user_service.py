@@ -5,6 +5,26 @@ from repositories.user_repository import (
 )
 
 
+class UsernameExistsError(Exception):
+    pass
+
+
+class PasswordLengthError(Exception):
+    pass
+
+
+class UsernameLengthError(Exception):
+    pass
+
+
+class WrongPasswordError(Exception):
+    pass
+
+
+class UserNonexistingError(Exception):
+    pass
+
+
 class UserService():
     def __init__(self, user_repository=default_user_repository):
         self.user = None
@@ -12,8 +32,18 @@ class UserService():
 
     def create_user(self, username, password, role):
 
-        self.user_repository.create(User(username, password, role))
+        if self.user_repository.find_user(username):
+            raise UsernameExistsError(f"Käyttäjätunnus on jo käytössä")
 
+        if len(password) < 4:
+            raise PasswordLengthError(
+                f"Salasanan on oltava vähintään neljän merkin pituinen")
+
+        if len(username) < 4:
+            raise UsernameLengthError(
+                f"Käyttäjätunnuksen on oltava vähintään neljän merkin pituinen")
+
+        self.user_repository.create(User(username, password, role))
         user = self.login(username, password)
 
         return user
@@ -22,10 +52,11 @@ class UserService():
 
         user = self.user_repository.find_user(username)
 
-        if not user or user.password != password:
-            # error
-            print("error")
-            return None
+        if not user:
+            raise UserNonexistingError(f"Käyttäjätunnusta ei ole olemassa")
+
+        if user.password != password:
+            raise WrongPasswordError(F"Väärä salasana")
 
         self.user = user
 

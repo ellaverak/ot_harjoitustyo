@@ -27,6 +27,14 @@ class NewMommoView:
         mommo_service.create_mommo(name)
         self.mommo_view()
 
+    def initialize_name_field(self):
+        name_label = ttk.Label(master=self.frame, text='Anna mömmöllesi nimi')
+
+        self.name_entry = ttk.Entry(master=self.frame)
+
+        name_label.grid(row=2, column=0)
+        self.name_entry.grid(row=3, column=0)
+
     def initialize(self):
         self.frame = ttk.Frame(master=self.root)
         new_mommo_label = ttk.Label(master=self.frame, text="Uusi mömmöystävä")
@@ -41,11 +49,3 @@ class NewMommoView:
 
         new_mommo_label.grid(row=0, column=0)
         accept_button.grid(row=4, column=0)
-
-    def initialize_name_field(self):
-        name_label = ttk.Label(master=self.frame, text='Anna mömmöllesi nimi')
-
-        self.name_entry = ttk.Entry(master=self.frame)
-
-        name_label.grid(row=2, column=0)
-        self.name_entry.grid(row=3, column=0)
