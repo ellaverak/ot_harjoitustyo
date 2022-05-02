@@ -1,5 +1,3 @@
-**Testien kattavuus on tällä hetkellä vain 38%, koska en saanut selvitettyä miten saan luotua testejä, jotka toimivat threading:in kanssa ilman, että muodostuu lukkoja. Yritän selvittää asian mahdollisimman pian**
-
 - tietokannan alustustoiminto lisätty
 - ensimmäinen versio päänäkymästä luotu
 - ensimmäinen versio uuden käyttäjän luominen -näkymästä luotu
