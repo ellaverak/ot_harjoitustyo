@@ -11,7 +11,7 @@
 - kirjaudu sisään ja ulos **tehty**
 - nimeä oma lemmikki **tehty**
 - ruoki lemmikkiä **tehty**
-- silitä lemmikkiä **alustava version tehty**
+- silitä lemmikkiä **alustava versio tehty**
 - juota lemmikkiä **tehty**
 - siivoa lemmikin jätökset **tehty**
 - opeta lemmikille temppuja
