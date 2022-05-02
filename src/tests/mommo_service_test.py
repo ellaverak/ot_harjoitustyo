@@ -22,3 +22,4 @@ class TesMommoService(unittest.TestCase):
         mommo = self.mommo_repository.get(user_service.get_user_id())
 
         self.assertEqual(new_mommo.name, mommo.name)
+
