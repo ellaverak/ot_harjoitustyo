@@ -1,5 +1,5 @@
 import unittest
-from services.user_service import UserNonexistingError, user_service
+from services.user_service import UserNonexistingError, WrongPasswordError, UsernameExistsError, UsernameLengthError, PasswordLengthError, user_service
 from repositories.user_repository import user_repository
 from build import build
 from entities.user import User
@@ -19,6 +19,22 @@ class TestUserService(unittest.TestCase):
 
         self.assertEqual(new_user.username, user.username)
 
+    def test_username_exists_error(self):
+        self.user_service.create_user("test", "test", 0)
+
+        with self.assertRaises(UsernameExistsError):
+            self.user_service.create_user("test", "test", 0)
+
+    def test_username_length_error(self):
+
+        with self.assertRaises(UsernameLengthError):
+            self.user_service.create_user("", "test", 0)
+
+    def test_password_length_error(self):
+
+        with self.assertRaises(PasswordLengthError):
+            self.user_service.create_user("test", "", 0)
+
     def test_login(self):
         user = User("login_test", "login_test", 1)
         self.user_service.create_user(user.username, user.password, user.role)
@@ -35,12 +51,16 @@ class TestUserService(unittest.TestCase):
 
         self.assertEqual(user_service.user, None)
 
-#    def test_login_username_failure(self):
+    def test_login_username_error(self):
 
-#        self.user_service.login(
-#            user_service.user.username, user_service.user.password)
+        with self.assertRaises(UserNonexistingError):
+            self.user_service.login(user_service.user.username, user_service.user.password)
 
-#        self.assertRaises(UserNonexistingError, user_service.login)
+    def test_login_password_error(self):
+        self.user_service.create_user("test", "test", 0)
+
+        with self.assertRaises(WrongPasswordError):
+            self.user_service.login(user_service.user.username, "pass")
 
     def test_get_user_id(self):
         user = User("login_test", "login_test", 1)
