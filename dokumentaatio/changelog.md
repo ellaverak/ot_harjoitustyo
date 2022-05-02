@@ -12,3 +12,4 @@
 - puhtaus- ja onnellisuusmittarit toimivat
 - mömmön jätökset voi siivota
 - mömmöä voi silittää
+- lista muista mömmöistä on nähtävissä
