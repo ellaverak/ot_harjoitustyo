@@ -11,3 +11,4 @@
 - nälkäisyys- ja janoisuusmittarit toimivat
 - puhtaus- ja onnellisuusmittarit toimivat
 - mömmön jätökset voi siivota
+- mömmöä voi silittää
