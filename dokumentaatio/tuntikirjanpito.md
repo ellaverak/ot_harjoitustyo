@@ -21,4 +21,5 @@
 | 26.4. | 3       | Lisäsin toimivan nälkäisyy- ja janoisuusmittarin |
 | 26.4. | 0.5       | Lisäsin toimivan puhtaus- ja onnellisuusmittarin |
 | 2.5. | 1       | Lisäsin error-viestejä kirjautumisen ja rekisteröitymisen yhteyteen |
-| yht. | 32.5       | |
+| 2.5. | 2       | Lisäsin silitä mömmöä -toiminnon |
+| yht. | 34.5       | |
