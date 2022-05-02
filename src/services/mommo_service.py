@@ -1,5 +1,7 @@
-from time import sleep
+import sys
 from threading import Thread
+from time import sleep
+import pytest
 from entities.mommo import Mommo
 from services.user_service import user_service
 
@@ -7,8 +9,19 @@ from repositories.mommo_repository import (
     mommo_repository as default_mommo_repository
 )
 
+
+@pytest.mark.skip(reason="Threads don't need to run while testing")
+def get_thread():
+    from threading import Thread
+    return Thread
+
+
+thread_ = get_thread()
+
+
 class MommoNameLengthError(Exception):
     pass
+
 
 class MommoService():
     def __init__(self, mommo_repository=default_mommo_repository):
@@ -20,8 +33,13 @@ class MommoService():
         self.clenliness_thread = None
         self.happiness_thread = None
 
-        self.start()
+        # HUOM!! Säikeisyyden testaaminen ei ole tässä oleellista, joten säikeiden aloittava funktio jätetään tässä
+        # huomiotta tällä tavalla. Päädyimme pajassa ohjaaja Eetun kanssa tähän ratkaisuus.
+        # Testing threads is irrelevant in this project and they are ignored.
+        if "pytest" not in sys.modules:
+            self.start()
 
+    @pytest.mark.skip(reason="Threads don't need to run while testing")
     def start(self):
         self.hunger_thread = Thread(target=self.increase_hunger)
         self.thirst_thread = Thread(target=self.increase_thirst)
@@ -36,7 +54,8 @@ class MommoService():
     def create_mommo(self, name):
 
         if len(name) < 4:
-            raise MommoNameLengthError(f"Mömmön nimen on oltava vähintään neljän merkin pituinen")
+            raise MommoNameLengthError(
+                f"Mömmön nimen on oltava vähintään neljän merkin pituinen")
 
         user_id = user_service.get_user_id()
 
@@ -90,12 +109,12 @@ class MommoService():
         while True:
             sleep(1)
             if self.mommo and self.mommo.happiness > 0:
-                self.mommo.happiness = int(self.mommo.hunger * 0.3 + self.mommo.thirst * 0.3 + self.mommo.thirst * 0.4)
-
+                self.mommo.happiness = int(
+                    self.mommo.hunger * 0.3 + self.mommo.thirst * 0.3 + self.mommo.thirst * 0.4)
 
     def feed_mommo(self):
         if self.mommo.hunger + 20 <= 100:
-            self.mommo.hunger+=20
+            self.mommo.hunger += 20
         else:
             self.mommo.hunger = 100
 
@@ -103,7 +122,7 @@ class MommoService():
 
     def water_mommo(self):
         if self.mommo.thirst + 30 <= 100:
-            self.mommo.thirst+=30
+            self.mommo.thirst += 30
         else:
             self.mommo.thirst = 100
 
@@ -111,7 +130,7 @@ class MommoService():
 
     def clean_mommo(self):
         if self.mommo.clenliness + 40 <= 100:
-            self.mommo.clenliness+=40
+            self.mommo.clenliness += 40
         else:
             self.mommo.clenliness = 100
 

@@ -23,3 +23,8 @@ class TesMommoService(unittest.TestCase):
 
         self.assertEqual(new_mommo.name, mommo.name)
 
+    def test_login_mommo(self):
+        new_mommo = self.mommo_service.create_mommo("test_mommo")
+        self.mommo_service.login_mommo()
+
+        self.assertEqual(new_mommo.name, self.mommo_service.mommo.name)

@@ -32,7 +32,8 @@ class NewMommoView:
             mommo_service.create_mommo(name)
             self.mommo_view()
         except MommoNameLengthError:
-            self.show_error(f"Mömmön nimen on oltava vähintään neljän merkin pituinen")
+            self.show_error(
+                f"Mömmön nimen on oltava vähintään neljän merkin pituinen")
 
     def initialize_name_field(self):
         name_label = ttk.Label(master=self.frame, text='Anna mömmöllesi nimi')
