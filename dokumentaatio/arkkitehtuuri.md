@@ -71,8 +71,6 @@ Kaikkien näkymien lopullisesta näyttämisestä vastaa ui.py:n luokka UI. Näky
 
 ## Toiminnallisuus
 
-## Käyttöliittymätoiminnot (user_service)
-
 **UserService-luokka**
 
 Luokka vastaa käyttäjätoiminnallisuudesta.
