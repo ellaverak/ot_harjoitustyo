@@ -13,7 +13,7 @@ Sovellus noudattaa kerrosarkkitehtuuri.
 hoitavat sovelluslogiikkaa kutsumalla entities-pakkauksen toimintoja ja ylläpitämällä tietoa kirjautuneesta
 käyttäjästä ja mömmöstä. Repositories pakkauksen moduulit kutsuvat entities-pakkauksen toimintoja palauttaakseen osan tuloksista user- ja mommo-olioina.
 
-**Alla havainnollistava luokkakaavio:
+**Alla havainnollistava luokkakaavio:**
 
 ### Luokkakaavio
 
