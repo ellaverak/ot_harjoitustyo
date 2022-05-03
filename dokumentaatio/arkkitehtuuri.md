@@ -56,3 +56,15 @@ Lisäksi MommoService käyttää joitain UserServicen toimintoja.
           db_
       }
 ```
+
+## Käyttöliittymä
+
+Käyttöliittymä sisältää seuraavat näkymät:
+- päänäkymä (main_view)
+- kirjautumisnäkymä (login_view)
+- rekisteröitymisnäkymä (register_view)
+- uusi mömmö -näkymä (new_mommo_view)
+- mömmö-näkymä (mommo_view)
+- kaikki mömmöt -näkymä (all_mommos_view)
+
+Kaikkien näkymien lopullisesta näyttämisestä vastaa ui.py:n luokka UI.
