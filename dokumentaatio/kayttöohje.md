@@ -31,7 +31,7 @@ poetry run invoke build
 
 **Huom!**
 komento "poetry run invoke build" rakentaa tietokannan, jos sitä ei ole olemassa ja korvaa vanhan tietokannan,
-jos sellainen jo on. Aja komento siis ainoastaan ennen sovelluksen ensimmäistä käynnistyskertaa. Tai
+jos sellainen jo on. Aja komento "poetry run invoke build" siis ainoastaan ennen sovelluksen ensimmäistä käynnistyskertaa. Tai
 halutessasi tyhjentäää tietokannan.
 
 2. Avaa sovellus komennolla:
