@@ -17,6 +17,10 @@ käyttäjästä ja mömmöstä. Repositories pakkauksen moduulit kutsuvat entiti
 
 ### Luokkakaavio
 
+MommoService ja UserService hoitavat Mommo- ja User-olentoihin liittyviä toimintoja. Ne pääsevät olentoihin käsiksi MommoRepository- ja UserRepository-luokkien välityksellä. Nämä luokat käsittelevät suoraan Mommo- ja User-olentoihin liittyviä tietokantatoimintoja.
+
+Lisäksi MommoService käyttää joitain UserServicen toimintoja.
+
 ```mermaid
  classDiagram
       class User{
