@@ -71,7 +71,7 @@ Kaikkien näkymien lopullisesta näyttämisestä vastaa ui.py:n luokka UI. Näky
 
 ## Toiminnallisuus
 
-# Käyttöliittymätoiminnot (user_service)
+## Käyttöliittymätoiminnot (user_service)
 
 **UserService-luokka**
 
@@ -80,16 +80,16 @@ Luokka vastaa käyttäjätoiminnallisuudesta.
 **Funktioesimerkkejä**
 
 ```bash
-create user
+create user(username, password, role)
 ```
 - luo uuden käyttäjän ja kirjaa sen sisään.
 
 ```bash
-login
+login(username, password)
 ```
 - kirjaa käyttäjän sisään
 ```bash
-logout
+logout()
 ```
 - kirjaa käyttäjän ulos
 
@@ -101,38 +101,38 @@ mömmön tilastojen muuttamiseen ajan kuluessa.
 **Funktioesimerkkejä**
 
 ```bash
-start
+start()
 ```
 - käynnistää säikeet
 
 ```bash
-create_mommo
+create_mommo(name)
 ```
 - luo uuden mömmön
 ```bash
-login_mommo
+login_mommo(visit_user_id, visit)
 ```
 - kirjaa mömmön sisään
 ```bash
-logout_mommo
+logout_mommo()
 ```
 - kirjaa mömmön ulos
 ```bash
-feed_mommo
+feed_mommo()
 ```
 - vähentää mömmön nälkäisyyttä.
 
 
 **Säikeitä hyödyntävät funktiot
 ```bash
-increase_hunger
+increase_hunger()
 ```
 ```bash
-increase_thirst
+increase_thirst()
 ```
 ```bash
-decrease_clenliness
+decrease_clenliness()
 ```
 ```bash
-decrease_happiness
+decrease_happiness()
 ```
