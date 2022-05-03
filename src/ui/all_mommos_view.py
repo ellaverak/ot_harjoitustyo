@@ -4,6 +4,13 @@ from services.mommo_service import mommo_service
 
 class AllMommosView:
     def __init__(self, root, mommo_view):
+        """luokan konstruktori, joka luo uuden kaikki mömmöt -näkymän.
+
+        Args:
+            root (juuri): juurikomponetti.
+            mommo_view (funktio): funktio, joka avaa mömmö-näkymän.
+        """
+
         self.root = root
         self.mommo_view = mommo_view
         self.frame = None
@@ -15,12 +22,21 @@ class AllMommosView:
         self.initialize()
 
     def pack(self):
+        """näyttää kaikki näkymän komponentit.
+        """
+
         self.frame.pack(fill=constants.X)
 
     def destroy(self):
+        """tuhoaa kaikki näkymän komponentit.
+        """
+
         self.frame.destroy()
 
     def initialize_all_mommos(self):
+        """alustaa kaikkien mömmöjen tiedot.
+        """
+
         for i in range(len(self.all_mommos)):
             mommo_button = ttk.Button(
                 master=self.frame,
@@ -35,6 +51,9 @@ class AllMommosView:
             mommo_owner_label.grid(row=i+1, column=1)
 
     def initialize(self):
+        """alustaa näkymän.
+        """
+
         self.frame = ttk.Frame(master=self.root)
         main_label = ttk.Label(master=self.frame, text="Mömmöystävät")
 

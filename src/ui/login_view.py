@@ -4,6 +4,13 @@ from services.user_service import user_service, WrongPasswordError, UserNonexist
 
 class LoginView:
     def __init__(self, root, main_view, mommo_view):
+        """luokan konstruktori, joka luo uuden kirjautumisnäkymän.
+
+        Args:
+            root (juuri): juurikomponentti._
+            main_view (funtio): funktio, joka avaa päänäkymän.
+            mommo_view (funtio): funktio, joka avaa mömmö-näkymän.
+        """
         self.root = root
         self.main_view = main_view
         self.mommo_view = mommo_view
@@ -16,19 +23,37 @@ class LoginView:
         self.initialize()
 
     def pack(self):
+        """näyttää kaikki näkymän komponentit.
+        """
+
         self.frame.pack(fill=constants.X)
 
     def destroy(self):
+        """tuokaa kaikki näkymän komponentit.
+        """
+
         self.frame.destroy()
 
     def show_error(self, message):
+        """näyttää error-viestin.
+
+        Args:
+            message (str): error-viesti.
+        """
+
         self.error_variable.set(message)
         self.error_label.grid()
 
     def hide_error(self):
+        """piilottaa error-viestin.
+        """
+
         self.error_label.grid_remove()
 
     def login_user(self):
+        """kirjaa käyttäjän sisään.
+        """
+
         username = self.username_entry.get()
         password = self.password_entry.get()
 
@@ -41,6 +66,9 @@ class LoginView:
             self.show_error(f"Väärä salasana")
 
     def initialize_username_field(self):
+        """alustaa käyttäjänimikentän.
+        """
+
         username_label = ttk.Label(
             master=self.frame, text='Anna käyttäjätunnus')
 
@@ -50,6 +78,9 @@ class LoginView:
         self.username_entry.grid(row=2, column=0)
 
     def initialize_password_field(self):
+        """alustaa salasanakentän.
+        """
+
         password_label = ttk.Label(master=self.frame, text='Anna salasana')
 
         self.password_entry = ttk.Entry(master=self.frame)
@@ -58,6 +89,9 @@ class LoginView:
         self.password_entry.grid(row=4, column=0)
 
     def initialize(self):
+        """alustaa näkymän.
+        """
+
         self.frame = ttk.Frame(master=self.root)
         login_label = ttk.Label(master=self.frame, text="Kirjaudu sisään")
         self.error_variable = StringVar(self.frame)

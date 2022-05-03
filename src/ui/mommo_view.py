@@ -5,6 +5,13 @@ from services.user_service import user_service
 
 class MommoView:
     def __init__(self, root, main_view, all_mommos_view):
+        """luokan konstruktori, joka luo uuden mömmö-näkymän.
+
+        Args:
+            root (juuri): juurikomponentti.
+            main_view (funktio): funktio, joka avaa päänäkymän
+            all_mommos_view (funktio): funktio, joka avaa kaikki mömmöt -näkymän.
+        """
 
         mommo_service.login_mommo()
 
@@ -19,25 +26,43 @@ class MommoView:
         self.initialize()
 
     def pack(self):
+        """näyttää kaikki näkymän komponentit.
+        """
+
         self.frame.pack(fill=constants.X)
 
     def destroy(self):
+        """tuhoaa kaikki näkymän komponentit.
+        """
+
         self.frame.destroy()
 
     def quit(self):
+        """kirjaa kaiken ulos ja avaa päänäkymän.
+        """
+
         mommo_service.logout_mommo()
         user_service.logout()
         self.main_view()
 
     def feed_mommo(self):
+        """ruokkii mömmän.
+        """
+
         mommo_service.feed_mommo()
         self.initialize_mommo()
 
     def water_mommo(self):
+        """juottaa mömmän.
+        """
+
         mommo_service.water_mommo()
         self.initialize_mommo()
 
     def pet_mommo(self):
+        """silittää mömmöä.
+        """
+
         self.pet_message = "Silitit mömmöä! :)"
         self.pet_variable.set(self.pet_message)
         self.pet_label.grid()
@@ -45,15 +70,24 @@ class MommoView:
         self.frame.after(2000, self.hide_pet_message)
 
     def hide_pet_message(self):
+        """piilottaa pet_mommo-funtkion luoman viestin.
+        """
+
         self.pet_message = ""
         self.pet_variable.set(self.pet_message)
         self.pet_label.grid()
 
     def clean_mommo(self):
+        """puhdistaa mömmön.
+        """
+
         mommo_service.clean_mommo()
         self.initialize_mommo()
 
     def initialize_mommo(self):
+        """alustaa mömmön tiedot.
+        """
+
         mommo_name_stat = ttk.Label(
             master=self.frame, text=mommo_service.mommo.name)
         mommo_hunger_stat = ttk.Label(
@@ -74,6 +108,9 @@ class MommoView:
         self.frame.after(1000, self.initialize_mommo)
 
     def initialize(self):
+        """alustaa näkymän.
+        """
+
         self.frame = ttk.Frame(master=self.root)
         mommo_label = ttk.Label(master=self.frame, text="Mömmöystävä")
         mommo_name_label = ttk.Label(master=self.frame, text="Nimi:")

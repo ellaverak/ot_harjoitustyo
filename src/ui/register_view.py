@@ -4,6 +4,14 @@ from services.user_service import user_service, PasswordLengthError, UsernameLen
 
 class RegisterView:
     def __init__(self, root, main_view, new_mommo_view):
+        """luokan konstruktori, joka luo uuden rekisteröinti-näkymän.
+
+        Args:
+            root (juuri): juurikomponentti_
+            main_view (funktio): funktio, joka avaa päänäkymän.
+            new_mommo_view (funktio): funktio, joka avaa uusi mömmö-näkymän.
+        """
+
         self.root = root
         self.main_view = main_view
         self.new_mommo_view = new_mommo_view
@@ -16,19 +24,37 @@ class RegisterView:
         self.initialize()
 
     def pack(self):
+        """näyttää kaikki näkymän komponentit.
+        """
+
         self.frame.pack(fill=constants.X)
 
     def destroy(self):
+        """tuhoaa kaikki näkymän komponentit.
+        """
+
         self.frame.destroy()
 
     def show_error(self, message):
+        """näyttää error-viestin.
+
+        Args:
+            message (str): error-viesti.
+        """
+
         self.error_variable.set(message)
         self.error_label.grid()
 
     def hide_error(self):
+        """piilottaa error-viestin.
+        """
+
         self.error_label.grid_remove()
 
     def register_user(self):
+        """rekisteröi uuden käyttäjän.
+        """
+
         username = self.username_entry.get()
         password = self.password_entry.get()
 
@@ -45,6 +71,9 @@ class RegisterView:
                 f"Käyttäjätunnuksen on oltava vähintään neljän merkin pituinen")
 
     def initialize_username_field(self):
+        """alustaa käyttäjänimikentän.
+        """
+
         username_label = ttk.Label(
             master=self.frame, text='Anna uusi käyttäjätunnus')
 
@@ -54,6 +83,9 @@ class RegisterView:
         self.username_entry.grid(row=2, column=0)
 
     def initialize_password_field(self):
+        """alustaa salasanakentän.
+        """
+
         password_label = ttk.Label(
             master=self.frame, text='Anna uusi salasana')
 
@@ -63,6 +95,9 @@ class RegisterView:
         self.password_entry.grid(row=4, column=0)
 
     def initialize(self):
+        """alustaa näkymän.
+        """
+
         self.frame = ttk.Frame(master=self.root)
         register_label = ttk.Label(master=self.frame, text="Luo käyttäjä")
         self.error_variable = StringVar(self.frame)

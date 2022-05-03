@@ -3,6 +3,14 @@ from tkinter import ttk, constants
 
 class MainView:
     def __init__(self, root, login_view, register_view):
+        """luokan konstruktori, joka luo uuden päänäkymän.
+
+        Args:
+            root (juuri): juurikomponentti.
+            login_view (funktio): funktio, joka avaa kirjautumisnäkymän.
+            register_view (funktio): funktio, joka avaa rekisteröinti-näkymän.
+        """
+
         self.root = root
         self.login_view = login_view
         self.register_view = register_view
@@ -11,12 +19,21 @@ class MainView:
         self.initialize()
 
     def pack(self):
+        """näyttää kaikki näkymän komponentit.
+        """
+
         self.frame.pack(fill=constants.X)
 
     def destroy(self):
+        """tuhoaa kaikki näkymän komponentit.
+        """
+
         self.frame.destroy()
 
     def initialize(self):
+        """alustaa näkymän.
+        """
+
         self.frame = ttk.Frame(master=self.root)
         main_title = ttk.Label(master=self.frame, text="Mömmöystävä")
 
