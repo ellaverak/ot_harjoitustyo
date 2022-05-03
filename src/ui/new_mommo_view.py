@@ -41,6 +41,8 @@ class NewMommoView:
         self.error_variable.set(message)
         self.error_label.grid()
 
+        self.frame.after(3000, self.hide_error)
+
     def hide_error(self):
         """piilottaa error-viestin.
         """
@@ -58,7 +60,7 @@ class NewMommoView:
             self.mommo_view()
         except MommoNameLengthError:
             self.show_error(
-                f"Mömmön nimen on oltava vähintään neljän merkin pituinen")
+                "Mömmön nimen on oltava vähintään neljän merkin pituinen")
 
     def initialize_name_field(self):
         """alustaa nimikentän.
@@ -85,7 +87,7 @@ class NewMommoView:
             foreground='blue'
         )
 
-        self.error_label.grid(row=0, column=0)
+        self.error_label.grid(row=5, column=0)
 
         self.initialize_name_field()
 

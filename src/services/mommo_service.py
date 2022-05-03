@@ -9,20 +9,6 @@ from repositories.mommo_repository import (
 )
 
 
-def get_thread():
-    """importtaa säikeet.
-
-    Returns:
-        Thread: säie.
-    """
-
-    from threading import Thread
-    return Thread
-
-
-thread_ = get_thread()
-
-
 class MommoNameLengthError(Exception):
     pass
 
@@ -32,7 +18,8 @@ class MommoService():
         """luokan konstruktori, joka luo uuden mömmö-toiminnoista vastaavan palvelun.
 
         Args:
-            mommo_repository (MommoRepository, vapaaehtoinen): MommoRepository-olio. Oletusarvoltaan MommoRepository-olio.
+            mommo_repository (MommoRepository, vapaaehtoinen): MommoRepository-olio.
+            Oletusarvoltaan MommoRepository-olio.
         """
 
         self.mommo = None
@@ -43,7 +30,8 @@ class MommoService():
         self.clenliness_thread = None
         self.happiness_thread = None
 
-        # HUOM!! Säikeisyyden testaaminen ei ole tässä oleellista, joten säikeiden aloittava funktio jätetään tässä
+        # HUOM!! Säikeisyyden testaaminen ei ole tässä oleellista,
+        # joten säikeiden aloittava funktio jätetään tässä
         # huomiotta tällä tavalla. Päädyimme pajassa ohjaaja Eetun kanssa tähän ratkaisuus.
         # Testing threads is irrelevant in this project and they are ignored.
         if "pytest" not in sys.modules:
@@ -78,7 +66,7 @@ class MommoService():
 
         if len(name) < 4:
             raise MommoNameLengthError(
-                f"Mömmön nimen on oltava vähintään neljän merkin pituinen")
+                "Mömmön nimen on oltava vähintään neljän merkin pituinen")
 
         user_id = user_service.get_user_id()
 
@@ -91,8 +79,10 @@ class MommoService():
         """kirjaa mömmön sisään asettamalla sen nykyiseksi mömmöksi.
 
         Args:
-            visit_user_id (int, vapaaehtoinen): käyttäjän id-tunnus, jos kyseessä on vierailu. Oletusarvoltaan None.
-            visit (totuusarvo, vapaaehtoinen): True=vierailu, False=ei vierailu. Oletusarvoltaan False.
+            visit_user_id (int, vapaaehtoinen):
+            käyttäjän id-tunnus, jos kyseessä on vierailu. Oletusarvoltaan None.
+            visit (totuusarvo, vapaaehtoinen):
+            True=vierailu, False=ei vierailu. Oletusarvoltaan False.
 
         Returns:
             Mommo: sisäänkirjattu Mommo-olio.
@@ -179,7 +169,8 @@ class MommoService():
             sleep(1)
             if self.mommo and self.mommo.happiness > 0:
                 self.mommo.happiness = int(
-                    self.mommo.hunger * 0.3 + self.mommo.thirst * 0.3 + self.mommo.thirst * 0.4)
+                    self.mommo.hunger * 0.3
+                    + self.mommo.thirst * 0.3 + self.mommo.thirst * 0.4)
 
     def feed_mommo(self):
         """vähentää mömmön nälkäisyyttä 20 yksikköä.

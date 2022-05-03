@@ -45,6 +45,8 @@ class RegisterView:
         self.error_variable.set(message)
         self.error_label.grid()
 
+        self.frame.after(3000, self.hide_error)
+
     def hide_error(self):
         """piilottaa error-viestin.
         """
@@ -62,13 +64,13 @@ class RegisterView:
             user_service.create_user(username, password, 0)
             self.new_mommo_view()
         except UsernameExistsError:
-            self.show_error(f"Käyttäjätunnus on jo käytössä")
+            self.show_error("Käyttäjätunnus on jo käytössä")
         except PasswordLengthError:
             self.show_error(
-                f"Salasanan on oltava vähintään neljän merkin pituinen")
+                "Salasanan on oltava vähintään neljän merkin pituinen")
         except UsernameLengthError:
             self.show_error(
-                f"Käyttäjätunnuksen on oltava vähintään neljän merkin pituinen")
+                "Käyttäjätunnuksen on oltava vähintään neljän merkin pituinen")
 
     def initialize_username_field(self):
         """alustaa käyttäjänimikentän.
@@ -108,7 +110,7 @@ class RegisterView:
             foreground='blue'
         )
 
-        self.error_label.grid(row=0, column=0)
+        self.error_label.grid(row=7, column=0)
 
         self.initialize_username_field()
         self.initialize_password_field()

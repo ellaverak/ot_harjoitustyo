@@ -30,7 +30,8 @@ class UserService():
         """luokan konstruktori, joka luo uuden käyttäjätoiminnoista vastaavan palvelun.
 
         Args:
-            user_repository (UserRepository, vapaaehtoinen): UserRepository-olio. Oletusarvoltaan UserRepository-olio.
+            user_repository (UserRepository, vapaaehtoinen):
+            UserRepository-olio. Oletusarvoltaan UserRepository-olio.
         """
 
         self.user = None
@@ -55,15 +56,15 @@ class UserService():
         """
 
         if self.user_repository.find_user(username):
-            raise UsernameExistsError(f"Käyttäjätunnus on jo käytössä")
+            raise UsernameExistsError("Käyttäjätunnus on jo käytössä")
 
         if len(password) < 4:
             raise PasswordLengthError(
-                f"Salasanan on oltava vähintään neljän merkin pituinen")
+                "Salasanan on oltava vähintään neljän merkin pituinen")
 
         if len(username) < 4:
             raise UsernameLengthError(
-                f"Käyttäjätunnuksen on oltava vähintään neljän merkin pituinen")
+                "Käyttäjätunnuksen on oltava vähintään neljän merkin pituinen")
 
         self.user_repository.create(User(username, password, role))
         user = self.login(username, password)
@@ -78,7 +79,8 @@ class UserService():
             password (str): salasana.
 
         Raises:
-            UserNonexistingError: käyttäjänimeä ei löydy tietokannasta eli käyttäjää ei ole olemassa.
+            UserNonexistingError:
+            käyttäjänimeä ei löydy tietokannasta eli käyttäjää ei ole olemassa.
             WrongPasswordError: väärä salasana.
 
         Returns:
@@ -88,10 +90,10 @@ class UserService():
         user = self.user_repository.find_user(username)
 
         if not user:
-            raise UserNonexistingError(f"Käyttäjätunnusta ei ole olemassa")
+            raise UserNonexistingError("Käyttäjätunnusta ei ole olemassa")
 
         if user.password != password:
-            raise WrongPasswordError(F"Väärä salasana")
+            raise WrongPasswordError("Väärä salasana")
 
         self.user = user
 

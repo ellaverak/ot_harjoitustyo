@@ -1,4 +1,4 @@
-from tkinter import ttk, constants, StringVar
+from tkinter import Frame, ttk, constants, StringVar
 from services.user_service import user_service, WrongPasswordError, UserNonexistingError
 
 
@@ -44,6 +44,8 @@ class LoginView:
         self.error_variable.set(message)
         self.error_label.grid()
 
+        self.frame.after(2000, self.hide_error)
+
     def hide_error(self):
         """piilottaa error-viestin.
         """
@@ -61,9 +63,9 @@ class LoginView:
             user_service.login(username, password)
             self.mommo_view()
         except UserNonexistingError:
-            self.show_error(f"Käyttäjätunnusta ei ole olemassa")
+            self.show_error("Käyttäjätunnusta ei ole olemassa")
         except WrongPasswordError:
-            self.show_error(f"Väärä salasana")
+            self.show_error("Väärä salasana")
 
     def initialize_username_field(self):
         """alustaa käyttäjänimikentän.
@@ -102,7 +104,7 @@ class LoginView:
             foreground='blue'
         )
 
-        self.error_label.grid(row=0, column=0)
+        self.error_label.grid(row=7, column=0)
 
         self.initialize_username_field()
         self.initialize_password_field()
