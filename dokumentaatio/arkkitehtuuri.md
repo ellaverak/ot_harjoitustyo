@@ -67,4 +67,72 @@ Käyttöliittymä sisältää seuraavat näkymät:
 - mömmö-näkymä (mommo_view)
 - kaikki mömmöt -näkymä (all_mommos_view)
 
-Kaikkien näkymien lopullisesta näyttämisestä vastaa ui.py:n luokka UI.
+Kaikkien näkymien lopullisesta näyttämisestä vastaa ui.py:n luokka UI. Näkymät kutsuvat service-paketin toimintoja.
+
+## Toiminnallisuus
+
+# Käyttöliittymätoiminnot (user_service)
+
+**UserService-luokka**
+
+Luokka vastaa käyttäjätoiminnallisuudesta.
+
+**Funktioesimerkkejä**
+
+```bash
+create user
+```
+- luo uuden käyttäjän ja kirjaa sen sisään.
+
+```bash
+login
+```
+- kirjaa käyttäjän sisään
+```bash
+logout
+```
+- kirjaa käyttäjän ulos
+
+**MommoService-luokka**
+
+Luokka vastaa mömmötoiminnallisuudesta ja hyödyntää säikeita
+mömmön tilastojen muuttamiseen ajan kuluessa.
+
+**Funktioesimerkkejä**
+
+```bash
+start
+```
+- käynnistää säikeet
+
+```bash
+create_mommo
+```
+- luo uuden mömmön
+```bash
+login_mommo
+```
+- kirjaa mömmön sisään
+```bash
+logout_mommo
+```
+- kirjaa mömmön ulos
+```bash
+feed_mommo
+```
+- vähentää mömmön nälkäisyyttä.
+
+
+**Säikeitä hyödyntävät funktiot
+```bash
+increase_hunger
+```
+```bash
+increase_thirst
+```
+```bash
+decrease_clenliness
+```
+```bash
+decrease_happiness
+```
