@@ -18,8 +18,6 @@ Mömmöystävä on ikioma virtuaalilemmikkisi!
 
 [käyttöohje.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/k%C3%A4ytt%C3%B6ohje.md)
 
-Sovellus noudattaa kerrosarkkitehtuuria.
-
 ### Release
 
 [release viikko 5](https://github.com/ellaverak/ot_harjoitustyo/releases/tag/viikko5)
