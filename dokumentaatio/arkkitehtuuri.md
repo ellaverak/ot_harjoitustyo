@@ -1,6 +1,10 @@
-# Rakenne
+# Arkkitehtuuri
+
+## Rakenne
 
 Sovellus noudattaa kerrosarkkitehtuuri.
+
+## Sovelluslogiikka
 - ui-pakkaus vastaa käyttöliittymätoiminnoista ja kutsuu services-pakkauksen toimintoja.
 - services-pakkaus vastaa sovelluslogiikasta ja kutsuu repositories pakkauksen toimintoja.
 - repositories-pakkaus vastaa tietokantatoiminnoista.
@@ -9,13 +13,9 @@ Sovellus noudattaa kerrosarkkitehtuuri.
 hoitavat sovelluslogiikkaa kutsumalla entities-pakkauksen toimintoja ja ylläpitämällä tietoa kirjautuneesta
 käyttäjästä ja mömmöstä. Repositories pakkauksen moduulit kutsuvat entities-pakkauksen toimintoja palauttaakseen osan tuloksista user- ja mommo-olioina.
 
-## Sovelluslogiikka
+**Alla havainnollistava luokkakaavio:
 
 ### Luokkakaavio
-
-MommoService ja UserService hoitavat Mommo- ja User-olentoihin liittyviä toimintoja. Ne pääsevät olentoihin käsiksi MommoRepository- ja UserRepository-luokkien välityksellä. Nämä luokat käsittelevät suoraan Mommo- ja User-olentoihin liittyviä tietokantatoimintoja.
-
-Lisäksi MommoService käyttää joitain UserServicen toimintoja.
 
 ```mermaid
  classDiagram
