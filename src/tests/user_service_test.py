@@ -54,7 +54,8 @@ class TestUserService(unittest.TestCase):
     def test_login_username_error(self):
 
         with self.assertRaises(UserNonexistingError):
-            self.user_service.login(user_service.user.username, user_service.user.password)
+            self.user_service.login(
+                user_service.user.username, user_service.user.password)
 
     def test_login_password_error(self):
         self.user_service.create_user("test", "test", 0)

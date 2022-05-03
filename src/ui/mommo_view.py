@@ -2,6 +2,7 @@ from tkinter import ttk, constants, StringVar
 from services.mommo_service import mommo_service
 from services.user_service import user_service
 
+
 class MommoView:
     def __init__(self, root, main_view, all_mommos_view):
 
@@ -53,11 +54,16 @@ class MommoView:
         self.initialize_mommo()
 
     def initialize_mommo(self):
-        mommo_name_stat = ttk.Label(master=self.frame, text=mommo_service.mommo.name)
-        mommo_hunger_stat = ttk.Label(master=self.frame, text=mommo_service.mommo.hunger)
-        mommo_thirst_stat = ttk.Label(master=self.frame, text=mommo_service.mommo.thirst)
-        mommo_clenliness_stat = ttk.Label(master=self.frame, text=mommo_service.mommo.clenliness)
-        mommo_happiness_stat = ttk.Label(master=self.frame, text=mommo_service.mommo.happiness)
+        mommo_name_stat = ttk.Label(
+            master=self.frame, text=mommo_service.mommo.name)
+        mommo_hunger_stat = ttk.Label(
+            master=self.frame, text=mommo_service.mommo.hunger)
+        mommo_thirst_stat = ttk.Label(
+            master=self.frame, text=mommo_service.mommo.thirst)
+        mommo_clenliness_stat = ttk.Label(
+            master=self.frame, text=mommo_service.mommo.clenliness)
+        mommo_happiness_stat = ttk.Label(
+            master=self.frame, text=mommo_service.mommo.happiness)
 
         mommo_name_stat.grid(row=1, column=1)
         mommo_hunger_stat.grid(row=2, column=1)
@@ -74,7 +80,8 @@ class MommoView:
         mommo_hunger_label = ttk.Label(master=self.frame, text="Nälkäisyys")
         mommo_thirst_label = ttk.Label(master=self.frame, text="Janoisuus:")
         mommo_clenliness_label = ttk.Label(master=self.frame, text="Puhtaus:")
-        mommo_happiness_label = ttk.Label(master=self.frame, text="Onnellisuus:")
+        mommo_happiness_label = ttk.Label(
+            master=self.frame, text="Onnellisuus:")
         self.pet_variable = StringVar(self.frame)
 
         self.pet_label = ttk.Label(
@@ -122,7 +129,6 @@ class MommoView:
             text="Mömmöystävät",
             command=self.all_mommos_view
         )
-
 
         mommo_label.grid(row=0, column=0)
         mommo_name_label.grid(row=1, column=0)

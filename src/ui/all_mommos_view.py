@@ -23,12 +23,13 @@ class AllMommosView:
     def initialize_all_mommos(self):
         for i in range(len(self.all_mommos)):
             mommo_button = ttk.Button(
-            master=self.frame,
-            text=self.all_mommos[i][1],
-            command=None
+                master=self.frame,
+                text=self.all_mommos[i][1],
+                command=None
             )
 
-            mommo_owner_label = ttk.Label(master=self.frame, text=f"omistaja: {self.all_mommos[i][2]}")
+            mommo_owner_label = ttk.Label(
+                master=self.frame, text=f"omistaja: {self.all_mommos[i][2]}")
 
             mommo_button.grid(row=i+1, column=0)
             mommo_owner_label.grid(row=i+1, column=1)

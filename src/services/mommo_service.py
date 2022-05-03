@@ -8,7 +8,14 @@ from repositories.mommo_repository import (
     mommo_repository as default_mommo_repository
 )
 
+
 def get_thread():
+    """importtaa säikeet.
+
+    Returns:
+        Thread: säie.
+    """
+
     from threading import Thread
     return Thread
 
@@ -22,6 +29,12 @@ class MommoNameLengthError(Exception):
 
 class MommoService():
     def __init__(self, mommo_repository=default_mommo_repository):
+        """luokan konstruktori, joka luo uuden mömmö-toiminnoista vastaavan palvelun.
+
+        Args:
+            mommo_repository (MommoRepository, vapaaehtoinen): MommoRepository-olio. Oletusarvoltaan MommoRepository-olio.
+        """
+
         self.mommo = None
         self.mommo_repository = mommo_repository
 
@@ -37,6 +50,9 @@ class MommoService():
             self.start()
 
     def start(self):
+        """käynnistää säikeet.
+        """
+
         self.hunger_thread = Thread(target=self.increase_hunger)
         self.thirst_thread = Thread(target=self.increase_thirst)
         self.clenliness_thread = Thread(target=self.decrease_clenliness)
@@ -48,6 +64,17 @@ class MommoService():
         self.happiness_thread.start()
 
     def create_mommo(self, name):
+        """luo uuden Mommo-olion, tallentaa sen tietokantaan ja asettaa nykyisen mommon.
+
+        Args:
+            name (str): uuden mömmön nimi.
+
+        Raises:
+            MommoNameLengthError: mömmön nimi on liian lyhyt eli alle 4 merkkiä.
+
+        Returns:
+            Mommo: luotu Mommo-olio.
+        """
 
         if len(name) < 4:
             raise MommoNameLengthError(
@@ -56,28 +83,45 @@ class MommoService():
         user_id = user_service.get_user_id()
 
         mommo = self.mommo_repository.create(Mommo(user_id, name))
-
         self.mommo = mommo
 
         return mommo
 
     def login_mommo(self, visit_user_id=None, visit=False):
+        """kirjaa mömmön sisään asettamalla sen nykyiseksi mömmöksi.
+
+        Args:
+            visit_user_id (int, vapaaehtoinen): käyttäjän id-tunnus, jos kyseessä on vierailu. Oletusarvoltaan None.
+            visit (totuusarvo, vapaaehtoinen): True=vierailu, False=ei vierailu. Oletusarvoltaan False.
+
+        Returns:
+            Mommo: sisäänkirjattu Mommo-olio.
+        """
+
         if not visit:
             user_id = user_service.get_user_id()
         else:
             user_id = visit_user_id
 
         mommo = self.mommo_repository.get(user_id)
-
         self.mommo = mommo
 
         return mommo
 
     def logout_mommo(self):
+        """kirjaa nykyisen mömmön ulos.
+        """
+
         self.mommo_repository.save_mommo(self.mommo)
         self.mommo = None
 
     def get_all_mommos(self):
+        """palauttaa kaikki mömmöt tietokannasta.
+
+        Returns:
+            lista: kaikki mömmöt listana [user_id, mommo, username].
+        """
+
         user_id = user_service.get_user_id()
         result = self.mommo_repository.get_all(user_id)
         all_mommos = []
@@ -91,6 +135,9 @@ class MommoService():
         return all_mommos
 
     def increase_hunger(self):
+        """lisää mömmön nälkäisyyttä.
+        """
+
         while True:
             if "pytest" not in sys.modules:
                 sleep(360)
@@ -100,8 +147,10 @@ class MommoService():
                 else:
                     self.mommo.hunger = 0
 
-
     def increase_thirst(self):
+        """lisää mömmön janoisuutta.
+        """
+
         while True:
             sleep(60)
             if self.mommo and self.mommo.thirst > 0:
@@ -111,6 +160,9 @@ class MommoService():
                     self.mommo.thirst = 0
 
     def decrease_clenliness(self):
+        """vähentää mömmön puhtautta.
+        """
+
         while True:
             sleep(120)
             if self.mommo and self.mommo.clenliness > 0:
@@ -120,6 +172,9 @@ class MommoService():
                     self.mommo.clenliness = 0
 
     def decrease_happiness(self):
+        """vähentää mömmön onnellisuutta.
+        """
+
         while True:
             sleep(1)
             if self.mommo and self.mommo.happiness > 0:
@@ -127,6 +182,9 @@ class MommoService():
                     self.mommo.hunger * 0.3 + self.mommo.thirst * 0.3 + self.mommo.thirst * 0.4)
 
     def feed_mommo(self):
+        """vähentää mömmön nälkäisyyttä 20 yksikköä.
+        """
+
         if self.mommo.hunger + 20 <= 100:
             self.mommo.hunger += 20
         else:
@@ -135,6 +193,9 @@ class MommoService():
         self.mommo_repository.save_mommo(self.mommo)
 
     def water_mommo(self):
+        """vähentää mömmön janoisuutta 30 yksikköä.
+        """
+
         if self.mommo.thirst + 30 <= 100:
             self.mommo.thirst += 30
         else:
@@ -143,6 +204,9 @@ class MommoService():
         self.mommo_repository.save_mommo(self.mommo)
 
     def clean_mommo(self):
+        """lisää mömmön puhtautta 40 yksikköä.
+        """
+
         if self.mommo.clenliness + 40 <= 100:
             self.mommo.clenliness += 40
         else:

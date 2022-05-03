@@ -4,6 +4,7 @@ from services.user_service import user_service
 from repositories.mommo_repository import mommo_repository
 from build import build
 
+
 class TesMommoService(unittest.TestCase):
     def setUp(self):
         build()
