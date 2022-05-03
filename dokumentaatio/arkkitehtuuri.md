@@ -121,7 +121,7 @@ feed_mommo()
 - vähentää mömmön nälkäisyyttä.
 
 
-**Säikeitä hyödyntävät funktiot
+**Säikeitä hyödyntävät funktiot**
 ```bash
 increase_hunger()
 ```
