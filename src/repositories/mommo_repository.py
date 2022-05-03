@@ -65,7 +65,7 @@ class MommoRepository:
         cursor = self.db_.cursor()
 
         cursor.execute(
-            """SELECT * FROM mommo WHERE user_id = ?""",
+            "SELECT * FROM mommo WHERE user_id = ?",
             (user_id,)
         )
 
@@ -86,7 +86,7 @@ class MommoRepository:
         cursor = self.db_.cursor()
 
         cursor.execute(
-            """SELECT user_id, name FROM mommo WHERE user_id != ?""",
+            "SELECT user_id, name FROM mommo WHERE user_id != ?",
             (user_id,)
         )
 

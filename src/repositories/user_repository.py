@@ -41,7 +41,7 @@ class UserRepository:
         cursor = self.db_.cursor()
 
         cursor.execute(
-            """INSERT INTO users (username, password, role) values (?, ?, ?)""",
+            "INSERT INTO users (username, password, role) values (?, ?, ?)",
             (user.username, user.password, user.role)
         )
 
@@ -62,7 +62,7 @@ class UserRepository:
         cursor = self.db_.cursor()
 
         cursor.execute(
-            """SELECT * FROM users WHERE username = ?""",
+            "SELECT * FROM users WHERE username = ?",
             (username,)
         )
 
@@ -83,7 +83,7 @@ class UserRepository:
         cursor = self.db_.cursor()
 
         cursor.execute(
-            """SELECT id FROM users WHERE username = ?""",
+            "SELECT id FROM users WHERE username = ?",
             (username,)
         )
 
@@ -103,7 +103,7 @@ class UserRepository:
         cursor = self.db_.cursor()
 
         cursor.execute(
-            """SELECT username FROM users WHERE id = ?""",
+            "SELECT username FROM users WHERE id = ?",
             (user_id,)
         )
 
@@ -123,7 +123,7 @@ class UserRepository:
         cursor = self.db_.cursor()
 
         cursor.execute(
-            """SELECT role FROM users WHERE username = ?""",
+            "SELECT role FROM users WHERE username = ?",
             (username,)
         )
 
