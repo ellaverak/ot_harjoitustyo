@@ -134,3 +134,13 @@ decrease_clenliness()
 ```bash
 decrease_happiness()
 ```
+
+## Tiedon tallennus
+
+**UserRepository-luokka**
+
+Luokka vastaa käyttäjätietojen talletuksesta tietokantaan ja niiden hakemisesta.
+
+**MommoRepository-luokka**
+
+Luokka vastaa mömmötietojen talletuksesta tietokantaan ja niiden hakemisesta.
