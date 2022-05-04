@@ -1,10 +1,11 @@
 # Virtuaalilemmikki
 
 ### Sovelluksessa voi hoitaa omaa virtuaalilemmikkiä ja puuhailla sen kanssa.
-(Netissä tietokannat, jotka pitävät kirjaa käyttäjistä sekä käyttäjien lemmikeistä ja niihin liittyvistä tiedoista.)
+(Tietokannat, jotka pitävät kirjaa käyttäjistä sekä käyttäjien lemmikeistä ja niihin liittyvistä tiedoista.)
+
 ## Käyttäjäroolit
-- tavallinen käyttäjä
-- ylläpitäjä
+- tavallinen käyttäjä **tehty**
+- ylläpitäjä **tehty**
 
 ## Toiminnot:
 - luo käyttäjä **tehty**
