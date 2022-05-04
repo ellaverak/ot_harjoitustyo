@@ -20,6 +20,8 @@ Mömmöystävä on ikioma virtuaalilemmikkisi!
 
 [release viikko 5](https://github.com/ellaverak/ot_harjoitustyo/releases/tag/viikko5)
 
+[release viikko 6](https://github.com/ellaverak/ot_harjoitustyo/releases/tag/viiko6)
+
 ## Sovelluksen asennus
 
 1. Lataa zip-tiedosto koneelle kohdasta **Release**:
