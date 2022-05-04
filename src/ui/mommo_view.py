@@ -1,5 +1,5 @@
 from tkinter import ttk, constants, StringVar
-from services.mommo_service import mommo_service
+from services.mommo_service import MommoService, mommo_service
 from services.user_service import user_service
 
 
@@ -12,8 +12,8 @@ class MommoView:
             main_view (funktio): funktio, joka avaa päänäkymän
             all_mommos_view (funktio): funktio, joka avaa kaikki mömmöt -näkymän.
         """
-
-        mommo_service.login_mommo()
+        if not mommo_service.visit_state:
+            mommo_service.login_mommo()
 
         self.root = root
         self.frame = None
@@ -44,6 +44,11 @@ class MommoView:
         mommo_service.logout_mommo()
         user_service.logout()
         self.main_view()
+
+    def quit_visit(self):
+        mommo_service.visit_state = False
+        mommo_service.logout_mommo()
+        self.all_mommos_view()
 
     def feed_mommo(self):
         """ruokkii mömmän.
@@ -105,7 +110,9 @@ class MommoView:
         mommo_clenliness_stat.grid(row=4, column=1)
         mommo_happiness_stat.grid(row=5, column=1)
 
-        self.frame.after(1000, self.initialize_mommo)
+        if not mommo_service.visit_state:
+            self.frame.after(1000, self.initialize_mommo)
+            mommo_service.save_mommo()
 
     def initialize(self):
         """alustaa näkymän.
@@ -131,40 +138,49 @@ class MommoView:
 
         self.initialize_mommo()
 
-        quit_button = ttk.Button(
-            master=self.frame,
-            text="Tallenna ja lopeta",
-            command=self.quit
-        )
+        if not mommo_service.visit_state:
+            quit_button = ttk.Button(
+                master=self.frame,
+                text="Tallenna ja lopeta",
+                command=self.quit
+            )
 
-        feed_button = ttk.Button(
-            master=self.frame,
-            text="Ruoki",
-            command=self.feed_mommo
-        )
+            feed_button = ttk.Button(
+                master=self.frame,
+                text="Ruoki",
+                command=self.feed_mommo
+            )
 
-        water_button = ttk.Button(
-            master=self.frame,
-            text="Juota",
-            command=self.water_mommo
-        )
+            water_button = ttk.Button(
+                master=self.frame,
+                text="Juota",
+                command=self.water_mommo
+            )
 
-        clean_button = ttk.Button(
+            clean_button = ttk.Button(
+                master=self.frame,
+                text="Siivoa jätökset",
+                command=self.clean_mommo
+            )
+
+            all_mommos_button = ttk.Button(
             master=self.frame,
-            text="Siivoa jätökset",
-            command=self.clean_mommo
-        )
+            text="Mömmöystävät",
+            command=self.all_mommos_view
+            )
+
+        if mommo_service.visit_state:
+            quit_visit_button = ttk.Button(
+            master=self.frame,
+            text="Takaisin",
+            command=self.quit_visit
+            )
+
 
         pet_button = ttk.Button(
             master=self.frame,
             text="Silitä",
             command=self.pet_mommo
-        )
-
-        all_mommos_button = ttk.Button(
-            master=self.frame,
-            text="Mömmöystävät",
-            command=self.all_mommos_view
         )
 
         mommo_label.grid(row=0, column=0)
@@ -174,9 +190,14 @@ class MommoView:
         mommo_clenliness_label.grid(row=4, column=0)
         mommo_happiness_label.grid(row=5, column=0)
 
-        quit_button.grid(row=7, column=0)
-        feed_button.grid(row=2, column=2)
-        water_button.grid(row=3, column=2)
-        clean_button.grid(row=4, column=2)
+        if not mommo_service.visit_state:
+            quit_button.grid(row=7, column=0)
+            feed_button.grid(row=2, column=2)
+            water_button.grid(row=3, column=2)
+            clean_button.grid(row=4, column=2)
+            all_mommos_button.grid(row=6, column=0)
+
+        if mommo_service.visit_state:
+            quit_visit_button.grid(row=7, column=0)
+
         pet_button.grid(row=5, column=2)
-        all_mommos_button.grid(row=6, column=0)

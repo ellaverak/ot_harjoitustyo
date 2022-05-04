@@ -1,4 +1,6 @@
 from tkinter import ttk, constants
+
+from pyrsistent import v
 from services.mommo_service import mommo_service
 
 
@@ -10,7 +12,6 @@ class AllMommosView:
             root (juuri): juurikomponetti.
             mommo_view (funktio): funktio, joka avaa mömmö-näkymän.
         """
-
         self.root = root
         self.mommo_view = mommo_view
         self.frame = None
@@ -33,22 +34,29 @@ class AllMommosView:
 
         self.frame.destroy()
 
-    def initialize_all_mommos(self):
+    def handle_visit(self, visit_user_id):
+        mommo_service.visit_state = True
+        mommo_service.login_mommo(visit_user_id)
+        self.mommo_view()
+
+    def initialize_mommo(self, mommo, i):
         """alustaa kaikkien mömmöjen tiedot.
         """
 
-        for i in range(len(self.all_mommos)):
-            mommo_button = ttk.Button(
+        visit_id = mommo[0]
+
+        mommo_button = ttk.Button(
                 master=self.frame,
-                text=self.all_mommos[i][1],
-                command=None
+                text=mommo[1],
+                command=lambda: self.handle_visit(visit_id)
             )
 
-            mommo_owner_label = ttk.Label(
-                master=self.frame, text=f"omistaja: {self.all_mommos[i][2]}")
+        mommo_owner_label = ttk.Label(
+            master=self.frame, text=f"omistaja: {mommo[2]}")
 
-            mommo_button.grid(row=i+1, column=0)
-            mommo_owner_label.grid(row=i+1, column=1)
+        mommo_button.grid(row=i+1, column=0)
+        mommo_owner_label.grid(row=i+1, column=1)
+
 
     def initialize(self):
         """alustaa näkymän.
@@ -57,7 +65,10 @@ class AllMommosView:
         self.frame = ttk.Frame(master=self.root)
         main_label = ttk.Label(master=self.frame, text="Mömmöystävät")
 
-        self.initialize_all_mommos()
+        i = 1
+        for mommo in self.all_mommos:
+            self.initialize_mommo(mommo, i)
+            i+=1
 
         back_button = ttk.Button(
             master=self.frame,

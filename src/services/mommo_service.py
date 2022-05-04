@@ -22,6 +22,7 @@ class MommoService():
             Oletusarvoltaan MommoRepository-olio.
         """
 
+        self.visit_state = False
         self.mommo = None
         self.mommo_repository = mommo_repository
 
@@ -34,7 +35,7 @@ class MommoService():
         # joten säikeiden aloittava funktio jätetään tässä
         # huomiotta tällä tavalla. Päädyimme pajassa ohjaaja Eetun kanssa tähän ratkaisuus.
         # Testing threads is irrelevant in this project and they are ignored.
-        if "pytest" not in sys.modules:
+        if "pytest" not in sys.modules and not self.visit_state:
             self.start()
 
     def start(self):
@@ -79,7 +80,7 @@ class MommoService():
 
         return mommo
 
-    def login_mommo(self, visit_user_id=None, visit=False):
+    def login_mommo(self, visit_user_id=None):
         """kirjaa mömmön sisään asettamalla sen nykyiseksi mömmöksi.
 
         Args:
@@ -92,7 +93,7 @@ class MommoService():
             Mommo: sisäänkirjattu Mommo-olio.
         """
 
-        if not visit:
+        if not self.visit_state:
             user_id = user_service.get_user_id()
         else:
             user_id = visit_user_id
@@ -106,8 +107,11 @@ class MommoService():
         """kirjaa nykyisen mömmön ulos.
         """
 
-        self.mommo_repository.save_mommo(self.mommo)
+        self.save_mommo()
         self.mommo = None
+
+    def save_mommo(self):
+        self.mommo_repository.save_mommo(self.mommo)
 
     def get_all_mommos(self):
         """palauttaa kaikki mömmöt tietokannasta.
@@ -170,7 +174,7 @@ class MommoService():
         """
 
         while True:
-            sleep(1)
+            sleep(360)
             if self.mommo and self.mommo.happiness > 0:
                 self.mommo.happiness = int(
                     self.mommo.hunger * 0.3
@@ -185,7 +189,7 @@ class MommoService():
         else:
             self.mommo.hunger = 100
 
-        self.mommo_repository.save_mommo(self.mommo)
+        self.save_mommo()
 
     def water_mommo(self):
         """vähentää mömmön janoisuutta 30 yksikköä.
@@ -196,7 +200,7 @@ class MommoService():
         else:
             self.mommo.thirst = 100
 
-        self.mommo_repository.save_mommo(self.mommo)
+        self.save_mommo()
 
     def clean_mommo(self):
         """lisää mömmön puhtautta 40 yksikköä.
@@ -207,7 +211,7 @@ class MommoService():
         else:
             self.mommo.clenliness = 100
 
-        self.mommo_repository.save_mommo(self.mommo)
+        self.save_mommo()
 
 
 mommo_service = MommoService()
