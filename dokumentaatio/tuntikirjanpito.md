@@ -25,4 +25,5 @@
 | 2.5. | 3       | Lisäsin listan muista mömmöistä |
 | 2.5. | 1       | aloitin tekemään funktioita toisen mömmön katselua varten |
 | 3.5. | 1       | Korjasin error-viestin näkyvyyttä. |
-| yht. | 39.5       | |
+| 4.5. | 0.5     | Korjasin säikeiden sammumisen. |
+| yht. | 40       | |
