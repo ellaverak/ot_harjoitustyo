@@ -26,4 +26,5 @@
 | 2.5. | 1       | aloitin tekemään funktioita toisen mömmön katselua varten |
 | 3.5. | 1       | Korjasin error-viestin näkyvyyttä. |
 | 4.5. | 0.5     | Korjasin säikeiden sammumisen. |
-| yht. | 40       | |
+| 4.5. | 2     | Tein toiminnon toisten mömmöjen luona vierailuun. |
+| yht. | 42       | |
