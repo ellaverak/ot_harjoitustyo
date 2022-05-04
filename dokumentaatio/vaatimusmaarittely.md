@@ -20,7 +20,7 @@
 - seuraa lemmikin hyvinvointia tilastoista **tehty**
 
 Lisäksi ylläpitäjä voi:
-- hoitaa muiden lemmikkejä
+- hoitaa muiden lemmikkejä **tehty**
 
 ## Mahdolliset lisätoiminnot:
 - rahasysteemi?
