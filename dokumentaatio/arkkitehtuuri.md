@@ -1,4 +1,19 @@
+# Arkkitehtuuri
+
+## Rakenne
+
+Sovellus noudattaa kerrosarkkitehtuuri.
+
 ## Sovelluslogiikka
+- ui-pakkaus vastaa käyttöliittymätoiminnoista ja kutsuu services-pakkauksen toimintoja.
+- services-pakkaus vastaa sovelluslogiikasta ja kutsuu repositories pakkauksen toimintoja.
+- repositories-pakkaus vastaa tietokantatoiminnoista.
+
+- entities-pakkaus vastaa user- ja mommo-olioiden luomisesta. Services-pakkauksen meoduulit ja luokat
+hoitavat sovelluslogiikkaa kutsumalla entities-pakkauksen toimintoja ja ylläpitämällä tietoa kirjautuneesta
+käyttäjästä ja mömmöstä. Repositories pakkauksen moduulit kutsuvat entities-pakkauksen toimintoja palauttaakseen osan tuloksista user- ja mommo-olioina.
+
+**Alla havainnollistava luokkakaavio:**
 
 ### Luokkakaavio
 
@@ -41,3 +56,91 @@ Lisäksi MommoService käyttää joitain UserServicen toimintoja.
           db_
       }
 ```
+
+## Käyttöliittymä
+
+Käyttöliittymä sisältää seuraavat näkymät:
+- päänäkymä (main_view)
+- kirjautumisnäkymä (login_view)
+- rekisteröitymisnäkymä (register_view)
+- uusi mömmö -näkymä (new_mommo_view)
+- mömmö-näkymä (mommo_view)
+- kaikki mömmöt -näkymä (all_mommos_view)
+
+Kaikkien näkymien lopullisesta näyttämisestä vastaa ui.py:n luokka UI. Näkymät kutsuvat service-paketin toimintoja.
+
+## Toiminnallisuus
+
+**UserService-luokka**
+
+Luokka vastaa käyttäjätoiminnallisuudesta.
+
+**Funktioesimerkkejä**
+
+```bash
+create user(username, password, role)
+```
+- luo uuden käyttäjän ja kirjaa sen sisään.
+
+```bash
+login(username, password)
+```
+- kirjaa käyttäjän sisään
+```bash
+logout()
+```
+- kirjaa käyttäjän ulos
+
+**MommoService-luokka**
+
+Luokka vastaa mömmötoiminnallisuudesta ja hyödyntää säikeita
+mömmön tilastojen muuttamiseen ajan kuluessa.
+
+**Funktioesimerkkejä**
+
+```bash
+start()
+```
+- käynnistää säikeet
+
+```bash
+create_mommo(name)
+```
+- luo uuden mömmön
+```bash
+login_mommo(visit_user_id, visit)
+```
+- kirjaa mömmön sisään
+```bash
+logout_mommo()
+```
+- kirjaa mömmön ulos
+```bash
+feed_mommo()
+```
+- vähentää mömmön nälkäisyyttä.
+
+
+**Säikeitä hyödyntävät funktiot**
+```bash
+increase_hunger()
+```
+```bash
+increase_thirst()
+```
+```bash
+decrease_clenliness()
+```
+```bash
+decrease_happiness()
+```
+
+## Tiedon tallennus
+
+**UserRepository-luokka**
+
+Luokka vastaa käyttäjätietojen talletuksesta tietokantaan ja niiden hakemisesta.
+
+**MommoRepository-luokka**
+
+Luokka vastaa mömmötietojen talletuksesta tietokantaan ja niiden hakemisesta.
