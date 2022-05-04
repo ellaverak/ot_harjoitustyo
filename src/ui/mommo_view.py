@@ -204,5 +204,5 @@ class MommoView:
         if mommo_service.visit_state:
             quit_visit_button.grid(row=7, column=0)
 
-        pet_button.grid(row=5, column=2)
+        pet_button.grid(row=2, column=3)
 
