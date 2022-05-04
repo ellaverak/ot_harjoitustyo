@@ -27,4 +27,5 @@
 | 3.5. | 1       | Korjasin error-viestin näkyvyyttä. |
 | 4.5. | 0.5     | Korjasin säikeiden sammumisen. |
 | 4.5. | 2     | Tein toiminnon toisten mömmöjen luona vierailuun. |
-| yht. | 42       | |
+| 4.5. | 1     | Lisäsin mahdollisuuden rekisteröityä ylläpitäjänä ja lisäsin ylläpito-toimintoja. |
+| yht. | 43       | |
