@@ -15,7 +15,7 @@
 - juota lemmikkiä **tehty**
 - siivoa lemmikin jätökset **tehty**
 - opeta lemmikille temppuja
-- katsele muiden lemmikkejä **lista tehty**
+- katsele muiden lemmikkejä **tehty**
 - seuraa lemmikin hyvinvointia tilastoista **tehty**
 
 Lisäksi ylläpitäjä voi:
