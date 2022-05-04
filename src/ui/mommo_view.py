@@ -145,6 +145,13 @@ class MommoView:
                 command=self.quit
             )
 
+            all_mommos_button = ttk.Button(
+            master=self.frame,
+            text="Mömmöystävät",
+            command=self.all_mommos_view
+            )
+
+        if not mommo_service.visit_state or user_service.user.role == 1:
             feed_button = ttk.Button(
                 master=self.frame,
                 text="Ruoki",
@@ -163,11 +170,6 @@ class MommoView:
                 command=self.clean_mommo
             )
 
-            all_mommos_button = ttk.Button(
-            master=self.frame,
-            text="Mömmöystävät",
-            command=self.all_mommos_view
-            )
 
         if mommo_service.visit_state:
             quit_visit_button = ttk.Button(
@@ -192,12 +194,15 @@ class MommoView:
 
         if not mommo_service.visit_state:
             quit_button.grid(row=7, column=0)
+            all_mommos_button.grid(row=6, column=0)
+
+        if not mommo_service.visit_state or user_service.user.role == 1:
             feed_button.grid(row=2, column=2)
             water_button.grid(row=3, column=2)
             clean_button.grid(row=4, column=2)
-            all_mommos_button.grid(row=6, column=0)
 
         if mommo_service.visit_state:
             quit_visit_button.grid(row=7, column=0)
 
         pet_button.grid(row=5, column=2)
+

@@ -1,4 +1,4 @@
-from tkinter import ttk, constants, StringVar
+from tkinter import ttk, constants, StringVar, IntVar
 from services.user_service import user_service, PasswordLengthError, UsernameLengthError, UsernameExistsError
 
 
@@ -18,6 +18,7 @@ class RegisterView:
         self.frame = None
         self.username_entry = None
         self.password_entry = None
+        self.checkvar = None
         self.error_variable = None
         self.error_label = None
 
@@ -59,9 +60,10 @@ class RegisterView:
 
         username = self.username_entry.get()
         password = self.password_entry.get()
+        role = self.checkvar.get()
 
         try:
-            user_service.create_user(username, password, 0)
+            user_service.create_user(username, password, role)
             self.new_mommo_view()
         except UsernameExistsError:
             self.show_error("Käyttäjätunnus on jo käytössä")
@@ -96,6 +98,22 @@ class RegisterView:
         password_label.grid(row=3, column=0)
         self.password_entry.grid(row=4, column=0)
 
+    def initialize_admin_checkbox(self):
+        role_label = ttk.Label(master=self.frame, text="Rooli")
+
+        self.checkvar = IntVar()
+
+        admin_checkbox = ttk.Checkbutton(
+            master=self.frame,
+            text="Ylläpitäjä",
+            variable=self.checkvar,
+            onvalue=1,
+            offvalue=0
+        )
+
+        role_label.grid(row=7, column=0)
+        admin_checkbox.grid(row=8, column=0)
+
     def initialize(self):
         """alustaa näkymän.
         """
@@ -110,10 +128,11 @@ class RegisterView:
             foreground='blue'
         )
 
-        self.error_label.grid(row=7, column=0)
+        self.error_label.grid(row=9, column=0)
 
         self.initialize_username_field()
         self.initialize_password_field()
+        self.initialize_admin_checkbox()
 
         main_button = ttk.Button(
             master=self.frame,
