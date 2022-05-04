@@ -42,9 +42,13 @@ class MommoService():
         """
 
         self.hunger_thread = Thread(target=self.increase_hunger)
+        self.hunger_thread.setDaemon(True)
         self.thirst_thread = Thread(target=self.increase_thirst)
+        self.thirst_thread.setDaemon(True)
         self.clenliness_thread = Thread(target=self.decrease_clenliness)
+        self.clenliness_thread.setDaemon(True)
         self.happiness_thread = Thread(target=self.decrease_happiness)
+        self.happiness_thread.setDaemon(True)
 
         self.hunger_thread.start()
         self.thirst_thread.start()
