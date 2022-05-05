@@ -8,93 +8,93 @@ from ui.all_mommos_view import AllMommosView
 
 class UI:
     def __init__(self, root):
-        self.root = root
-        self.current_view = None
+        self._root = root
+        self._current_view = None
 
     def main_view(self):
-        self.show_main_view()
+        self._show_main_view()
 
-    def login_view(self):
-        self.show_login_view()
+    def _login_view(self):
+        self._show_login_view()
 
-    def register_view(self):
-        self.show_register_view()
+    def _register_view(self):
+        self._show_register_view()
 
-    def new_mommo_view(self):
-        self.show_new_mommo_view()
+    def _new_mommo_view(self):
+        self._show_new_mommo_view()
 
-    def mommo_view(self):
-        self.show_mommo_view()
+    def _mommo_view(self):
+        self._show_mommo_view()
 
-    def all_mommos_view(self):
-        self.show_all_mommos_view()
+    def _all_mommos_view(self):
+        self._show_all_mommos_view()
 
-    def show_main_view(self):
-        self.hide_current_view()
+    def _show_main_view(self):
+        self._hide_current_view()
 
-        self.current_view = MainView(
-            self.root,
-            self.login_view,
-            self.register_view
+        self._current_view = MainView(
+            self._root,
+            self._login_view,
+            self._register_view
         )
 
-        self.current_view.pack()
+        self._current_view.pack()
 
-    def show_login_view(self):
-        self.hide_current_view()
+    def _show_login_view(self):
+        self._hide_current_view()
 
-        self.current_view = LoginView(
-            self.root,
+        self._current_view = LoginView(
+            self._root,
             self.main_view,
-            self.mommo_view
+            self._mommo_view
         )
 
-        self.current_view.pack()
+        self._current_view.pack()
 
-    def show_register_view(self):
-        self.hide_current_view()
+    def _show_register_view(self):
+        self._hide_current_view()
 
-        self.current_view = RegisterView(
-            self.root,
+        self._current_view = RegisterView(
+            self._root,
             self.main_view,
-            self.new_mommo_view
+            self._new_mommo_view
         )
 
-        self.current_view.pack()
+        self._current_view.pack()
 
-    def show_new_mommo_view(self):
-        self.hide_current_view()
+    def _show_new_mommo_view(self):
+        self._hide_current_view()
 
-        self.current_view = NewMommoView(
-            self.root,
-            self.mommo_view
+        self._current_view = NewMommoView(
+            self._root,
+            self._mommo_view
         )
 
-        self.current_view.pack()
+        self._current_view.pack()
 
-    def show_mommo_view(self):
-        self.hide_current_view()
+    def _show_mommo_view(self):
+        self._hide_current_view()
 
-        self.current_view = MommoView(
-            self.root,
+        self._current_view = MommoView(
+            self._root,
             self.main_view,
-            self.all_mommos_view
+            self._all_mommos_view
         )
 
-        self.current_view.pack()
+        self._current_view.pack()
 
-    def show_all_mommos_view(self):
-        self.hide_current_view()
+    def _show_all_mommos_view(self):
+        self._hide_current_view()
 
-        self.current_view = AllMommosView(
-            self.root,
-            self.mommo_view
+        self._current_view = AllMommosView(
+            self._root,
+            self._mommo_view
         )
 
-        self.current_view.pack()
+        self._current_view.pack()
 
-    def hide_current_view(self):
-        if self.current_view:
-            self.current_view.destroy()
+    def _hide_current_view(self):
+        if self._current_view:
+            self._current_view.destroy()
 
-        self.current_view = None
+        self._current_view = None

@@ -11,90 +11,91 @@ class NewMommoView:
             mommo_view (funktio): funktio, joka avaa mömmö-näkymän.
         """
 
-        self.root = root
-        self.mommo_view = mommo_view
-        self.frame = None
-        self.error_variable = None
-        self.error_label = None
+        self._root = root
+        self._mommo_view = mommo_view
+        self._frame = None
+        self._error_variable = None
+        self._error_label = None
 
-        self.initialize()
+        self._initialize()
 
     def pack(self):
         """näyttää kaikki näkymän komponentit.
         """
 
-        self.frame.pack(fill=constants.X)
+        self._frame.pack(fill=constants.X)
 
     def destroy(self):
         """tuhoaa kaikki näkymän komponentit.
         """
 
-        self.frame.destroy()
+        self._frame.destroy()
 
-    def show_error(self, message):
+    def _show_error(self, message):
         """näyttää error-viestin.
 
         Args:
             message (str): error-viesti.
         """
 
-        self.error_variable.set(message)
-        self.error_label.grid()
+        self._error_variable.set(message)
+        self._error_label.grid()
 
-        self.frame.after(3000, self.hide_error)
+        self._frame.after(3000, self._hide_error)
 
-    def hide_error(self):
+    def _hide_error(self):
         """piilottaa error-viestin.
         """
 
-        self.error_label.grid_remove()
+        self._error_label.grid_remove()
 
-    def create_new_mommo(self):
+    def _create_new_mommo(self):
         """luo uuden mömmön.
         """
 
-        name = self.name_entry.get()
+        name = self._name_entry.get()
 
         try:
             mommo_service.create_mommo(name)
-            self.mommo_view()
+            self._mommo_view()
         except MommoNameLengthError:
-            self.show_error(
+            self._show_error(
                 "Mömmön nimen on oltava vähintään neljän merkin pituinen")
 
-    def initialize_name_field(self):
+    def _initialize_name_field(self):
         """alustaa nimikentän.
         """
 
-        name_label = ttk.Label(master=self.frame, text='Anna mömmöllesi nimi')
+        name_label = ttk.Label(master=self._frame, text='Anna mömmöllesi nimi')
 
-        self.name_entry = ttk.Entry(master=self.frame)
+        self._name_entry = ttk.Entry(master=self._frame)
 
         name_label.grid(row=2, column=0)
-        self.name_entry.grid(row=3, column=0)
+        self._name_entry.grid(row=3, column=0)
 
-    def initialize(self):
+    def _initialize(self):
         """alustaa näkymän
         """
 
-        self.frame = ttk.Frame(master=self.root)
-        new_mommo_label = ttk.Label(master=self.frame, text="Uusi mömmöystävä")
-        self.error_variable = StringVar(self.frame)
+        self._frame = ttk.Frame(master=self._root)
+        new_mommo_label = ttk.Label(
+            master=self._frame, text="Uusi mömmöystävä")
+        self._error_variable = StringVar(self._frame)
 
-        self.error_label = ttk.Label(
-            master=self.frame,
-            textvariable=self.error_variable,
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
             foreground='blue'
         )
 
-        self.error_label.grid(row=5, column=0)
+        self._error_label.grid(row=5, column=0)
 
-        self.initialize_name_field()
+        self._initialize_name_field()
 
         accept_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="Hyväksy",
-            command=self.create_new_mommo
+            command=self._create_new_mommo
         )
 
         new_mommo_label.grid(row=0, column=0)

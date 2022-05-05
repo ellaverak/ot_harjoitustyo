@@ -2,7 +2,7 @@ from entities.user import User
 from db_connection import get_db
 
 
-def get_user(result):
+def _get_user(result):
     """luo tietokantatietojen perusteella User-olion.
 
     Args:
@@ -26,7 +26,7 @@ class UserRepository:
             db_ (yhteys): tietokantayhteys.
         """
 
-        self.db_ = db_
+        self._db_ = db_
 
     def create(self, user):
         """tallentaa uuden käyttäjän tietokantaan.
@@ -38,14 +38,14 @@ class UserRepository:
             User: tallennettu User-olio.
         """
 
-        cursor = self.db_.cursor()
+        cursor = self._db_.cursor()
 
         cursor.execute(
             "INSERT INTO users (username, password, role) values (?, ?, ?)",
             (user.username, user.password, user.role)
         )
 
-        self.db_.commit()
+        self._db_.commit()
 
         return user
 
@@ -59,7 +59,7 @@ class UserRepository:
             User: haettu käyttäjä User-oliona.
         """
 
-        cursor = self.db_.cursor()
+        cursor = self._db_.cursor()
 
         cursor.execute(
             "SELECT * FROM users WHERE username = ?",
@@ -68,7 +68,7 @@ class UserRepository:
 
         result = cursor.fetchone()
 
-        return get_user(result)
+        return _get_user(result)
 
     def get_id(self, username):
         """hakee käyttäjän id-tunnuksen tietokannasta käyttäjänimen perusteella.
@@ -80,7 +80,7 @@ class UserRepository:
             int: haettu käyttäjän id-tunnus.
         """
 
-        cursor = self.db_.cursor()
+        cursor = self._db_.cursor()
 
         cursor.execute(
             "SELECT id FROM users WHERE username = ?",
@@ -100,7 +100,7 @@ class UserRepository:
             str: haettu käyttäjänimi.
         """
 
-        cursor = self.db_.cursor()
+        cursor = self._db_.cursor()
 
         cursor.execute(
             "SELECT username FROM users WHERE id = ?",
@@ -120,7 +120,7 @@ class UserRepository:
             int: käyttäjärooli.
         """
 
-        cursor = self.db_.cursor()
+        cursor = self._db_.cursor()
 
         cursor.execute(
             "SELECT role FROM users WHERE username = ?",

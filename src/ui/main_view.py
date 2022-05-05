@@ -11,42 +11,42 @@ class MainView:
             register_view (funktio): funktio, joka avaa rekisteröinti-näkymän.
         """
 
-        self.root = root
-        self.login_view = login_view
-        self.register_view = register_view
-        self.frame = None
+        self._root = root
+        self._login_view = login_view
+        self._register_view = register_view
+        self._frame = None
 
-        self.initialize()
+        self._initialize()
 
     def pack(self):
         """näyttää kaikki näkymän komponentit.
         """
 
-        self.frame.pack(fill=constants.X)
+        self._frame.pack(fill=constants.X)
 
     def destroy(self):
         """tuhoaa kaikki näkymän komponentit.
         """
 
-        self.frame.destroy()
+        self._frame.destroy()
 
-    def initialize(self):
+    def _initialize(self):
         """alustaa näkymän.
         """
 
-        self.frame = ttk.Frame(master=self.root)
-        main_title = ttk.Label(master=self.frame, text="Mömmöystävä")
+        self._frame = ttk.Frame(master=self._root)
+        main_title = ttk.Label(master=self._frame, text="Mömmöystävä")
 
         login_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="Kirjaudu sisään",
-            command=self.login_view
+            command=self._login_view
         )
 
         register_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="Luo käyttäjä",
-            command=self.register_view
+            command=self._register_view
         )
 
         main_title.grid(row=0, column=0)

@@ -2,7 +2,7 @@ from entities.mommo import Mommo
 from db_connection import get_db
 
 
-def get_mommo(result):
+def _get_mommo(result):
     """luo tietokantatietojen perusteella Mommo-olion.
 
     Args:
@@ -26,7 +26,7 @@ class MommoRepository:
             db_ (yhteys): tietokantayhteys.
         """
 
-        self.db_ = db_
+        self._db_ = db_
 
     def create(self, mommo):
         """tallentaa uuden mömmön tietokantaan.
@@ -38,7 +38,7 @@ class MommoRepository:
             Mommo: tallennettu Mommo-olio.
         """
 
-        cursor = self.db_.cursor()
+        cursor = self._db_.cursor()
 
         cursor.execute(
             """INSERT INTO mommo
@@ -48,7 +48,7 @@ class MommoRepository:
              mommo.thirst, mommo.clenliness, mommo.happiness)
         )
 
-        self.db_.commit()
+        self._db_.commit()
 
         return mommo
 
@@ -62,7 +62,7 @@ class MommoRepository:
             Mommo: haettu mömmö Mommo-oliona.
         """
 
-        cursor = self.db_.cursor()
+        cursor = self._db_.cursor()
 
         cursor.execute(
             "SELECT * FROM mommo WHERE user_id = ?",
@@ -71,7 +71,7 @@ class MommoRepository:
 
         result = cursor.fetchone()
 
-        return get_mommo(result)
+        return _get_mommo(result)
 
     def get_all(self, user_id):
         """hakee kaikki mömmöt tietokannasta, paitsi nykyisen käyttäjän mömmön.
@@ -83,7 +83,7 @@ class MommoRepository:
             lista: kaikki kaikki mömmöt listana [user_id, mommo].
         """
 
-        cursor = self.db_.cursor()
+        cursor = self._db_.cursor()
 
         cursor.execute(
             "SELECT user_id, name FROM mommo WHERE user_id != ?",
@@ -101,7 +101,7 @@ class MommoRepository:
             mommo (Mommo): Mommo-olio.
         """
 
-        cursor = self.db_.cursor()
+        cursor = self._db_.cursor()
 
         cursor.execute(
             """UPDATE mommo SET
@@ -110,7 +110,7 @@ class MommoRepository:
              mommo.thirst, mommo.clenliness, mommo.happiness, mommo.user_id)
         )
 
-        self.db_.commit()
+        self._db_.commit()
 
 
 mommo_repository = MommoRepository(get_db())

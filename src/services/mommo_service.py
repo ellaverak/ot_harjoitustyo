@@ -26,31 +26,31 @@ class MommoService():
         self.mommo = None
         self.mommo_repository = mommo_repository
 
-        self.hunger_thread = None
-        self.thirst_thread = None
-        self.clenliness_thread = None
+        self._hunger_thread = None
+        self._thirst_thread = None
+        self._clenliness_thread = None
 
         # HUOM!! Säikeisyyden testaaminen ei ole tässä oleellista,
         # joten säikeiden aloittava funktio jätetään tässä
         # huomiotta tällä tavalla. Päädyimme pajassa ohjaaja Eetun kanssa tähän ratkaisuus.
         # Testing threads is irrelevant in this project and they are ignored.
         if "pytest" not in sys.modules and not self.visit_state:
-            self.start()
+            self._start()
 
-    def start(self):
+    def _start(self):
         """käynnistää säikeet.
         """
 
-        self.hunger_thread = Thread(target=self.decrease_hunger_stat)
-        self.hunger_thread.setDaemon(True)
-        self.thirst_thread = Thread(target=self.decrease_thirst_stat)
-        self.thirst_thread.setDaemon(True)
-        self.clenliness_thread = Thread(target=self.decrease_clenliness_stat)
-        self.clenliness_thread.setDaemon(True)
+        self._hunger_thread = Thread(target=self._decrease_hunger_stat)
+        self._hunger_thread.setDaemon(True)
+        self._thirst_thread = Thread(target=self._decrease_thirst_stat)
+        self._thirst_thread.setDaemon(True)
+        self._clenliness_thread = Thread(target=self._decrease_clenliness_stat)
+        self._clenliness_thread.setDaemon(True)
 
-        self.hunger_thread.start()
-        self.thirst_thread.start()
-        self.clenliness_thread.start()
+        self._hunger_thread.start()
+        self._thirst_thread.start()
+        self._clenliness_thread.start()
 
     def create_mommo(self, name):
         """luo uuden Mommo-olion, tallentaa sen tietokantaan ja asettaa nykyisen mommon.
@@ -128,7 +128,7 @@ class MommoService():
 
         return all_mommos
 
-    def decrease_hunger_stat(self):
+    def _decrease_hunger_stat(self):
         """lisää mömmön nälkäisyyttä.
         """
 
@@ -141,9 +141,9 @@ class MommoService():
                 else:
                     self.mommo.hunger = 0
 
-                self.calculate_happiness_stat()
+                self._calculate_happiness_stat()
 
-    def decrease_thirst_stat(self):
+    def _decrease_thirst_stat(self):
         """lisää mömmön janoisuutta.
         """
 
@@ -155,9 +155,9 @@ class MommoService():
                 else:
                     self.mommo.thirst = 0
 
-                self.calculate_happiness_stat()
+                self._calculate_happiness_stat()
 
-    def decrease_clenliness_stat(self):
+    def _decrease_clenliness_stat(self):
         """vähentää mömmön puhtautta.
         """
 
@@ -169,19 +169,19 @@ class MommoService():
                 else:
                     self.mommo.clenliness = 0
 
-                self.calculate_happiness_stat()
+                self._calculate_happiness_stat()
 
-    def calculate_happiness_stat(self):
+    def _calculate_happiness_stat(self):
         """vähentää mömmön onnellisuutta.
         """
 
         if self.mommo and self.mommo.happiness > 0:
             if int(self.mommo.hunger * 0.3
-            + self.mommo.thirst + 0.3 + self.mommo.clenliness * 0.4) <= 100:
+                   + self.mommo.thirst + 0.3 + self.mommo.clenliness * 0.4) <= 100:
                 self.mommo.happiness = int(self.mommo.hunger * 0.3
-                + self.mommo.thirst + 0.3 + self.mommo.clenliness * 0.4)
+                                           + self.mommo.thirst + 0.3 + self.mommo.clenliness * 0.4)
             elif int(self.mommo.hunger * 0.3
-            + self.mommo.thirst + 0.3 + self.mommo.clenliness * 0.4) > 100:
+                     + self.mommo.thirst + 0.3 + self.mommo.clenliness * 0.4) > 100:
                 self.mommo.happiness = 100
 
     def feed_mommo(self):
@@ -193,7 +193,7 @@ class MommoService():
         else:
             self.mommo.hunger = 100
 
-        self.decrease_happiness()
+        self._calculate_happiness_stat()
         self.save_mommo()
 
     def water_mommo(self):
@@ -205,7 +205,7 @@ class MommoService():
         else:
             self.mommo.thirst = 100
 
-        self.decrease_happiness()
+        self._calculate_happiness_stat()
         self.save_mommo()
 
     def clean_mommo(self):
@@ -217,7 +217,7 @@ class MommoService():
         else:
             self.mommo.clenliness = 100
 
-        self.decrease_happiness()
+        self._calculate_happiness_stat()
         self.save_mommo()
 
 

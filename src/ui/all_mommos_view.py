@@ -12,68 +12,67 @@ class AllMommosView:
             root (juuri): juurikomponetti.
             mommo_view (funktio): funktio, joka avaa mömmö-näkymän.
         """
-        self.root = root
-        self.mommo_view = mommo_view
-        self.frame = None
+        self._root = root
+        self._mommo_view = mommo_view
+        self._frame = None
 
         mommo_service.login_mommo()
 
-        self.all_mommos = mommo_service.get_all_mommos()
+        self._all_mommos = mommo_service.get_all_mommos()
 
-        self.initialize()
+        self._initialize()
 
     def pack(self):
         """näyttää kaikki näkymän komponentit.
         """
 
-        self.frame.pack(fill=constants.X)
+        self._frame.pack(fill=constants.X)
 
     def destroy(self):
         """tuhoaa kaikki näkymän komponentit.
         """
 
-        self.frame.destroy()
+        self._frame.destroy()
 
-    def handle_visit(self, visit_user_id):
+    def _handle_visit(self, visit_user_id):
         mommo_service.visit_state = True
         mommo_service.login_mommo(visit_user_id)
-        self.mommo_view()
+        self._mommo_view()
 
-    def initialize_mommo(self, mommo, i):
+    def _initialize_mommo(self, mommo, i):
         """alustaa kaikkien mömmöjen tiedot.
         """
 
         visit_id = mommo[0]
 
         mommo_button = ttk.Button(
-                master=self.frame,
-                text=mommo[1],
-                command=lambda: self.handle_visit(visit_id)
-            )
+            master=self._frame,
+            text=mommo[1],
+            command=lambda: self._handle_visit(visit_id)
+        )
 
         mommo_owner_label = ttk.Label(
-            master=self.frame, text=f"omistaja: {mommo[2]}")
+            master=self._frame, text=f"omistaja: {mommo[2]}")
 
         mommo_button.grid(row=i+1, column=0)
         mommo_owner_label.grid(row=i+1, column=1)
 
-
-    def initialize(self):
+    def _initialize(self):
         """alustaa näkymän.
         """
 
-        self.frame = ttk.Frame(master=self.root)
-        main_label = ttk.Label(master=self.frame, text="Mömmöystävät")
+        self._frame = ttk.Frame(master=self._root)
+        main_label = ttk.Label(master=self._frame, text="Mömmöystävät")
 
         i = 1
-        for mommo in self.all_mommos:
-            self.initialize_mommo(mommo, i)
-            i+=1
+        for mommo in self._all_mommos:
+            self._initialize_mommo(mommo, i)
+            i += 1
 
         back_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="Takaisin",
-            command=self.mommo_view
+            command=self._mommo_view
         )
 
         main_label.grid(row=0, column=0)

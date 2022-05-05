@@ -12,101 +12,101 @@ class RegisterView:
             new_mommo_view (funktio): funktio, joka avaa uusi mömmö-näkymän.
         """
 
-        self.root = root
-        self.main_view = main_view
-        self.new_mommo_view = new_mommo_view
-        self.frame = None
-        self.username_entry = None
-        self.password_entry = None
-        self.checkvar = None
-        self.error_variable = None
-        self.error_label = None
+        self._root = root
+        self._main_view = main_view
+        self._new_mommo_view = new_mommo_view
+        self._frame = None
+        self._username_entry = None
+        self._password_entry = None
+        self._checkvar = None
+        self._error_variable = None
+        self._error_label = None
 
-        self.initialize()
+        self._initialize()
 
     def pack(self):
         """näyttää kaikki näkymän komponentit.
         """
 
-        self.frame.pack(fill=constants.X)
+        self._frame.pack(fill=constants.X)
 
     def destroy(self):
         """tuhoaa kaikki näkymän komponentit.
         """
 
-        self.frame.destroy()
+        self._frame.destroy()
 
-    def show_error(self, message):
+    def _show_error(self, message):
         """näyttää error-viestin.
 
         Args:
             message (str): error-viesti.
         """
 
-        self.error_variable.set(message)
-        self.error_label.grid()
+        self._error_variable.set(message)
+        self._error_label.grid()
 
-        self.frame.after(3000, self.hide_error)
+        self._frame.after(3000, self._hide_error)
 
-    def hide_error(self):
+    def _hide_error(self):
         """piilottaa error-viestin.
         """
 
-        self.error_label.grid_remove()
+        self._error_label.grid_remove()
 
-    def register_user(self):
+    def _register_user(self):
         """rekisteröi uuden käyttäjän.
         """
 
-        username = self.username_entry.get()
-        password = self.password_entry.get()
-        role = self.checkvar.get()
+        username = self._username_entry.get()
+        password = self._password_entry.get()
+        role = self._checkvar.get()
 
         try:
             user_service.create_user(username, password, role)
-            self.new_mommo_view()
+            self._new_mommo_view()
         except UsernameExistsError:
-            self.show_error("Käyttäjätunnus on jo käytössä")
+            self._show_error("Käyttäjätunnus on jo käytössä")
         except PasswordLengthError:
-            self.show_error(
+            self._show_error(
                 "Salasanan on oltava vähintään neljän merkin pituinen")
         except UsernameLengthError:
-            self.show_error(
+            self._show_error(
                 "Käyttäjätunnuksen on oltava vähintään neljän merkin pituinen")
 
-    def initialize_username_field(self):
+    def _initialize_username_field(self):
         """alustaa käyttäjänimikentän.
         """
 
         username_label = ttk.Label(
-            master=self.frame, text='Anna uusi käyttäjätunnus')
+            master=self._frame, text='Anna uusi käyttäjätunnus')
 
-        self.username_entry = ttk.Entry(master=self.frame)
+        self._username_entry = ttk.Entry(master=self._frame)
 
         username_label.grid(row=1, column=0)
-        self.username_entry.grid(row=2, column=0)
+        self._username_entry.grid(row=2, column=0)
 
-    def initialize_password_field(self):
+    def _initialize_password_field(self):
         """alustaa salasanakentän.
         """
 
         password_label = ttk.Label(
-            master=self.frame, text='Anna uusi salasana')
+            master=self._frame, text='Anna uusi salasana')
 
-        self.password_entry = ttk.Entry(master=self.frame)
+        self._password_entry = ttk.Entry(master=self._frame)
 
         password_label.grid(row=3, column=0)
-        self.password_entry.grid(row=4, column=0)
+        self._password_entry.grid(row=4, column=0)
 
-    def initialize_admin_checkbox(self):
-        role_label = ttk.Label(master=self.frame, text="Rooli")
+    def _initialize_admin_checkbox(self):
+        role_label = ttk.Label(master=self._frame, text="Rooli")
 
-        self.checkvar = IntVar()
+        self._checkvar = IntVar()
 
         admin_checkbox = ttk.Checkbutton(
-            master=self.frame,
+            master=self._frame,
             text="Ylläpitäjä",
-            variable=self.checkvar,
+            variable=self._checkvar,
             onvalue=1,
             offvalue=0
         )
@@ -114,40 +114,40 @@ class RegisterView:
         role_label.grid(row=7, column=0)
         admin_checkbox.grid(row=8, column=0)
 
-    def initialize(self):
+    def _initialize(self):
         """alustaa näkymän.
         """
 
-        self.frame = ttk.Frame(master=self.root)
-        register_label = ttk.Label(master=self.frame, text="Luo käyttäjä")
-        self.error_variable = StringVar(self.frame)
+        self._frame = ttk.Frame(master=self._root)
+        register_label = ttk.Label(master=self._frame, text="Luo käyttäjä")
+        self._error_variable = StringVar(self._frame)
 
-        self.error_label = ttk.Label(
-            master=self.frame,
-            textvariable=self.error_variable,
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
             foreground='blue'
         )
 
-        self.error_label.grid(row=9, column=0)
+        self._error_label.grid(row=9, column=0)
 
-        self.initialize_username_field()
-        self.initialize_password_field()
-        self.initialize_admin_checkbox()
+        self._initialize_username_field()
+        self._initialize_password_field()
+        self._initialize_admin_checkbox()
 
         main_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="Takaisin päävalikkoon",
-            command=self.main_view
+            command=self._main_view
         )
 
         accept_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="Hyväksy",
-            command=self.register_user
+            command=self._register_user
         )
 
         register_label.grid(row=0, column=0)
         main_button.grid(row=6, column=0)
         accept_button.grid(row=5, column=0)
 
-        self.hide_error()
+        self._hide_error()

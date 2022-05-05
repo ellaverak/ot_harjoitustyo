@@ -11,28 +11,28 @@ class LoginView:
             main_view (funtio): funktio, joka avaa päänäkymän.
             mommo_view (funtio): funktio, joka avaa mömmö-näkymän.
         """
-        self.root = root
-        self.main_view = main_view
-        self.mommo_view = mommo_view
-        self.frame = None
-        self.username_entry = None
-        self.password_entry = None
+        self._root = root
+        self._main_view = main_view
+        self._mommo_view = mommo_view
+        self._frame = None
+        self._username_entry = None
+        self._password_entry = None
         self.error_variable = None
-        self.error_label = None
+        self._error_label = None
 
-        self.initialize()
+        self._initialize()
 
     def pack(self):
         """näyttää kaikki näkymän komponentit.
         """
 
-        self.frame.pack(fill=constants.X)
+        self._frame.pack(fill=constants.X)
 
     def destroy(self):
         """tuokaa kaikki näkymän komponentit.
         """
 
-        self.frame.destroy()
+        self._frame.destroy()
 
     def show_error(self, message):
         """näyttää error-viestin.
@@ -41,84 +41,84 @@ class LoginView:
             message (str): error-viesti.
         """
 
-        self.error_variable.set(message)
-        self.error_label.grid()
+        self._error_variable.set(message)
+        self._error_label.grid()
 
-        self.frame.after(2000, self.hide_error)
+        self._frame.after(2000, self._hide_error)
 
-    def hide_error(self):
+    def _hide_error(self):
         """piilottaa error-viestin.
         """
 
-        self.error_label.grid_remove()
+        self._error_label.grid_remove()
 
-    def login_user(self):
+    def _login_user(self):
         """kirjaa käyttäjän sisään.
         """
 
-        username = self.username_entry.get()
-        password = self.password_entry.get()
+        username = self._username_entry.get()
+        password = self._password_entry.get()
 
         try:
             user_service.login(username, password)
-            self.mommo_view()
+            self._mommo_view()
         except UserNonexistingError:
             self.show_error("Käyttäjätunnusta ei ole olemassa")
         except WrongPasswordError:
             self.show_error("Väärä salasana")
 
-    def initialize_username_field(self):
+    def _initialize_username_field(self):
         """alustaa käyttäjänimikentän.
         """
 
         username_label = ttk.Label(
-            master=self.frame, text='Anna käyttäjätunnus')
+            master=self._frame, text='Anna käyttäjätunnus')
 
-        self.username_entry = ttk.Entry(master=self.frame)
+        self._username_entry = ttk.Entry(master=self._frame)
 
         username_label.grid(row=1, column=0)
-        self.username_entry.grid(row=2, column=0)
+        self._username_entry.grid(row=2, column=0)
 
-    def initialize_password_field(self):
+    def _initialize_password_field(self):
         """alustaa salasanakentän.
         """
 
-        password_label = ttk.Label(master=self.frame, text='Anna salasana')
+        password_label = ttk.Label(master=self._frame, text='Anna salasana')
 
-        self.password_entry = ttk.Entry(master=self.frame)
+        self._password_entry = ttk.Entry(master=self._frame)
 
         password_label.grid(row=3, column=0)
-        self.password_entry.grid(row=4, column=0)
+        self._password_entry.grid(row=4, column=0)
 
-    def initialize(self):
+    def _initialize(self):
         """alustaa näkymän.
         """
 
-        self.frame = ttk.Frame(master=self.root)
-        login_label = ttk.Label(master=self.frame, text="Kirjaudu sisään")
-        self.error_variable = StringVar(self.frame)
+        self._frame = ttk.Frame(master=self._root)
+        login_label = ttk.Label(master=self._frame, text="Kirjaudu sisään")
+        self._error_variable = StringVar(self._frame)
 
-        self.error_label = ttk.Label(
-            master=self.frame,
-            textvariable=self.error_variable,
+        self._error_label = ttk.Label(
+            master=self._frame,
+            textvariable=self._error_variable,
             foreground='blue'
         )
 
-        self.error_label.grid(row=7, column=0)
+        self._error_label.grid(row=7, column=0)
 
-        self.initialize_username_field()
-        self.initialize_password_field()
+        self._initialize_username_field()
+        self._initialize_password_field()
 
         main_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="Takaisin päävalikkoon",
-            command=self.main_view
+            command=self._main_view
         )
 
         accept_button = ttk.Button(
-            master=self.frame,
+            master=self._frame,
             text="Hyväksy",
-            command=self.login_user
+            command=self._login_user
         )
 
         login_label.grid(row=0, column=0)
