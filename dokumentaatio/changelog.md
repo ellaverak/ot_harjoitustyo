@@ -15,3 +15,4 @@
 - lista muista mömmöistä on nähtävissä
 - käyttäjä voi vierailla toisen mömmön luona
 - ylläpitäjät voivat hoitaa toisten mömmöjä
+- mömmölle voi nyt opettaa temppuja!
