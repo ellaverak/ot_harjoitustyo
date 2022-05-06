@@ -47,7 +47,9 @@ def create_tables(db_):
         CREATE TABLE tricks (
             id INTEGER PRIMARY KEY,
             mommo_id INTEGER REFERENCES mommo ON DELETE CASCADE,
-            trick INTEGER
+            jump INTEGER,
+            squish INTEGER,
+            play_dead INTEGER
         );
     """)
 

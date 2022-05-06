@@ -2,7 +2,7 @@ from entities.mommo import Mommo
 from db_connection import get_db
 
 
-def _get_mommo(result):
+def get_mommo(result):
     """luo tietokantatietojen perusteella Mommo-olion.
 
     Args:
@@ -26,7 +26,7 @@ class MommoRepository:
             db_ (yhteys): tietokantayhteys.
         """
 
-        self._db_ = db_
+        self.db_ = db_
 
     def create(self, mommo):
         """tallentaa uuden mömmön tietokantaan.
@@ -38,7 +38,7 @@ class MommoRepository:
             Mommo: tallennettu Mommo-olio.
         """
 
-        cursor = self._db_.cursor()
+        cursor = self.db_.cursor()
 
         cursor.execute(
             """INSERT INTO mommo
@@ -48,7 +48,21 @@ class MommoRepository:
              mommo.thirst, mommo.clenliness, mommo.happiness)
         )
 
-        self._db_.commit()
+        cursor.execute(
+            "SELECT id FROM mommo WHERE user_id = ?",
+            (mommo.user_id,)
+        )
+
+        result = cursor.fetchone()[0]
+
+        cursor.execute(
+            """INSERT INTO tricks
+            (mommo_id, jump, squish, play_dead)
+            values (?, ?, ?, ?)""",
+            (result, 0, 0, 0)
+        )
+
+        self.db_.commit()
 
         return mommo
 
@@ -62,7 +76,7 @@ class MommoRepository:
             Mommo: haettu mömmö Mommo-oliona.
         """
 
-        cursor = self._db_.cursor()
+        cursor = self.db_.cursor()
 
         cursor.execute(
             "SELECT * FROM mommo WHERE user_id = ?",
@@ -71,7 +85,7 @@ class MommoRepository:
 
         result = cursor.fetchone()
 
-        return _get_mommo(result)
+        return get_mommo(result)
 
     def get_all(self, user_id):
         """hakee kaikki mömmöt tietokannasta, paitsi nykyisen käyttäjän mömmön.
@@ -83,7 +97,7 @@ class MommoRepository:
             lista: kaikki kaikki mömmöt listana [user_id, mommo].
         """
 
-        cursor = self._db_.cursor()
+        cursor = self.db_.cursor()
 
         cursor.execute(
             "SELECT user_id, name FROM mommo WHERE user_id != ?",
@@ -101,7 +115,7 @@ class MommoRepository:
             mommo (Mommo): Mommo-olio.
         """
 
-        cursor = self._db_.cursor()
+        cursor = self.db_.cursor()
 
         cursor.execute(
             """UPDATE mommo SET
@@ -110,7 +124,41 @@ class MommoRepository:
              mommo.thirst, mommo.clenliness, mommo.happiness, mommo.user_id)
         )
 
-        self._db_.commit()
+        self.db_.commit()
 
+    def get_trick(self, mommo_id):
+        cursor = self.db_.cursor()
+
+        cursor.execute(
+            "SELECT jump, squish, play_dead FROM tricks WHERE mommo_id = ?",
+            (mommo_id,)
+        )
+
+        result = cursor.fetchall()[0]
+
+        return list(result)
+
+    def get_id(self, user_id):
+        cursor = self.db_.cursor()
+
+        cursor.execute(
+            "SELECT id FROM mommo WHERE user_id = ?",
+            (user_id,)
+        )
+
+        result = cursor.fetchone()[0]
+        return result
+
+    def save_trick(self, mommo_id, trick_list):
+
+        cursor = self.db_.cursor()
+
+        cursor.execute(
+            """UPDATE tricks SET
+            jump = ?, squish = ?, play_dead = ? WHERE mommo_id = ?""",
+            (trick_list[0], trick_list[1], trick_list[2], mommo_id)
+        )
+
+        self.db_.commit()
 
 mommo_repository = MommoRepository(get_db())

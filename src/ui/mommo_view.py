@@ -22,6 +22,15 @@ class MommoView:
         self._pet_variable = None
         self._pet_label = None
         self._pet_message = None
+        self._jump_variable = None
+        self._jump_label = None
+        self._jump_message = None
+        self._squish_variable = None
+        self._squish_label = None
+        self._squish_message = None
+        self._play_dead_variable = None
+        self._play_dead_label = None
+        self._play_dead_message = None
 
         self._initialize()
 
@@ -36,6 +45,16 @@ class MommoView:
         """
 
         self._frame.destroy()
+
+    def _show_message(self, text, message, variable, label):
+        message = text
+        variable.set(message)
+        label.grid()
+
+    def _hide_message(self, message, variable, label):
+        message = ""
+        variable.set(message)
+        label.grid()
 
     def _quit(self):
         """kirjaa kaiken ulos ja avaa päänäkymän.
@@ -64,30 +83,52 @@ class MommoView:
         mommo_service.water_mommo()
         self._initialize_mommo()
 
-    def _pet_mommo(self):
-        """silittää mömmöä.
-        """
-
-        self._pet_message = "Silitit mömmöä! :)"
-        self._pet_variable.set(self._pet_message)
-        self._pet_label.grid()
-
-        self._frame.after(2000, self._hide_pet_message)
-
-    def _hide_pet_message(self):
-        """piilottaa pet_mommo-funtkion luoman viestin.
-        """
-
-        self._pet_message = ""
-        self._pet_variable.set(self._pet_message)
-        self._pet_label.grid()
-
     def _clean_mommo(self):
         """puhdistaa mömmön.
         """
 
         mommo_service.clean_mommo()
         self._initialize_mommo()
+
+    def _pet_mommo(self):
+        """silittää mömmöä.
+        """
+
+        text = "Silitit mömmöä! :)"
+        self._show_message(text, self._pet_message,
+        self._pet_variable, self._pet_label)
+
+
+        self._frame.after(2000, lambda: self._hide_message(self._pet_message,
+        self._pet_variable, self._pet_label))
+
+    def _handle_trick(self, trick):
+        if trick == 1:
+            text = mommo_service.do_trick(1)
+
+            self._show_message(text, self._jump_message,
+            self._jump_variable, self._jump_label)
+
+            self._frame.after(2000, lambda: self._hide_message(self._jump_message,
+            self._jump_variable, self._jump_label))
+
+        if trick == 2:
+            text = mommo_service.do_trick(2)
+
+            self._show_message(text, self._squish_message,
+            self._squish_variable, self._squish_label)
+
+            self._frame.after(2000, lambda: self._hide_message(self._squish_message,
+            self._squish_variable, self._squish_label))
+
+        if trick == 3:
+            text = mommo_service.do_trick(3)
+
+            self._show_message(text, self._play_dead_message,
+            self._play_dead_variable, self._play_dead_label)
+
+            self._frame.after(2000, lambda: self._hide_message(self._play_dead_message,
+            self._play_dead_variable, self._play_dead_label))
 
     def _initialize_mommo(self):
         """alustaa mömmön tiedot.
@@ -126,6 +167,14 @@ class MommoView:
         mommo_clenliness_label = ttk.Label(master=self._frame, text="Puhtaus:")
         mommo_happiness_label = ttk.Label(
             master=self._frame, text="Onnellisuus:")
+
+        if not mommo_service.visit_state:
+            tricks_label = ttk.Label(master=self._frame, text="Temput")
+
+            self._jump_variable = StringVar(self._frame)
+            self._squish_variable = StringVar(self._frame)
+            self._play_dead_variable = StringVar(self._frame)
+
         self._pet_variable = StringVar(self._frame)
 
         self._pet_label = ttk.Label(
@@ -150,6 +199,48 @@ class MommoView:
                 text="Mömmöystävät",
                 command=self._all_mommos_view
             )
+
+            tricks_button_1 = ttk.Button(
+                master=self._frame,
+                text="Hyppää",
+                command=lambda: self._handle_trick(1)
+            )
+
+            self._jump_label = ttk.Label(
+                master=self._frame,
+                textvariable=self._jump_variable,
+                foreground='green'
+            )
+
+            self._jump_label.grid(row=1, column=2)
+
+            tricks_button_2 = ttk.Button(
+                master=self._frame,
+                text="Litisty",
+                command=lambda: self._handle_trick(2)
+            )
+
+            self._squish_label = ttk.Label(
+                master=self._frame,
+                textvariable=self._squish_variable,
+                foreground='green'
+            )
+
+            self._squish_label.grid(row=1, column=2)
+
+            tricks_button_3 = ttk.Button(
+                master=self._frame,
+                text="Leiki koullutta",
+                command=lambda: self._handle_trick(3)
+            )
+
+            self._play_dead_label = ttk.Label(
+                master=self._frame,
+                textvariable=self._play_dead_variable,
+                foreground='green'
+            )
+
+            self._play_dead_label.grid(row=1, column=2)
 
         if not mommo_service.visit_state or user_service.user.role == 1:
             feed_button = ttk.Button(
@@ -191,8 +282,14 @@ class MommoView:
         mommo_happiness_label.grid(row=5, column=0)
 
         if not mommo_service.visit_state:
+            tricks_label.grid(row=1, column=4)
+
+        if not mommo_service.visit_state:
             quit_button.grid(row=7, column=0)
             all_mommos_button.grid(row=6, column=0)
+            tricks_button_1.grid(row=2, column=4)
+            tricks_button_2.grid(row=3, column=4)
+            tricks_button_3.grid(row=4, column=4)
 
         if not mommo_service.visit_state or user_service.user.role == 1:
             feed_button.grid(row=2, column=2)

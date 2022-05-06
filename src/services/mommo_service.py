@@ -128,6 +128,11 @@ class MommoService():
 
         return all_mommos
 
+    def get_mommo_id(self):
+
+        mommo_id = self.mommo_repository.get_id(user_service.get_user_id())
+        return mommo_id
+
     def _decrease_hunger_stat(self):
         """lisää mömmön nälkäisyyttä.
         """
@@ -219,6 +224,47 @@ class MommoService():
 
         self._calculate_happiness_stat()
         self.save_mommo()
+
+    def do_trick(self, trick):
+        mommo_id = self.get_mommo_id()
+
+        trick_list = self.mommo_repository.get_trick(mommo_id)
+
+        if trick == 1:
+            if trick_list[0] < 100:
+                if trick_list[0] + 25 > 100:
+                    trick_list[0] = 100
+                else:
+                    trick_list[0]+=25
+
+                self.mommo_repository.save_trick(mommo_id, trick_list)
+                return "Mömmö harjoittelee..."
+
+            return "Mömmö hyppäsi! :D"
+
+        if trick == 2:
+            if trick_list[1] < 100:
+                if trick_list[1] + 25 > 100:
+                    trick_list[1] = 100
+                else:
+                    trick_list[1]+=25
+
+                self.mommo_repository.save_trick(mommo_id, trick_list)
+                return "Mömmö harjoittelee..."
+
+            return "Mömmö litistyi! :P"
+
+        if trick == 3:
+            if trick_list[2] < 100:
+                if trick_list[2] + 25 > 100:
+                    trick_list[2] = 100
+                else:
+                    trick_list[2]+=25
+
+                self.mommo_repository.save_trick(mommo_id, trick_list)
+                return "Mömmö harjoittelee..."
+
+            return "Mömmö leikki kuollutta! X)"
 
 
 mommo_service = MommoService()
