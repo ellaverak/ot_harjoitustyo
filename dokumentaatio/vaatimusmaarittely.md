@@ -3,6 +3,8 @@
 ### Sovelluksessa voi hoitaa omaa virtuaalilemmikkiä ja puuhailla sen kanssa.
 (Tietokannat, jotka pitävät kirjaa käyttäjistä sekä käyttäjien lemmikeistä ja niihin liittyvistä tiedoista.)
 
+**KAIKKI PERUSTOIMINNOT OVAT VALMIINA**
+
 ## Käyttäjäroolit
 - tavallinen käyttäjä **tehty**
 - ylläpitäjä **tehty**
@@ -15,7 +17,7 @@
 - silitä lemmikkiä **tehty**
 - juota lemmikkiä **tehty**
 - siivoa lemmikin jätökset **tehty**
-- opeta lemmikille temppuja
+- opeta lemmikille temppuja **tehty**
 - katsele muiden lemmikkejä **tehty**
 - seuraa lemmikin hyvinvointia tilastoista **tehty**
 
