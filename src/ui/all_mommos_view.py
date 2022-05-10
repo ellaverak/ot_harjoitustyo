@@ -1,6 +1,4 @@
 from tkinter import ttk, constants
-
-from pyrsistent import v
 from services.mommo_service import mommo_service
 
 
