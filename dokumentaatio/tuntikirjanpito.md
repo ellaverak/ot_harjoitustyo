@@ -31,4 +31,5 @@
 | 6.5. | 2     | Lisäsin temput. |
 | 11.5. | 4     | Lisäsin mömmön perusanimaation mömmönäkymään. |
 | 11.5. | 2     | Lisäsin temppuanimaatiot. |
-| yht. | 51       | |
+| 11.5. | 1     | Lisäsin silitysanimaation. |
+| yht. | 52       | |
