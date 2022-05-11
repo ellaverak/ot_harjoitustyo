@@ -234,11 +234,12 @@ class MommoService():
             if trick_list[trick] + 25 > 100:
                 trick_list[trick] = 100
             else:
-                trick_list[trick]+=25
+                trick_list[trick] += 25
 
             self.mommo_repository.save_trick(mommo_id, trick_list)
             return False
 
         return True
+
 
 mommo_service = MommoService()

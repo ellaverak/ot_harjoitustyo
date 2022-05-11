@@ -161,4 +161,5 @@ class MommoRepository:
 
         self.db_.commit()
 
+
 mommo_repository = MommoRepository(get_db())
