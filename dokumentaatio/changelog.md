@@ -16,3 +16,4 @@
 - käyttäjä voi vierailla toisen mömmön luona
 - ylläpitäjät voivat hoitaa toisten mömmöjä
 - mömmölle voi nyt opettaa temppuja!
+- mömmö näkyy mömmönäkymässä
