@@ -1,4 +1,4 @@
-from tkinter import ttk, constants, StringVar, Canvas
+from tkinter import Frame, ttk, constants, StringVar, Canvas
 from services.mommo_service import mommo_service
 from services.user_service import user_service
 
@@ -8,13 +8,14 @@ class DrawMommoView:
         self._root = root
         self._frame = None
         self.canvas = None
-        self.b_c = None
-        self.e_c = None
-        self.s_c = None
+        self.b_c = None #body coordinates
+        self.e_c = None #eye coordinates
+        self.s_c = None #smile coordinates
         self.body = None
         self.eye_1 = None
         self.eye_2 = None
         self.smile = None
+        self.pet = None
 
         self._initialize()
 
@@ -42,6 +43,9 @@ class DrawMommoView:
 
         if self.smile:
             self.canvas.delete(self.smile)
+
+        if self.pet:
+            self.canvas.delete(self.pet)
 
     def _position_1(self):
         self.b_c = [250, 90, 40]
@@ -79,6 +83,13 @@ class DrawMommoView:
 
         self._initialize_draw_mommo_position("play_dead")
 
+    def _draw_pet(self):
+        self.b_c = [250, 90, 40]
+        self.e_c = [240, 85, 4, 260, 85, 4]
+        self.s_c = [240,100,250,120,260,100]
+
+        self._initialize_draw_mommo_position("pet")
+
     def draw_circle(self, x, y, r, canvas, color=None):
         x0 = x - r
         y0 = y - r
@@ -107,8 +118,10 @@ class DrawMommoView:
             self.eye_1 = self.draw_circle(self.e_c[0], self.e_c[1], self.e_c[2], self.canvas, "black")
             self.eye_2 = self.draw_circle(self.e_c[3], self.e_c[4], self.e_c[5], self.canvas, "black")
 
-        self.smile = self.draw_line(self.s_c[0], self.s_c[1], self.s_c[2],
+        if trick == "pet":
+            self.pet = self.canvas.create_text(195, 70, text="❤", fill="black", font=('Helvetica 20'))
 
+        self.smile = self.draw_line(self.s_c[0], self.s_c[1], self.s_c[2],
         self.s_c[3], self.s_c[4], self.s_c[5], self.canvas)
 
     def _initialize(self):
@@ -136,9 +149,6 @@ class MommoView:
         self._frame = None
         self._main_view = main_view
         self._all_mommos_view = all_mommos_view
-        self._pet_variable = None
-        self._pet_label = None
-        self._pet_message = None
         self._trick_variable = None
         self._trick_label = None
         self._trick_message = None
@@ -214,13 +224,7 @@ class MommoView:
         """silittää mömmöä.
         """
 
-        text = "Silitit mömmöä! :)"
-        self._show_message(text, self._pet_message,
-        self._pet_variable, self._pet_label)
-
-
-        self._frame.after(2000, lambda: self._hide_message(self._pet_message,
-        self._pet_variable, self._pet_label))
+        self._draw_mommo_view._draw_pet()
 
     def _handle_trick(self, trick):
         if mommo_service.do_trick(trick):
@@ -288,16 +292,6 @@ class MommoView:
             tricks_label = ttk.Label(master=self._frame, text="Temput")
 
             self._trick_variable = StringVar(self._frame)
-
-        self._pet_variable = StringVar(self._frame)
-
-        self._pet_label = ttk.Label(
-            master=self._frame,
-            textvariable=self._pet_variable,
-            foreground='green'
-        )
-
-        self._pet_label.grid(row=1, column=2)
 
         self._initialize_mommo()
         self._initialize_draw_mommo()
@@ -400,5 +394,4 @@ class MommoView:
             quit_visit_button.grid(row=7, column=0)
 
         pet_button.grid(row=2, column=3)
-
 
