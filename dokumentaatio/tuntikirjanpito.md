@@ -30,4 +30,5 @@
 | 4.5. | 1     | Lisäsin mahdollisuuden rekisteröityä ylläpitäjänä ja lisäsin ylläpito-toimintoja. |
 | 6.5. | 2     | Lisäsin temput. |
 | 11.5. | 4     | Lisäsin mömmön perusanimaation mömmönäkymään. |
-| yht. | 49       | |
+| 11.5. | 2     | Lisäsin temppuanimaatiot. |
+| yht. | 51       | |
