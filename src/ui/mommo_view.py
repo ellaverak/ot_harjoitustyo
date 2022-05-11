@@ -30,6 +30,19 @@ class DrawMommoView:
 
         self._frame.destroy()
 
+    def destroy_widgets(self):
+        if self.body:
+            self.canvas.delete(self.body)
+
+        if self.eye_1:
+            self.canvas.delete(self.eye_1)
+
+        if self.eye_2:
+            self.canvas.delete(self.eye_2)
+
+        if self.smile:
+            self.canvas.delete(self.smile)
+
     def _position_1(self):
         self.b_c = [250, 90, 40]
         self.e_c = [235, 85, 4, 255, 85, 4]
@@ -46,40 +59,56 @@ class DrawMommoView:
         self._initialize_draw_mommo_position()
         self._frame.after(1000, self._position_1)
 
+    def _draw_squish(self):
+        self.e_c = [240, 100, 4, 260, 100, 4]
+        self.s_c = [240,110,250,120,260,110]
+
+        self._initialize_draw_mommo_position("squish")
+
     def _draw_jump(self):
-        self.b_c = [90, 60, 40]
-        self.e_c = [40, 55, 4, 60, 55, 4]
-        self.s_c = [40,70,50,80,60,70]
+        self.b_c = [250, 60, 40]
+        self.e_c = [240, 40, 4, 260, 40, 4]
+        self.s_c = [240,55,250,65,260,55]
 
         self._initialize_draw_mommo_position()
 
-    def draw_mommo(self, x, y, r, canvas, color=None):
+    def _draw_play_dead(self):
+        self.b_c = [250, 90, 40]
+        self.e_c = [240, 85, 4, 260, 85, 4]
+        self.s_c = [240,105,250,95,260,105]
+
+        self._initialize_draw_mommo_position("play_dead")
+
+    def draw_circle(self, x, y, r, canvas, color=None):
         x0 = x - r
         y0 = y - r
         x1 = x + r
         y1 = y + r
         return canvas.create_oval(x0, y0, x1, y1, fill=color)
 
-    def draw_mommo_smile(self, x1, y1, x2, y2, x3, y3, canvas):
+    def draw_line(self, x1, y1, x2, y2, x3, y3, canvas):
         return canvas.create_line(x1,y1,x2,y2,x3,y3, smooth=1)
 
-    def _initialize_draw_mommo_position(self):
-        if self.body:
-            self.canvas.delete(self.body)
+    def draw_oval(self, canvas):
+        return canvas.create_oval(200,90,300,130)
 
-        if self.eye_1:
-            self.canvas.delete(self.eye_1)
+    def _initialize_draw_mommo_position(self, trick=None):
+        self.destroy_widgets()
 
-        if self.eye_2:
-            self.canvas.delete(self.eye_2)
+        if trick == "squish":
+            self.body = self.draw_oval(self.canvas)
+        else:
+            self.body = self.draw_circle(self.b_c[0], self.b_c[1], self.b_c[2], self.canvas)
 
-        if self.smile:
-            self.canvas.delete(self.smile)
+        if trick == "play_dead":
+            self.eye_1 = self.draw_circle(self.e_c[0], self.e_c[1], self.e_c[2], self.canvas)
+            self.eye_2 = self.draw_circle(self.e_c[3], self.e_c[4], self.e_c[5], self.canvas)
+        else:
+            self.eye_1 = self.draw_circle(self.e_c[0], self.e_c[1], self.e_c[2], self.canvas, "black")
+            self.eye_2 = self.draw_circle(self.e_c[3], self.e_c[4], self.e_c[5], self.canvas, "black")
 
-        self.body = self.draw_mommo(self.b_c[0], self.b_c[1], self.b_c[2], self.canvas)
-        self.eye_1 = self.draw_mommo(self.e_c[0], self.e_c[1], self.e_c[2], self.canvas, "black")
-        self.eye_2 = self.draw_mommo(self.e_c[3], self.e_c[4], self.e_c[5], self.canvas, "black")
-        self.smile = self.draw_mommo_smile(self.s_c[0], self.s_c[1], self.s_c[2],
+        self.smile = self.draw_line(self.s_c[0], self.s_c[1], self.s_c[2],
+
         self.s_c[3], self.s_c[4], self.s_c[5], self.canvas)
 
     def _initialize(self):
@@ -110,15 +139,9 @@ class MommoView:
         self._pet_variable = None
         self._pet_label = None
         self._pet_message = None
-        self._jump_variable = None
-        self._jump_label = None
-        self._jump_message = None
-        self._squish_variable = None
-        self._squish_label = None
-        self._squish_message = None
-        self._play_dead_variable = None
-        self._play_dead_label = None
-        self._play_dead_message = None
+        self._trick_variable = None
+        self._trick_label = None
+        self._trick_message = None
         self.canvas = None
 
         self._draw_mommo_view = None
@@ -200,32 +223,21 @@ class MommoView:
         self._pet_variable, self._pet_label))
 
     def _handle_trick(self, trick):
-        if trick == 1:
-            text = mommo_service.do_trick(1)
+        if mommo_service.do_trick(trick):
+            if trick == 0:
+                 self._draw_mommo_view._draw_jump()
+            if trick == 1:
+                self._draw_mommo_view._draw_squish()
+            if trick == 2:
+                self._draw_mommo_view._draw_play_dead()
+        else:
+            text = "Mömmö harjoittelee..."
 
-            self._show_message(text, self._jump_message,
-            self._jump_variable, self._jump_label)
+            self._show_message(text, self._trick_message,
+            self._trick_variable, self._trick_label)
 
-            self._frame.after(2000, lambda: self._hide_message(self._jump_message,
-            self._jump_variable, self._jump_label))
-
-        if trick == 2:
-            text = mommo_service.do_trick(2)
-
-            self._show_message(text, self._squish_message,
-            self._squish_variable, self._squish_label)
-
-            self._frame.after(2000, lambda: self._hide_message(self._squish_message,
-            self._squish_variable, self._squish_label))
-
-        if trick == 3:
-            text = mommo_service.do_trick(3)
-
-            self._show_message(text, self._play_dead_message,
-            self._play_dead_variable, self._play_dead_label)
-
-            self._frame.after(2000, lambda: self._hide_message(self._play_dead_message,
-            self._play_dead_variable, self._play_dead_label))
+            self._frame.after(2000, lambda: self._hide_message(self._trick_message,
+            self._trick_variable, self._trick_label))
 
     def _initialize_mommo(self):
         """alustaa mömmön tiedot.
@@ -252,7 +264,6 @@ class MommoView:
             self._frame.after(1000, self._initialize_mommo)
             mommo_service.save_mommo()
 
-
     def _initialize_draw_mommo(self):
         if self._draw_mommo_view:
             self._draw_mommo_view.destroy()
@@ -276,9 +287,7 @@ class MommoView:
         if not mommo_service.visit_state:
             tricks_label = ttk.Label(master=self._frame, text="Temput")
 
-            self._jump_variable = StringVar(self._frame)
-            self._squish_variable = StringVar(self._frame)
-            self._play_dead_variable = StringVar(self._frame)
+            self._trick_variable = StringVar(self._frame)
 
         self._pet_variable = StringVar(self._frame)
 
@@ -309,44 +318,29 @@ class MommoView:
             tricks_button_1 = ttk.Button(
                 master=self._frame,
                 text="Hyppää",
-                command=lambda: self._handle_trick(1)
+                command=lambda: self._handle_trick(0)
             )
-
-            self._jump_label = ttk.Label(
-                master=self._frame,
-                textvariable=self._jump_variable,
-                foreground='green'
-            )
-
-            self._jump_label.grid(row=1, column=2)
 
             tricks_button_2 = ttk.Button(
                 master=self._frame,
                 text="Litisty",
-                command=lambda: self._handle_trick(2)
+                command=lambda: self._handle_trick(1)
             )
-
-            self._squish_label = ttk.Label(
-                master=self._frame,
-                textvariable=self._squish_variable,
-                foreground='green'
-            )
-
-            self._squish_label.grid(row=1, column=2)
 
             tricks_button_3 = ttk.Button(
                 master=self._frame,
                 text="Leiki koullutta",
-                command=lambda: self._handle_trick(3)
+                command=lambda: self._handle_trick(2)
             )
 
-            self._play_dead_label = ttk.Label(
+            self._trick_label = ttk.Label(
                 master=self._frame,
-                textvariable=self._play_dead_variable,
+                textvariable=self._trick_variable,
                 foreground='green'
             )
 
-            self._play_dead_label.grid(row=1, column=2)
+            self._trick_label.grid(row=1, column=2)
+
 
         if not mommo_service.visit_state or user_service.user.role == 1:
             feed_button = ttk.Button(
@@ -406,3 +400,5 @@ class MommoView:
             quit_visit_button.grid(row=7, column=0)
 
         pet_button.grid(row=2, column=3)
+
+

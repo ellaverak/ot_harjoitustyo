@@ -230,41 +230,15 @@ class MommoService():
 
         trick_list = self.mommo_repository.get_trick(mommo_id)
 
-        if trick == 1:
-            if trick_list[0] < 100:
-                if trick_list[0] + 25 > 100:
-                    trick_list[0] = 100
-                else:
-                    trick_list[0]+=25
+        if trick_list[trick] < 100:
+            if trick_list[trick] + 25 > 100:
+                trick_list[trick] = 100
+            else:
+                trick_list[trick]+=25
 
-                self.mommo_repository.save_trick(mommo_id, trick_list)
-                return "Mömmö harjoittelee..."
+            self.mommo_repository.save_trick(mommo_id, trick_list)
+            return False
 
-            return "Mömmö hyppäsi! :D"
-
-        if trick == 2:
-            if trick_list[1] < 100:
-                if trick_list[1] + 25 > 100:
-                    trick_list[1] = 100
-                else:
-                    trick_list[1]+=25
-
-                self.mommo_repository.save_trick(mommo_id, trick_list)
-                return "Mömmö harjoittelee..."
-
-            return "Mömmö litistyi! :P"
-
-        if trick == 3:
-            if trick_list[2] < 100:
-                if trick_list[2] + 25 > 100:
-                    trick_list[2] = 100
-                else:
-                    trick_list[2]+=25
-
-                self.mommo_repository.save_trick(mommo_id, trick_list)
-                return "Mömmö harjoittelee..."
-
-            return "Mömmö leikki kuollutta! X)"
-
+        return True
 
 mommo_service = MommoService()
