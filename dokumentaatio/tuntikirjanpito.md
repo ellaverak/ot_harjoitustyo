@@ -29,4 +29,5 @@
 | 4.5. | 2     | Tein toiminnon toisten mömmöjen luona vierailuun. |
 | 4.5. | 1     | Lisäsin mahdollisuuden rekisteröityä ylläpitäjänä ja lisäsin ylläpito-toimintoja. |
 | 6.5. | 2     | Lisäsin temput. |
-| yht. | 45       | |
+| 11.5. | 4     | Lisäsin mömmön perusanimaation mömmönäkymään. |
+| yht. | 49       | |
