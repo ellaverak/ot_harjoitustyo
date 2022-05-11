@@ -17,3 +17,4 @@
 - ylläpitäjät voivat hoitaa toisten mömmöjä
 - mömmölle voi nyt opettaa temppuja!
 - mömmö näkyy mömmönäkymässä
+- temppuanimaatiot lisätty
