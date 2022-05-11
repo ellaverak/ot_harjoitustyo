@@ -1,6 +1,94 @@
-from tkinter import ttk, constants, StringVar
-from services.mommo_service import MommoService, mommo_service
+from tkinter import ttk, constants, StringVar, Canvas
+from services.mommo_service import mommo_service
 from services.user_service import user_service
+
+class DrawMommoView:
+    def __init__(self, root):
+
+        self._root = root
+        self._frame = None
+        self.canvas = None
+        self.b_c = None
+        self.e_c = None
+        self.s_c = None
+        self.body = None
+        self.eye_1 = None
+        self.eye_2 = None
+        self.smile = None
+
+        self._initialize()
+
+    def pack(self):
+        """näyttää kaikki näkymän komponentit.
+        """
+
+        self._frame.pack(fill=constants.X)
+
+    def destroy(self):
+        """tuhoaa kaikki näkymän komponentit.
+        """
+
+        self._frame.destroy()
+
+    def _position_1(self):
+        self.b_c = [250, 90, 40]
+        self.e_c = [235, 85, 4, 255, 85, 4]
+        self.s_c = [235,100,245,110,255,100]
+
+        self._initialize_draw_mommo_position()
+        self._frame.after(1000, self._position_2)
+
+    def _position_2(self):
+        self.b_c = [300, 90, 40]
+        self.e_c = [300, 85, 4, 320, 85, 4]
+        self.s_c = [300,100,310,110,320,100]
+
+        self._initialize_draw_mommo_position()
+        self._frame.after(1000, self._position_1)
+
+    def _draw_jump(self):
+        self.b_c = [90, 60, 40]
+        self.e_c = [40, 55, 4, 60, 55, 4]
+        self.s_c = [40,70,50,80,60,70]
+
+        self._initialize_draw_mommo_position()
+
+    def draw_mommo(self, x, y, r, canvas, color=None):
+        x0 = x - r
+        y0 = y - r
+        x1 = x + r
+        y1 = y + r
+        return canvas.create_oval(x0, y0, x1, y1, fill=color)
+
+    def draw_mommo_smile(self, x1, y1, x2, y2, x3, y3, canvas):
+        return canvas.create_line(x1,y1,x2,y2,x3,y3, smooth=1)
+
+    def _initialize_draw_mommo_position(self):
+        if self.body:
+            self.canvas.delete(self.body)
+
+        if self.eye_1:
+            self.canvas.delete(self.eye_1)
+
+        if self.eye_2:
+            self.canvas.delete(self.eye_2)
+
+        if self.smile:
+            self.canvas.delete(self.smile)
+
+        self.body = self.draw_mommo(self.b_c[0], self.b_c[1], self.b_c[2], self.canvas)
+        self.eye_1 = self.draw_mommo(self.e_c[0], self.e_c[1], self.e_c[2], self.canvas, "black")
+        self.eye_2 = self.draw_mommo(self.e_c[3], self.e_c[4], self.e_c[5], self.canvas, "black")
+        self.smile = self.draw_mommo_smile(self.s_c[0], self.s_c[1], self.s_c[2],
+        self.s_c[3], self.s_c[4], self.s_c[5], self.canvas)
+
+    def _initialize(self):
+        self._frame = ttk.Frame(master=self._root)
+        self.canvas = Canvas(master=self._frame, bg=None, height=140, width=400)
+
+        self._position_1()
+
+        self.canvas.grid(row=0, column=0)
 
 
 class MommoView:
@@ -31,6 +119,9 @@ class MommoView:
         self._play_dead_variable = None
         self._play_dead_label = None
         self._play_dead_message = None
+        self.canvas = None
+
+        self._draw_mommo_view = None
 
         self._initialize()
 
@@ -62,11 +153,17 @@ class MommoView:
 
         mommo_service.logout_mommo()
         user_service.logout()
+        self._draw_mommo_view.destroy()
         self._main_view()
 
     def _quit_visit(self):
         mommo_service.visit_state = False
         mommo_service.logout_mommo()
+        self._draw_mommo_view.destroy()
+        self._all_mommos_view()
+
+    def _open_all_mommos_view(self):
+        self._draw_mommo_view.destroy()
         self._all_mommos_view()
 
     def _feed_mommo(self):
@@ -155,6 +252,14 @@ class MommoView:
             self._frame.after(1000, self._initialize_mommo)
             mommo_service.save_mommo()
 
+
+    def _initialize_draw_mommo(self):
+        if self._draw_mommo_view:
+            self._draw_mommo_view.destroy()
+
+        self._draw_mommo_view =DrawMommoView(self._root)
+        self._draw_mommo_view.pack()
+
     def _initialize(self):
         """alustaa näkymän.
         """
@@ -186,6 +291,7 @@ class MommoView:
         self._pet_label.grid(row=1, column=2)
 
         self._initialize_mommo()
+        self._initialize_draw_mommo()
 
         if not mommo_service.visit_state:
             quit_button = ttk.Button(
@@ -197,7 +303,7 @@ class MommoView:
             all_mommos_button = ttk.Button(
                 master=self._frame,
                 text="Mömmöystävät",
-                command=self._all_mommos_view
+                command=self._open_all_mommos_view
             )
 
             tricks_button_1 = ttk.Button(
