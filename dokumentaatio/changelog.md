@@ -18,3 +18,4 @@
 - mömmölle voi nyt opettaa temppuja!
 - mömmö näkyy mömmönäkymässä
 - temppuanimaatiot lisätty
+- silitysanimaatio lisätty
