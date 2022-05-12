@@ -13,6 +13,7 @@ class UI:
         Args:
             root (juuri): juurikomponentti.
         """
+
         self._root = root
         self._current_view = None
 
