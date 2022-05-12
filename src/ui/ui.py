@@ -14,7 +14,7 @@ class UI:
             root (juuri): juurikomponentti.
         """
 
-        self._root = root
+        self.root = root
         self._current_view = None
 
     def main_view(self):
@@ -23,31 +23,31 @@ class UI:
 
         self._show_main_view()
 
-    def _login_view(self):
+    def login_view(self):
         """avaa kirjautumisnäkymän.
         """
 
         self._show_login_view()
 
-    def _register_view(self):
+    def register_view(self):
         """avaa rekisteröitymisnäkymän.
         """
 
         self._show_register_view()
 
-    def _new_mommo_view(self):
+    def new_mommo_view(self):
         """avaa uusi mömmö -näkymän.
         """
 
         self._show_new_mommo_view()
 
-    def _mommo_view(self):
+    def mommo_view(self):
         """avaa mömmönäkymän.
         """
 
         self._show_mommo_view()
 
-    def _all_mommos_view(self):
+    def all_mommos_view(self):
         """avaa kaikki mömmöt -näkymän.
         """
 
@@ -60,9 +60,9 @@ class UI:
         self._hide_current_view()
 
         self._current_view = MainView(
-            self._root,
-            self._login_view,
-            self._register_view
+            self.root,
+            self.login_view,
+            self.register_view
         )
 
         self._current_view.pack()
@@ -74,9 +74,9 @@ class UI:
         self._hide_current_view()
 
         self._current_view = LoginView(
-            self._root,
+            self.root,
             self.main_view,
-            self._mommo_view
+            self.mommo_view
         )
 
         self._current_view.pack()
@@ -88,9 +88,9 @@ class UI:
         self._hide_current_view()
 
         self._current_view = RegisterView(
-            self._root,
+            self.root,
             self.main_view,
-            self._new_mommo_view
+            self.new_mommo_view
         )
 
         self._current_view.pack()
@@ -102,8 +102,8 @@ class UI:
         self._hide_current_view()
 
         self._current_view = NewMommoView(
-            self._root,
-            self._mommo_view
+            self.root,
+            self.mommo_view
         )
 
         self._current_view.pack()
@@ -115,9 +115,9 @@ class UI:
         self._hide_current_view()
 
         self._current_view = MommoView(
-            self._root,
+            self.root,
             self.main_view,
-            self._all_mommos_view
+            self.all_mommos_view
         )
 
         self._current_view.pack()
@@ -129,8 +129,8 @@ class UI:
         self._hide_current_view()
 
         self._current_view = AllMommosView(
-            self._root,
-            self._mommo_view
+            self.root,
+            self.mommo_view
         )
 
         self._current_view.pack()
