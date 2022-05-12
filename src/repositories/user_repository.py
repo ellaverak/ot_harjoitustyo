@@ -110,11 +110,11 @@ class UserRepository:
         result = cursor.fetchone()[0]
         return result
 
-    def get_role(self, username):
-        """hakee käyttäjän käyttäjäroolin tietokannasta käyttäjänimen perusteella.
+    def get_role(self, user_id):
+        """hakee käyttäjän käyttäjäroolin tietokannasta käyttäjän id-tunnuksen perusteella.
 
         Args:
-            username (str): käyttäjänimi
+            username (str): käyttäjänimi.
 
         Return:
             int: käyttäjärooli.
@@ -123,8 +123,8 @@ class UserRepository:
         cursor = self._db_.cursor()
 
         cursor.execute(
-            "SELECT role FROM users WHERE username = ?",
-            (username,)
+            "SELECT role FROM users WHERE id = ?",
+            (user_id,)
         )
 
         result = cursor.fetchone()[0]

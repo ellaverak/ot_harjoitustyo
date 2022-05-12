@@ -35,6 +35,7 @@ class UserService():
         """
 
         self.user = None
+        self.user_id = None
         self.visit_id = None
         self.user_repository = user_repository
 
@@ -96,6 +97,7 @@ class UserService():
             raise WrongPasswordError("Väärä salasana")
 
         self.user = user
+        self.user_id = self.user_repository.get_id(self.user.username)
 
         return user
 
@@ -104,16 +106,8 @@ class UserService():
         """
 
         self.user = None
-
-    def get_user_id(self):
-        """hakee nykyisen käyttäjän id-tunnuksen käyttäjänimen perusteella.
-
-        Returns:
-            int: nykyisen käyttäjän id-tunnus.
-        """
-
-        user_id = self.user_repository.get_id(self.user.username)
-        return user_id
+        self.user_id = None
+        self.visit_id = None
 
     def get_username(self, user_id):
         """hakee nykyisen käyttäjän käyttäjänimen id-tunnuksen perusteella.
@@ -129,23 +123,23 @@ class UserService():
         return user_name
 
     def get_role(self):
-        """hakee nykyisen käyttäjän käyttäjäroolin käyttäjänimen perusteella.
+        """hakee nykyisen käyttäjän käyttäjäroolin käyttäjän id-tunnuksen perusteella.
 
         Returns:
             int: nykyisen käyttäjän käyttäjärooli.
         """
 
-        role = self.user_repository.get_role(self.user.username)
+        role = self.user_repository.get_role(self.user_id)
         return role
 
-    def visit(self, user_id):
+    def visit(self, visit_id):
         """asettaa vierailtavan käyttäjän id-tunnuksen.
 
         Args:
             user_id (int): vierailtavan käyttäjän id-tunnus.
         """
 
-        self.visit_id = user_id
+        self.visit_id = visit_id
 
 
 user_service = UserService()

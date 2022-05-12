@@ -37,7 +37,7 @@ class DrawMommoView:
 
         self._frame.destroy()
 
-    def destroy_widgets(self):
+    def _destroy_widgets(self):
         """poistaa kaikki piirretyt muodot.
         """
 
@@ -175,7 +175,7 @@ class DrawMommoView:
             eye_color (str, vapaaehtoinen): silmien väri. Oletusarvoltaan "black".
         """
 
-        self.destroy_widgets()
+        self._destroy_widgets()
 
         if option == "squish":
             self._body = self._draw_oval(self._canvas)

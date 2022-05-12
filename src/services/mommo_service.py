@@ -24,6 +24,7 @@ class MommoService():
 
         self.visit_state = False
         self.mommo = None
+        self.mommo_id = None
         self.mommo_repository = mommo_repository
 
         self._hunger_thread = None
@@ -69,9 +70,7 @@ class MommoService():
             raise MommoNameLengthError(
                 "Mömmön nimen on oltava vähintään neljän merkin pituinen")
 
-        user_id = user_service.get_user_id()
-
-        mommo = self.mommo_repository.create(Mommo(user_id, name))
+        mommo = self.mommo_repository.create(Mommo(user_service.user_id, name))
         self.mommo = mommo
 
         return mommo
@@ -90,12 +89,13 @@ class MommoService():
         """
 
         if not self.visit_state:
-            user_id = user_service.get_user_id()
+            user_id = user_service.user_id
         else:
             user_id = visit_user_id
 
         mommo = self.mommo_repository.get(user_id)
         self.mommo = mommo
+        self.mommo_id = self.mommo_repository.get_id(user_service.user_id)
 
         return mommo
 
@@ -119,8 +119,7 @@ class MommoService():
             lista: kaikki mömmöt listana [user_id, mommo, username].
         """
 
-        user_id = user_service.get_user_id()
-        result = self.mommo_repository.get_all(user_id)
+        result = self.mommo_repository.get_all(user_service.user_id)
         all_mommos = []
 
         for mommo in result:
@@ -131,16 +130,6 @@ class MommoService():
 
         return all_mommos
 
-    def get_mommo_id(self):
-        """hakee mömmön id-tunnuksen.
-
-        Returns:
-            int: mömmön id-tunnus.
-        """
-
-        mommo_id = self.mommo_repository.get_id(user_service.get_user_id())
-        return mommo_id
-
     def _decrease_hunger_stat(self):
         """laskee nälkäisyystilastoa.
         """
@@ -149,8 +138,8 @@ class MommoService():
             if "pytest" not in sys.modules:
                 sleep(120)
             if self.mommo and self.mommo.hunger > 0:
-                if self.mommo.hunger - 10 > 0:
-                    self.mommo.hunger = self.mommo.hunger - 10
+                if self.mommo.hunger - 20 > 0:
+                    self.mommo.hunger = self.mommo.hunger - 20
                 else:
                     self.mommo.hunger = 0
 
@@ -198,7 +187,7 @@ class MommoService():
                 self.mommo.happiness = 100
 
     def feed_mommo(self):
-        """vähentää mömmön nälkäisyyttä 20 yksikköä.
+        """nostaa nälkäisyystilastoa 20 yksikköä.
         """
 
         if self.mommo.hunger + 20 <= 100:
@@ -210,7 +199,7 @@ class MommoService():
         self.save_mommo()
 
     def water_mommo(self):
-        """vähentää mömmön janoisuutta 30 yksikköä.
+        """nostaa janoisuustilastoa 30 yksikköä.
         """
 
         if self.mommo.thirst + 30 <= 100:
@@ -222,7 +211,7 @@ class MommoService():
         self.save_mommo()
 
     def clean_mommo(self):
-        """lisää mömmön puhtautta 40 yksikköä.
+        """nostaa puhtaustilastoa 40 yksikköä.
         """
 
         if self.mommo.clenliness + 40 <= 100:
@@ -242,9 +231,8 @@ class MommoService():
         Returns:
             totuusarvo: True=temppu suoritetaan, False=temppua ei suoriteta.
         """
-        mommo_id = self.get_mommo_id()
 
-        trick_list = self.mommo_repository.get_trick(mommo_id)
+        trick_list = self.mommo_repository.get_trick(self.mommo_id)
 
         if trick_list[trick] < 100:
             if trick_list[trick] + 25 > 100:
@@ -252,7 +240,7 @@ class MommoService():
             else:
                 trick_list[trick] += 25
 
-            self.mommo_repository.save_trick(mommo_id, trick_list)
+            self.mommo_repository.save_trick(self.mommo_id, trick_list)
             return False
 
         return True

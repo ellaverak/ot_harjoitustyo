@@ -63,16 +63,9 @@ class TestUserService(unittest.TestCase):
         with self.assertRaises(WrongPasswordError):
             self.user_service.login(user_service.user.username, "pass")
 
-    def test_get_user_id(self):
-        user = User("login_test", "login_test", 1)
-        self.user_service.create_user(user.username, user.password, user.role)
-
-        self.assertEqual(self.user_service.get_user_id(),
-                         user_repository.get_id(user_service.user.username))
-
     def test_get_username(self):
         self.user_service.create_user("test", "test", 0)
-        username = self.user_service.get_username(self.user_service.get_user_id())
+        username = self.user_service.get_username(self.user_service.user_id)
 
         self.assertEqual(username, "test")
 
