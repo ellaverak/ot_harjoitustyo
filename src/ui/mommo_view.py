@@ -130,6 +130,7 @@ class DrawMommoView:
         Returns:
             Canvas widget: ovaali.
         """
+
         x0 = x - r
         y0 = y - r
         x1 = x + r
@@ -151,6 +152,7 @@ class DrawMommoView:
         Returns:
             Canvas widget: viiva.
         """
+
         return canvas.create_line(x1, y1, x2, y2, x3, y3, smooth=1)
 
     def _draw_oval(self, canvas):
@@ -162,6 +164,7 @@ class DrawMommoView:
         Returns:
             Canvas widget: ovaali
         """
+
         return canvas.create_oval(200, 90, 300, 130)
 
     def _initialize_mommo_position(self, option=None, eye_color="black"):
@@ -213,6 +216,7 @@ class MommoView:
             main_view (funktio): funktio, joka avaa päänäkymän
             all_mommos_view (funktio): funktio, joka avaa kaikki mömmöt -näkymän.
         """
+
         if not mommo_service.visit_state:
             mommo_service.login_mommo()
 
@@ -276,7 +280,8 @@ class MommoView:
         self._main_view()
 
     def _quit_visit(self):
-        """lopettaa vierailutilan, kirjaa mömmön ulos, tuhoaa mömmöanimaationäkymän ja avaa kaikki mömmöt-näkymän.
+        """lopettaa vierailutilan, kirjaa mömmön ulos,
+           tuhoaa mömmöanimaationäkymän ja avaa kaikki mömmöt-näkymän.
         """
 
         mommo_service.visit_state = False
@@ -324,6 +329,7 @@ class MommoView:
         Args:
             trick (int): tempun tunnusnumero.
         """
+
         if mommo_service.do_trick(trick):
             if trick == 0:
                 self._draw_mommo_view.draw_jump()

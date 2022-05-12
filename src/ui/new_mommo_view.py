@@ -74,7 +74,7 @@ class NewMommoView:
         self._name_entry.grid(row=3, column=0)
 
     def _initialize(self):
-        """alustaa näkymän
+        """alustaa näkymän.
         """
 
         self._frame = ttk.Frame(master=self._root)
