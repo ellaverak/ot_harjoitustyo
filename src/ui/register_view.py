@@ -99,6 +99,9 @@ class RegisterView:
         self._password_entry.grid(row=4, column=0)
 
     def _initialize_admin_checkbox(self):
+        """alustaa ylläpitäjävalinnan.
+        """
+
         role_label = ttk.Label(master=self._frame, text="Rooli")
 
         self._checkvar = IntVar()

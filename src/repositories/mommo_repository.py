@@ -127,6 +127,14 @@ class MommoRepository:
         self.db_.commit()
 
     def get_trick(self, mommo_id):
+        """hakee mömmän temput tietokannasta.
+
+        Args:
+            mommo_id (int): mömmön id-tunnus.
+
+        Returns:
+            lista: temput listana.
+        """
         cursor = self.db_.cursor()
 
         cursor.execute(
@@ -139,6 +147,15 @@ class MommoRepository:
         return list(result)
 
     def get_id(self, user_id):
+        """hakee mömmön id-tunnuksen tietokannasta käyttäjän id-tunnuksen perusteella.
+
+        Args:
+            user_id (int): käyttäjän id-tunnus.
+
+        Returns:
+            int: mömmön id-tunnus.
+        """
+
         cursor = self.db_.cursor()
 
         cursor.execute(
@@ -150,6 +167,12 @@ class MommoRepository:
         return result
 
     def save_trick(self, mommo_id, trick_list):
+        """tallentaa temput tietokantaan.
+
+        Args:
+            mommo_id (int): mömmön id-tunnus.
+            trick_list (lista): temput listana.
+        """
 
         cursor = self.db_.cursor()
 

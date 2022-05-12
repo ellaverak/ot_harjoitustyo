@@ -5,6 +5,11 @@ from services.user_service import user_service
 
 class DrawMommoView:
     def __init__(self, root):
+        """luokan konstruktori, joka luo uuden mömmöanimaationäkymän.
+
+        Args:
+            root (juuri): juurikomponentti.
+        """
 
         self._root = root
         self._frame = None
@@ -33,6 +38,9 @@ class DrawMommoView:
         self._frame.destroy()
 
     def destroy_widgets(self):
+        """poistaa kaikki piirretyt muodot.
+        """
+
         if self._body:
             self._canvas.delete(self._body)
 
@@ -49,12 +57,18 @@ class DrawMommoView:
             self._canvas.delete(self._pet_heart)
 
     def draw_squish(self):
+        """asettaa "litisty" koordinaatit ja kutsuu funktiota, joka alustaa mömmön paikan.
+        """
+
         self._e_c = [240, 100, 4, 260, 100, 4]
         self._s_c = [240, 110, 250, 120, 260, 110]
 
         self._initialize_mommo_position("squish")
 
     def draw_jump(self):
+        """asettaa "hyppää" koordinaatit ja kutsuu funktiota, joka alustaa mömmön paikan.
+        """
+
         self._b_c = [250, 60, 40]
         self._e_c = [240, 40, 4, 260, 40, 4]
         self._s_c = [240, 55, 250, 65, 260, 55]
@@ -62,6 +76,9 @@ class DrawMommoView:
         self._initialize_mommo_position()
 
     def draw_play_dead(self):
+        """asettaa "leiki koullutta" koordinaatit ja kutsuu funktiota, joka alustaa mömmön paikan.
+        """
+
         self._b_c = [250, 90, 40]
         self._e_c = [240, 85, 4, 260, 85, 4]
         self._s_c = [240, 105, 250, 95, 260, 105]
@@ -69,6 +86,9 @@ class DrawMommoView:
         self._initialize_mommo_position("play_dead", None)
 
     def draw_pet(self):
+        """asettaa "silitä" koordinaatit ja kutsuu funktiota, joka alustaa mömmön paikan.
+        """
+
         self._b_c = [250, 90, 40]
         self._e_c = [240, 85, 4, 260, 85, 4]
         self._s_c = [240, 100, 250, 120, 260, 100]
@@ -76,6 +96,9 @@ class DrawMommoView:
         self._initialize_mommo_position("pet")
 
     def _draw_position_1(self):
+        """asettaa 1. asennon koordinaatit ja kutsuu funktiota, joka alustaa mömmön paikan.
+        """
+
         self._b_c = [250, 90, 40]
         self._e_c = [235, 85, 4, 255, 85, 4]
         self._s_c = [235, 100, 245, 110, 255, 100]
@@ -84,6 +107,9 @@ class DrawMommoView:
         self._frame.after(1000, self._draw_position_2)
 
     def _draw_position_2(self):
+        """asettaa 2. asennon koordinaatit ja kutsuu funktiota, joka alustaa mömmön paikan.
+        """
+
         self._b_c = [300, 90, 40]
         self._e_c = [300, 85, 4, 320, 85, 4]
         self._s_c = [300, 100, 310, 110, 320, 100]
@@ -92,6 +118,18 @@ class DrawMommoView:
         self._frame.after(1000, self._draw_position_1)
 
     def _draw_circle(self, x, y, r, canvas, color=None):
+        """piirtää ympyrän.
+
+        Args:
+            x (int): keskipisteen x-koordinaatti.
+            y (int): keskipisteen y-koordinaatti.
+            r (int): säteen pituus.
+            canvas (Canvas): piirtopohja.
+            color (str, vapaaehtoinen): ympyrän täyttöväri. Oletusarvoltaan None.
+
+        Returns:
+            Canvas widget: ovaali.
+        """
         x0 = x - r
         y0 = y - r
         x1 = x + r
@@ -99,12 +137,41 @@ class DrawMommoView:
         return canvas.create_oval(x0, y0, x1, y1, fill=color)
 
     def _draw_line(self, x1, y1, x2, y2, x3, y3, canvas):
+        """piirtää viivan.
+
+        Args:
+            x1 (int): lähtöpisteen x-koordinaatti.
+            y1 (int): lähtöpisteen y-koordinaatti.
+            x2 (int): vetopisteen x-koordinaatti.
+            y2 (int): vetopisteen y-koorditaatti.
+            x3 (int): kohdepisteen x-koordinaatti.
+            y3 (int): kohdepisteen y-koordinaatti.
+            canvas (Canvas): piirtopohja.
+
+        Returns:
+            Canvas widget: viiva.
+        """
         return canvas.create_line(x1, y1, x2, y2, x3, y3, smooth=1)
 
     def _draw_oval(self, canvas):
+        """piirtää ovaalin.
+
+        Args:
+            canvas (Canvas): _description_
+
+        Returns:
+            Canvas widget: ovaali
+        """
         return canvas.create_oval(200, 90, 300, 130)
 
     def _initialize_mommo_position(self, option=None, eye_color="black"):
+        """alustaa mömmön paikan.
+
+        Args:
+            option (str, vapaaehtoinen): piirtovalinta.. Oletusarvoltaan None.
+            eye_color (str, vapaaehtoinen): silmien väri. Oletusarvoltaan "black".
+        """
+
         self.destroy_widgets()
 
         if option == "squish":
@@ -125,6 +192,9 @@ class DrawMommoView:
                                       self._s_c[3], self._s_c[4], self._s_c[5], self._canvas)
 
     def _initialize(self):
+        """alustaa piirtopohjan.
+        """
+
         self._frame = ttk.Frame(master=self._root)
         self._canvas = Canvas(master=self._frame, bg=None,
                               height=140, width=400)
@@ -170,17 +240,34 @@ class MommoView:
         self._frame.destroy()
 
     def _show_message(self, text, message, variable, label):
+        """näyttää viestin.
+
+        Args:
+            text (str): teksti.
+            message (_type_): _description_
+            variable (_type_): _description_
+            label (_type_): _description_
+        """
+
         message = text
         variable.set(message)
         label.grid()
 
     def _hide_message(self, message, variable, label):
+        """piilottaa viestin.
+
+        Args:
+            message (_type_): _description_
+            variable (_type_): _description_
+            label (_type_): _description_
+        """
+
         message = ""
         variable.set(message)
         label.grid()
 
     def _quit(self):
-        """kirjaa kaiken ulos ja avaa päänäkymän.
+        """kirjaa kaiken ulos, tuhoaa mömmöanimaationäkymän ja avaa päänäkymän.
         """
 
         mommo_service.logout_mommo()
@@ -189,12 +276,18 @@ class MommoView:
         self._main_view()
 
     def _quit_visit(self):
+        """lopettaa vierailutilan, kirjaa mömmön ulos, tuhoaa mömmöanimaationäkymän ja avaa kaikki mömmöt-näkymän.
+        """
+
         mommo_service.visit_state = False
         mommo_service.logout_mommo()
         self._draw_mommo_view.destroy()
         self._all_mommos_view()
 
     def _open_all_mommos_view(self):
+        """avaa kaikki mömmöt -näkymän.
+        """
+
         self._draw_mommo_view.destroy()
         self._all_mommos_view()
 
@@ -226,6 +319,11 @@ class MommoView:
         self._draw_mommo_view.draw_pet()
 
     def _handle_trick(self, trick):
+        """käynnistää tempun.
+
+        Args:
+            trick (int): tempun tunnusnumero.
+        """
         if mommo_service.do_trick(trick):
             if trick == 0:
                 self._draw_mommo_view.draw_jump()
@@ -268,6 +366,9 @@ class MommoView:
             mommo_service.save_mommo()
 
     def _initialize_draw_mommo(self):
+        """alustaa mömmöanimaationäkymän.
+        """
+
         if self._draw_mommo_view:
             self._draw_mommo_view.destroy()
 
@@ -275,6 +376,9 @@ class MommoView:
         self._draw_mommo_view.pack()
 
     def _initialize_base_state(self):
+        """alustaa näkymän perustilan.
+        """
+
         tricks_label = ttk.Label(master=self._frame, text="Temput")
 
         self._trick_variable = StringVar(self._frame)
@@ -324,6 +428,9 @@ class MommoView:
         trick_button_3.grid(row=4, column=4)
 
     def _initialize_extended_state(self):
+        """alustaa näkymän jatkotilan.
+        """
+
         feed_button = ttk.Button(
             master=self._frame,
             text="Ruoki",
@@ -347,6 +454,9 @@ class MommoView:
         clean_button.grid(row=4, column=2)
 
     def _initialize_visit_state(self):
+        """alustaa näkymän vierailutilan.
+        """
+
         quit_visit_button = ttk.Button(
             master=self._frame,
             text="Takaisin",

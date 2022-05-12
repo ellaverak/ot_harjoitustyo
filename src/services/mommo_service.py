@@ -107,6 +107,9 @@ class MommoService():
         self.mommo = None
 
     def save_mommo(self):
+        """tallentaa mömmön.
+        """
+
         self.mommo_repository.save_mommo(self.mommo)
 
     def get_all_mommos(self):
@@ -129,12 +132,17 @@ class MommoService():
         return all_mommos
 
     def get_mommo_id(self):
+        """hakee mömmön id-tunnuksen.
+
+        Returns:
+            int: mömmön id-tunnus.
+        """
 
         mommo_id = self.mommo_repository.get_id(user_service.get_user_id())
         return mommo_id
 
     def _decrease_hunger_stat(self):
-        """lisää mömmön nälkäisyyttä.
+        """laskee nälkäisyystilastoa.
         """
 
         while True:
@@ -149,7 +157,7 @@ class MommoService():
                 self._calculate_happiness_stat()
 
     def _decrease_thirst_stat(self):
-        """lisää mömmön janoisuutta.
+        """laskee janoisuustilastoa.
         """
 
         while True:
@@ -163,7 +171,7 @@ class MommoService():
                 self._calculate_happiness_stat()
 
     def _decrease_clenliness_stat(self):
-        """vähentää mömmön puhtautta.
+        """laskee puhtaustilastoa.
         """
 
         while True:
@@ -177,7 +185,7 @@ class MommoService():
                 self._calculate_happiness_stat()
 
     def _calculate_happiness_stat(self):
-        """vähentää mömmön onnellisuutta.
+        """laskee onnelisuustilaston arvon.
         """
 
         if self.mommo and self.mommo.happiness > 0:
@@ -226,6 +234,14 @@ class MommoService():
         self.save_mommo()
 
     def do_trick(self, trick):
+        """suorittaa tempun, jos mömmö osaa sen.
+
+        Args:
+            trick (int): tempun tunnusnumero.
+
+        Returns:
+            totuusarvo: True=temppu suoritetaan, False=temppua ei suoriteta.
+        """
         mommo_id = self.get_mommo_id()
 
         trick_list = self.mommo_repository.get_trick(mommo_id)

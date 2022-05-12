@@ -2,6 +2,9 @@ from db_connection import get_db
 
 
 def drop_tables(db_):
+    """poistaa kaikki taulut tietokannasta,
+    """
+
     cursor = db_.cursor()
 
     cursor.execute("""
@@ -20,6 +23,9 @@ def drop_tables(db_):
 
 
 def create_tables(db_):
+    """luo taulut tietokantaan.
+    """
+
     cursor = db_.cursor()
 
     cursor.execute("""
@@ -57,6 +63,9 @@ def create_tables(db_):
 
 
 def initialize_database():
+    """hakee tietokantayhteyden ja kutsuu tietokannanrakennus-funktioita.
+    """
+
     db_ = get_db()
 
     drop_tables(db_)

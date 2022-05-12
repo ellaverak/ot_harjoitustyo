@@ -5,4 +5,10 @@ db_ = sqlite3.connect(DATABASE_FILE_PATH)
 
 
 def get_db():
+    """luo tietokantayhteyden.
+
+    Returns:
+        yhteys: tietokantayhteys.
+    """
+
     return db_

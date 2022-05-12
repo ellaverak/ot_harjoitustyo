@@ -33,6 +33,12 @@ class AllMommosView:
         self._frame.destroy()
 
     def _handle_visit(self, visit_user_id):
+        """asettaa vierailutilan ja siirtää näkymän mömmönäkymään.
+
+        Args:
+            visit_user_id (int): vierailtavan käyttäjän id-tunnus.
+        """
+
         mommo_service.visit_state = True
         mommo_service.login_mommo(visit_user_id)
         self._mommo_view()

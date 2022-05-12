@@ -3,6 +3,9 @@ from ui.ui import UI
 
 
 def main():
+    """käynnistää ohjelman.
+    """
+
     window = Tk()
     window.title('Mömmöystävä')
 
