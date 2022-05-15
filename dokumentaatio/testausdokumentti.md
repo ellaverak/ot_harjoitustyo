@@ -23,6 +23,16 @@ sillä niiden testaaminen on tässä projektissa epäoleellista ja liaan haastee
 
 ### Testauskattavuus
 
+Testausta kattavuuden tarkastelu:
+1. Luo testikattavuus raportti komennolla:
+```bash
+poetry run invoke coverage
+```
+2. Katsele raporttia komennolla:
+```bash
+poetry run coverage report -m
+```
+
 Testien ulkopuolelle jää käyttöliittymä ja sovelluksen käynnistävä moduuli. Lopullinen haarautumakattavuus
 on 83%
 
