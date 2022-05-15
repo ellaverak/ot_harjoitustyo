@@ -96,8 +96,8 @@ sequenceDiagram
   UI->>MommoService: do_trick(trick)
   MommoService->>MommoRepository: do_trick(trick)
   MommoRepository-->>MommoService: trick_list
-  MommoService-->>UI: False
   MommoService-->>MommoRepository: save_trick(mommo_id, trick_list)
+  MommoService-->>UI: False
   UI->UI: _show_message()
   MommoService-->>UI: True
   UI->DrawMommo: draw_jump()
