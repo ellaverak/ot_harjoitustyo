@@ -88,12 +88,12 @@ Luokka vastaa käyttäjätoiminnallisuudesta.
 **Funktioesimerkkejä**
 
 ```bash
-create user(username, password, role)
+create user() Args: username, password, role
 ```
 - luo uuden käyttäjän ja kirjaa sen sisään.
 
 ```bash
-login(username, password)
+login() Args: username, password
 ```
 - kirjaa käyttäjän sisään.
 ```bash
@@ -101,7 +101,7 @@ logout()
 ```
 - kirjaa käyttäjän ulos.
 ```bash
-visit(self, visit_id)
+visit() Args: visit_id
 ```
 - asettaa vierailtavan käyttäjän id-tunnuksen.
 
@@ -118,11 +118,11 @@ start()
 - käynnistää säikeet
 
 ```bash
-create_mommo(name)
+create_mommo() Args: name
 ```
 - luo uuden mömmön
 ```bash
-login_mommo(visit_user_id)
+login_mommo() Args: visit_user_id
 ```
 - kirjaa mömmön sisään
 ```bash
