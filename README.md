@@ -62,7 +62,7 @@ poetry run invoke coverage-report
 ```
 3. Katsele testikattavuusraportti komennolla
 ```bash
-poetry run coverage
+poetry run invoke coverage
 ```
 ```bash
 poetry run coverage report -m
