@@ -9,7 +9,7 @@ Tietokannat pitävät kirjaa käyttäjistä sekä käyttäjien lemmikeistä ja n
 - tavallinen käyttäjä **tehty**
 - ylläpitäjä **tehty**
 
-## Toiminnot:
+## Toiminnot
 - luo käyttäjä **tehty**
 - kirjaudu sisään ja ulos **tehty**
 - nimeä oma lemmikki **tehty**
@@ -24,7 +24,7 @@ Tietokannat pitävät kirjaa käyttäjistä sekä käyttäjien lemmikeistä ja n
 Lisäksi ylläpitäjä voi:
 - hoitaa muiden lemmikkejä **tehty**
 
-## Mahdolliset lisätoiminnot:
+## Mahdolliset lisätoiminnot
 - rahasysteemi
 - asuja lemmikille
 - erinäköisiä lemmikkejä
