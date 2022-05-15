@@ -21,7 +21,7 @@ Luokka `TestMommoService`, moduulissa `mommo_service_test.py`, testaa `MommoServ
 sovelluksen mömmötoiminnoista. Luokkaa testataan mahdollisimman laajasti, mutta säikeet jätetään testaamatta,
 sillä niiden testaaminen on tässä projektissa epäoleellista ja liaan haasteellista. Löydetyt virhetilanteet on jälleen kartoitettu ja niille on asetettu virheviestit. `MommoRepository` ja `Mommo` luokka tulevat näiden testejen kautta myös laajasti testatuksi. Testikattavuus on 64%.
 
-### Testauskattavuus
+## Testauskattavuus
 
 Testausta kattavuuden tarkastelu:
 1. Luo testikattavuus raportti komennolla:
