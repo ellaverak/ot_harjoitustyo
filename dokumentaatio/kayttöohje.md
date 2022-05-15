@@ -13,12 +13,13 @@ Mömmöystävä näyttäytyy mömmönäkymässä. Mömmönäkymässä voi seurat
 Nälkäisyys, Janoisuus, Puhtaus, Onnellisuus. Nämä laskevat ajan kuluessa.
 
 Mömmön kanssa voi lisäksi puuhailla. Sitä voi syöttää, juottaa, puhdistaa ja silittää.
-Piakkoin mömmölle voi opettaa myös temppuja ja itse mömmön voi toivottovasti pian nähdä tässä näkymässä.
+Pienen harjoittelun jälkeen mömmö oppii myös temppuja. Saatavilla olevat temput ovat: hyppää,
+litisty ja leiki kouollutta.
 
 ## Muut mömmöt
 
 Mömmönäkymästä on mahdollisuus siirtyä selaamaan muita mömmöystäviä. Niitä voi lisäksi katsella niiden
-omassa näkymässä. (Tämä toiminnallisuus ei vielä ole valmis.) Kuka tahansa pelaaja voi silittää mömmöä,
+omassa näkymässä. Kuka tahansa pelaaja voi silittää mömmöä,
 jonka luona vierailee ja tehdä sen kanssa temppuja, joita se osaa, mutta vain ylläpitäjä voi
 hoitaa muiden mömmöjä.
 
