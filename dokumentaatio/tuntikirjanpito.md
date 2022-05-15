@@ -1,4 +1,4 @@
-# Tuntikirja
+# Tuntikirjanpito
 
 | päivä | aika (h) | mitä tein  |
 | :----:|    :-----| :-----|
