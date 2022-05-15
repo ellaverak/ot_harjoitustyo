@@ -88,7 +88,7 @@ Luokka vastaa käyttäjätoiminnallisuudesta.
 **Funktioesimerkkejä**
 
 ```bash
-create user() Args: username, password, role
+create_user() Args: username, password, role
 ```
 - luo uuden käyttäjän ja kirjaa sen sisään.
 
