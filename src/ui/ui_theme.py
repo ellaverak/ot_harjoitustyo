@@ -33,7 +33,7 @@ class UiTheme:
 
         self._style.configure("TCheckbutton", background="#d9ead3", font=("Algerian", 15))
 
-        self._style.configure("Mommo.TButton", font=("Algerian", 13), background="#f9cba8")
+        self._style.configure("Mommo.TButton", font=("Algerian", 13), background="#eed2b4")
 
         self._style.configure("Mommo.TLabel", font=("Algerian", 13), background="#d9ead3")
 

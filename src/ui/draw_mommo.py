@@ -156,7 +156,7 @@ class DrawMommo:
 
         return canvas.create_line(x1, y1, x2, y2, x3, y3, smooth=1)
 
-    def _draw_oval(self, canvas):
+    def _draw_oval(self, canvas, color=None):
         """piirtää ovaalin.
 
         Args:
@@ -166,7 +166,7 @@ class DrawMommo:
             Canvas widget: ovaali
         """
 
-        return canvas.create_oval(200, 90, 300, 130)
+        return canvas.create_oval(200, 90, 300, 130, fill=color)
 
     def _initialize_mommo_position(self, option=None, eye_color="black"):
         """alustaa mömmön paikan.
@@ -179,10 +179,10 @@ class DrawMommo:
         self._destroy_widgets()
 
         if option == "squish":
-            self._body = self._draw_oval(self._canvas)
+            self._body = self._draw_oval(self._canvas, "#efffe9")
         else:
             self._body = self._draw_circle(
-                self._b_c[0], self._b_c[1], self._b_c[2], self._canvas)
+                self._b_c[0], self._b_c[1], self._b_c[2], self._canvas, "#efffe9")
 
         if option == "pet":
             self._pet_heart = self._canvas.create_text(
