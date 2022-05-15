@@ -1,4 +1,4 @@
-from tkinter import Frame, ttk, constants, StringVar
+from tkinter import ttk, constants, StringVar
 from services.user_service import user_service, WrongPasswordError, UserNonexistingError
 
 
@@ -72,36 +72,36 @@ class LoginView:
         """
 
         username_label = ttk.Label(
-            master=self._frame, text='Anna käyttäjätunnus')
+            master=self._frame, text='Anna käyttäjätunnus', style="TLabel", font=("Algerian", 15))
 
-        self._username_entry = ttk.Entry(master=self._frame)
+        self._username_entry = ttk.Entry(master=self._frame, font=("Algerian",15))
 
-        username_label.grid(row=1, column=0)
+        username_label.grid(row=1, column=0, pady=5)
         self._username_entry.grid(row=2, column=0)
 
     def _initialize_password_field(self):
         """alustaa salasanakentän.
         """
 
-        password_label = ttk.Label(master=self._frame, text='Anna salasana')
+        password_label = ttk.Label(master=self._frame, text='Anna salasana', style="TLabel", font=("Algerian", 15))
 
-        self._password_entry = ttk.Entry(master=self._frame)
-
-        password_label.grid(row=3, column=0)
+        self._password_entry = ttk.Entry(master=self._frame, font=("Algerian",15))
+        password_label.grid(row=3, column=0, pady=5)
         self._password_entry.grid(row=4, column=0)
 
     def _initialize(self):
         """alustaa näkymän.
         """
 
-        self._frame = ttk.Frame(master=self._root)
-        login_label = ttk.Label(master=self._frame, text="Kirjaudu sisään")
+        self._frame = ttk.Frame(master=self._root, style="TFrame")
+        login_label = ttk.Label(master=self._frame, text="Kirjaudu sisään", font=("Algerian", 20))
         self._error_variable = StringVar(self._frame)
 
         self._error_label = ttk.Label(
             master=self._frame,
             textvariable=self._error_variable,
-            foreground='blue'
+            foreground='#cc0000',
+            font=("Algerian", 15)
         )
 
         self._error_label.grid(row=7, column=0)
@@ -112,15 +112,21 @@ class LoginView:
         main_button = ttk.Button(
             master=self._frame,
             text="Takaisin päävalikkoon",
+            style="Back.TButton",
             command=self._main_view
         )
 
         accept_button = ttk.Button(
             master=self._frame,
             text="Hyväksy",
+            style="Login.TButton",
             command=self._login_user
         )
 
-        login_label.grid(row=0, column=0)
-        main_button.grid(row=6, column=0)
-        accept_button.grid(row=5, column=0)
+        accept_button.config(width=10)
+
+        login_label.grid(row=0, column=0, padx=197, pady=20)
+        main_button.grid(row=6, column=0, pady=20)
+        accept_button.grid(row=5, column=0, pady=10)
+
+        self._root.grid_columnconfigure(0, weight=2, minsize=400)

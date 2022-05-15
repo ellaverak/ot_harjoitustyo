@@ -4,6 +4,7 @@ from ui.register_view import RegisterView
 from ui.new_mommo_view import NewMommoView
 from ui.mommo_view import MommoView
 from ui.all_mommos_view import AllMommosView
+from ui.ui_theme import UiTheme
 
 
 class UI:
@@ -16,6 +17,8 @@ class UI:
 
         self.root = root
         self._current_view = None
+
+        UiTheme(self.root)
 
     def main_view(self):
         """avaa päänäkymän.

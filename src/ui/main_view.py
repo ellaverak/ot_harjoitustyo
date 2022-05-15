@@ -1,6 +1,5 @@
 from tkinter import ttk, constants
 
-
 class MainView:
     def __init__(self, root, login_view, register_view):
         """luokan konstruktori, joka luo uuden päänäkymän.
@@ -34,21 +33,23 @@ class MainView:
         """alustaa näkymän.
         """
 
-        self._frame = ttk.Frame(master=self._root)
-        main_title = ttk.Label(master=self._frame, text="Mömmöystävä")
+        self._frame = ttk.Frame(master=self._root, style="TFrame")
+        main_title = ttk.Label(master=self._frame, text="Mömmöystävä", style="TLabel", font=("Algerian", 30))
 
         login_button = ttk.Button(
             master=self._frame,
             text="Kirjaudu sisään",
+            style="Main.TButton",
             command=self._login_view
         )
 
         register_button = ttk.Button(
             master=self._frame,
             text="Luo käyttäjä",
+            style="Main.TButton",
             command=self._register_view
         )
 
-        main_title.grid(row=0, column=0)
-        login_button.grid(row=1, column=0)
-        register_button.grid(row=2, column=0)
+        main_title.grid(row=0, column=0, sticky=(constants.E, constants.W), padx=150, pady=50)
+        login_button.grid(row=1, column=0, pady=10)
+        register_button.grid(row=2, column=0, pady=10)

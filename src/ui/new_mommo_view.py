@@ -66,20 +66,20 @@ class NewMommoView:
         """alustaa nimikentän.
         """
 
-        name_label = ttk.Label(master=self._frame, text='Anna mömmöllesi nimi')
+        name_label = ttk.Label(master=self._frame, text='Anna mömmöllesi nimi', font=("Algerian",15))
 
-        self._name_entry = ttk.Entry(master=self._frame)
+        self._name_entry = ttk.Entry(master=self._frame, font=("Algerian",15))
 
-        name_label.grid(row=2, column=0)
+        name_label.grid(row=2, column=0, pady=5)
         self._name_entry.grid(row=3, column=0)
 
     def _initialize(self):
         """alustaa näkymän.
         """
 
-        self._frame = ttk.Frame(master=self._root)
+        self._frame = ttk.Frame(master=self._root, style="TFrame")
         new_mommo_label = ttk.Label(
-            master=self._frame, text="Uusi mömmöystävä")
+            master=self._frame, text="Uusi mömmöystävä", style="TLabel", font=("Algerian", 20))
         self._error_variable = StringVar(self._frame)
 
         self._error_label = ttk.Label(
@@ -95,8 +95,11 @@ class NewMommoView:
         accept_button = ttk.Button(
             master=self._frame,
             text="Hyväksy",
-            command=self._create_new_mommo
+            command=self._create_new_mommo,
+            style="Login.TButton"
         )
 
-        new_mommo_label.grid(row=0, column=0)
-        accept_button.grid(row=4, column=0)
+        accept_button.config(width=10)
+
+        new_mommo_label.grid(row=0, column=0, padx=170, pady=20)
+        accept_button.grid(row=4, column=0, pady=10)

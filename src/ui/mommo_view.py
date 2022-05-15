@@ -148,21 +148,21 @@ class MommoView:
         """
 
         mommo_name_stat = ttk.Label(
-            master=self._frame, text=mommo_service.mommo.name)
+            master=self._frame, text=mommo_service.mommo.name, style="Mommo.TLabel")
         mommo_hunger_stat = ttk.Label(
-            master=self._frame, text=mommo_service.mommo.hunger)
+            master=self._frame, text=mommo_service.mommo.hunger, style="Mommo.TLabel")
         mommo_thirst_stat = ttk.Label(
-            master=self._frame, text=mommo_service.mommo.thirst)
+            master=self._frame, text=mommo_service.mommo.thirst, style="Mommo.TLabel")
         mommo_clenliness_stat = ttk.Label(
-            master=self._frame, text=mommo_service.mommo.clenliness)
+            master=self._frame, text=mommo_service.mommo.clenliness, style="Mommo.TLabel")
         mommo_happiness_stat = ttk.Label(
-            master=self._frame, text=mommo_service.mommo.happiness)
+            master=self._frame, text=mommo_service.mommo.happiness, style="Mommo.TLabel")
 
-        mommo_name_stat.grid(row=1, column=1)
-        mommo_hunger_stat.grid(row=2, column=1)
-        mommo_thirst_stat.grid(row=3, column=1)
-        mommo_clenliness_stat.grid(row=4, column=1)
-        mommo_happiness_stat.grid(row=5, column=1)
+        mommo_name_stat.grid(row=1, column=1, pady=5)
+        mommo_hunger_stat.grid(row=2, column=1, pady=5)
+        mommo_thirst_stat.grid(row=3, column=1, pady=5)
+        mommo_clenliness_stat.grid(row=4, column=1, pady=5)
+        mommo_happiness_stat.grid(row=5, column=1, pady=5)
 
         if not mommo_service.visit_state:
             self._frame.after(1000, self._initialize_mommo)
@@ -182,53 +182,61 @@ class MommoView:
         """alustaa näkymän perustilan.
         """
 
-        tricks_label = ttk.Label(master=self._frame, text="Temput")
+        tricks_label = ttk.Label(master=self._frame, text="Temput", style="Mommo.TLabel")
 
         self._trick_variable = StringVar(self._frame)
 
         quit_button = ttk.Button(
             master=self._frame,
             text="Tallenna ja lopeta",
-            command=self._quit
+            command=self._quit,
+            style="Back.TButton"
         )
 
         all_mommos_button = ttk.Button(
             master=self._frame,
             text="Mömmöystävät",
-            command=self._open_all_mommos_view
+            command=self._open_all_mommos_view,
+            style="Login.TButton"
         )
+
+        all_mommos_button.config(width=15)
 
         trick_button_1 = ttk.Button(
             master=self._frame,
             text="Hyppää",
-            command=lambda: self._handle_trick(0)
+            command=lambda: self._handle_trick(0),
+            style="Mommo.TButton"
         )
 
         trick_button_2 = ttk.Button(
             master=self._frame,
             text="Litisty",
-            command=lambda: self._handle_trick(1)
+            command=lambda: self._handle_trick(1),
+            style="Mommo.TButton"
         )
 
         trick_button_3 = ttk.Button(
             master=self._frame,
             text="Leiki koullutta",
-            command=lambda: self._handle_trick(2)
+            command=lambda: self._handle_trick(2),
+            style="Mommo.TButton"
         )
 
         self._trick_label = ttk.Label(
             master=self._frame,
             textvariable=self._trick_variable,
-            foreground='green'
+            foreground='purple',
+            style="Mommo.TLabel"
         )
 
         tricks_label.grid(row=1, column=4)
-        self._trick_label.grid(row=1, column=2)
-        quit_button.grid(row=7, column=0)
-        all_mommos_button.grid(row=6, column=0)
-        trick_button_1.grid(row=2, column=4)
-        trick_button_2.grid(row=3, column=4)
-        trick_button_3.grid(row=4, column=4)
+        self._trick_label.grid(row=5, column=3)
+        quit_button.grid(row=7, column=0, pady=10)
+        all_mommos_button.grid(row=6, column=0, pady=5)
+        trick_button_1.grid(row=2, column=4, padx=5, pady=5)
+        trick_button_2.grid(row=3, column=4, padx=5, pady=5)
+        trick_button_3.grid(row=4, column=4, padx=5, pady=5)
 
     def _initialize_extended_state(self):
         """alustaa näkymän jatkotilan.
@@ -237,24 +245,27 @@ class MommoView:
         feed_button = ttk.Button(
             master=self._frame,
             text="Ruoki",
-            command=self._feed_mommo
+            command=self._feed_mommo,
+            style="Mommo.TButton"
         )
 
         water_button = ttk.Button(
             master=self._frame,
             text="Juota",
-            command=self._water_mommo
+            command=self._water_mommo,
+            style="Mommo.TButton"
         )
 
         clean_button = ttk.Button(
             master=self._frame,
             text="Puhdista",
-            command=self._clean_mommo
+            command=self._clean_mommo,
+            style="Mommo.TButton"
         )
 
-        feed_button.grid(row=2, column=2)
-        water_button.grid(row=3, column=2)
-        clean_button.grid(row=4, column=2)
+        feed_button.grid(row=2, column=2, padx=5, pady=5)
+        water_button.grid(row=3, column=2, padx=5, pady=5)
+        clean_button.grid(row=4, column=2, padx=5, pady=5)
 
     def _initialize_visit_state(self):
         """alustaa näkymän vierailutilan.
@@ -263,23 +274,24 @@ class MommoView:
         quit_visit_button = ttk.Button(
             master=self._frame,
             text="Takaisin",
-            command=self._quit_visit
+            command=self._quit_visit,
+            style="Back.TButton"
         )
 
-        quit_visit_button.grid(row=7, column=0)
+        quit_visit_button.grid(row=7, column=0, pady=10)
 
     def _initialize(self):
         """alustaa näkymän.
         """
 
-        self._frame = ttk.Frame(master=self._root)
-        mommo_label = ttk.Label(master=self._frame, text="Mömmöystävä")
-        mommo_name_label = ttk.Label(master=self._frame, text="Nimi:")
-        mommo_hunger_label = ttk.Label(master=self._frame, text="Nälkäisyys")
-        mommo_thirst_label = ttk.Label(master=self._frame, text="Janoisuus:")
-        mommo_clenliness_label = ttk.Label(master=self._frame, text="Puhtaus:")
+        self._frame = ttk.Frame(master=self._root, style="Mommo.TFrame")
+        mommo_label = ttk.Label(master=self._frame, text="Mömmöystävä", font=("Algerian", 20))
+        mommo_name_label = ttk.Label(master=self._frame, text="Nimi:", style="Mommo.TLabel")
+        mommo_hunger_label = ttk.Label(master=self._frame, text="Nälkäisyys", style="Mommo.TLabel")
+        mommo_thirst_label = ttk.Label(master=self._frame, text="Janoisuus:", style="Mommo.TLabel")
+        mommo_clenliness_label = ttk.Label(master=self._frame, text="Puhtaus:", style="Mommo.TLabel")
         mommo_happiness_label = ttk.Label(
-            master=self._frame, text="Onnellisuus:")
+            master=self._frame, text="Onnellisuus:", style="Mommo.TLabel")
 
         self._initialize_mommo()
         self._initialize_draw_mommo()
@@ -296,14 +308,16 @@ class MommoView:
         pet_button = ttk.Button(
             master=self._frame,
             text="Silitä",
-            command=self._pet_mommo
+            command=self._pet_mommo,
+            style="Mommo.TButton"
         )
 
-        mommo_label.grid(row=0, column=0)
+        mommo_label.grid(row=0, column=0, padx=20, pady=20)
         mommo_name_label.grid(row=1, column=0)
         mommo_hunger_label.grid(row=2, column=0)
         mommo_thirst_label.grid(row=3, column=0)
         mommo_clenliness_label.grid(row=4, column=0)
         mommo_happiness_label.grid(row=5, column=0)
 
-        pet_button.grid(row=2, column=3)
+        pet_button.grid(row=5, column=2, padx=5, pady=5)
+

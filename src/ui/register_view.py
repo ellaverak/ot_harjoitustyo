@@ -1,4 +1,4 @@
-from tkinter import ttk, constants, StringVar, IntVar
+from tkinter import Checkbutton, ttk, constants, StringVar, IntVar
 from services.user_service import user_service, PasswordLengthError, UsernameLengthError, UsernameExistsError
 
 
@@ -79,11 +79,11 @@ class RegisterView:
         """
 
         username_label = ttk.Label(
-            master=self._frame, text='Anna uusi käyttäjätunnus')
+            master=self._frame, text='Anna uusi käyttäjätunnus', style="TLabel", font=("Algerian", 15))
 
-        self._username_entry = ttk.Entry(master=self._frame)
+        self._username_entry = ttk.Entry(master=self._frame, font=("Algerian",15))
 
-        username_label.grid(row=1, column=0)
+        username_label.grid(row=1, column=0,pady=5)
         self._username_entry.grid(row=2, column=0)
 
     def _initialize_password_field(self):
@@ -91,18 +91,18 @@ class RegisterView:
         """
 
         password_label = ttk.Label(
-            master=self._frame, text='Anna uusi salasana')
+            master=self._frame, text='Anna uusi salasana', style="TLabel", font=("Algerian", 15))
 
-        self._password_entry = ttk.Entry(master=self._frame)
+        self._password_entry = ttk.Entry(master=self._frame, font=("Algerian",15))
 
-        password_label.grid(row=3, column=0)
+        password_label.grid(row=3, column=0, pady=5)
         self._password_entry.grid(row=4, column=0)
 
     def _initialize_admin_checkbox(self):
         """alustaa ylläpitäjävalinnan.
         """
 
-        role_label = ttk.Label(master=self._frame, text="Rooli")
+        role_label = ttk.Label(master=self._frame, text="Rooli", style="TLabel", font=("Algerian",15))
 
         self._checkvar = IntVar()
 
@@ -111,24 +111,26 @@ class RegisterView:
             text="Ylläpitäjä",
             variable=self._checkvar,
             onvalue=1,
-            offvalue=0
+            offvalue=0,
+            style="TCheckbutton"
         )
 
-        role_label.grid(row=7, column=0)
-        admin_checkbox.grid(row=8, column=0)
+        role_label.grid(row=5, column=0, pady=5)
+        admin_checkbox.grid(row=6, column=0, pady=5)
 
     def _initialize(self):
         """alustaa näkymän.
         """
 
-        self._frame = ttk.Frame(master=self._root)
-        register_label = ttk.Label(master=self._frame, text="Luo käyttäjä")
+        self._frame = ttk.Frame(master=self._root, style="TFrame")
+        register_label = ttk.Label(master=self._frame, text="Luo käyttäjä", style="TLabel", font=("Algerian", 20))
         self._error_variable = StringVar(self._frame)
 
         self._error_label = ttk.Label(
             master=self._frame,
             textvariable=self._error_variable,
-            foreground='blue'
+            foreground='#cc0000',
+            font=("Algerian", 15)
         )
 
         self._error_label.grid(row=9, column=0)
@@ -140,17 +142,21 @@ class RegisterView:
         main_button = ttk.Button(
             master=self._frame,
             text="Takaisin päävalikkoon",
-            command=self._main_view
+            command=self._main_view,
+            style="Back.TButton"
         )
 
         accept_button = ttk.Button(
             master=self._frame,
             text="Hyväksy",
-            command=self._register_user
+            command=self._register_user,
+            style="Register.TButton"
         )
 
-        register_label.grid(row=0, column=0)
-        main_button.grid(row=6, column=0)
-        accept_button.grid(row=5, column=0)
+        accept_button.config(width=10)
+
+        register_label.grid(row=0, column=0, padx=220, pady=20)
+        main_button.grid(row=8, column=0, pady=20)
+        accept_button.grid(row=7, column=0, pady=10)
 
         self._hide_error()
