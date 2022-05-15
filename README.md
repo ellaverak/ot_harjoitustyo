@@ -6,17 +6,17 @@ Mömmöystävä on ikioma virtuaalilemmikkisi!
 
 ## Dokumentaatio
 
-[vaatimusmaarittely.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+[Vaatimusmaarittely](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 
-[tuntikirjanpito.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
+[Tuntikirjanpito](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/tuntikirjanpito.md)
 
-[changelog.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/changelog.md)
+[Changelog](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/changelog.md)
 
-[kayttöohje.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/kaytt%C3%B6ohje.md)
+[Käyttöohje](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/kaytt%C3%B6ohje.md)
 
-[arkkitehtuuri.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
+[Arkkitehtuuri](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 
-[testausdokumentti.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/testausdokumentti.md)
+[Testausdokumentti](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/testausdokumentti.md)
 
 ### Release
 
@@ -60,10 +60,11 @@ poetry run invoke test
 ```bash
 poetry run invoke coverage-report
 ```
-3. Katsele testikattavuusraportti komennolla
+Tai komennolla:
 ```bash
 poetry run invoke coverage
 ```
+3 Katsele testikattavuusraporttia komennolla:
 ```bash
 poetry run coverage report -m
 ```
