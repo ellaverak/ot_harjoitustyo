@@ -38,14 +38,22 @@ Lisäksi `MommoService` käyttää joitain `UserService`-luokan toimintoja.
       }
       UserService "1" --> "1" UserRepository
       class UserService{
-          user
           user_repository
+          user
+          user_id
+          visit_id
+          
       }
       MommoService "1" --> "1" MommoRepository
       MommoService "1" --> "1" UserService
       class MommoService{
-          mommo
           mommo_repository
+          mommo
+          mommo_id
+          visit_state
+          _hunger_thread
+          _thirst_thread
+          _clenliness_thread          
       }
       UserRepository "1" --> "*" User
       class UserRepository{
