@@ -9,7 +9,7 @@ Sovellus noudattaa kerrosarkkitehtuuri.
 - services-pakkaus vastaa sovelluslogiikasta ja kutsuu repositories pakkauksen toimintoja.
 - repositories-pakkaus vastaa tietokantatoiminnoista.
 
-- entities-pakkaus vastaa user- ja mommo-olioiden luomisesta. Services-pakkauksen meoduulit ja luokat
+- entities-pakkaus vastaa user- ja mommo-olioiden luomisesta. Services-pakkauksen moduulit ja luokat
 hoitavat sovelluslogiikkaa kutsumalla entities-pakkauksen toimintoja ja ylläpitämällä tietoa kirjautuneesta
 käyttäjästä ja mömmöstä. Repositories pakkauksen moduulit kutsuvat entities-pakkauksen toimintoja palauttaakseen osan tuloksista user- ja mommo-olioina.
 
@@ -17,9 +17,9 @@ käyttäjästä ja mömmöstä. Repositories pakkauksen moduulit kutsuvat entiti
 
 ### Luokkakaavio
 
-MommoService ja UserService hoitavat Mommo- ja User-olentoihin liittyviä toimintoja. Ne pääsevät olentoihin käsiksi MommoRepository- ja UserRepository-luokkien välityksellä. Nämä luokat käsittelevät suoraan Mommo- ja User-olentoihin liittyviä tietokantatoimintoja.
+`MommoService` ja `UserService` hoitavat Mommo- ja User-olentoihin liittyviä toimintoja. Ne pääsevät olentoihin käsiksi `MommoRepository` ja `UserRepository` -luokkien välityksellä. Nämä luokat käsittelevät suoraan Mommo- ja User-olentoihin liittyviä tietokantatoimintoja.
 
-Lisäksi MommoService käyttää joitain UserServicen toimintoja.
+Lisäksi `MommoService` käyttää joitain `UserService`-luokan toimintoja.
 
 ```mermaid
  classDiagram
@@ -60,14 +60,16 @@ Lisäksi MommoService käyttää joitain UserServicen toimintoja.
 ## Käyttöliittymä
 
 Käyttöliittymä sisältää seuraavat näkymät:
-- päänäkymä (main_view)
-- kirjautumisnäkymä (login_view)
-- rekisteröitymisnäkymä (register_view)
-- uusi mömmö -näkymä (new_mommo_view)
-- mömmö-näkymä (mommo_view)
-- kaikki mömmöt -näkymä (all_mommos_view)
+- Päänäkymä (luokka `MainView`)
+- Kirjautumisnäkymä (luokka `LoginView`)
+- Rekisteröitymisnäkymä (luokka `RegisterView`)
+- Uusi mömmö -näkymä (luokka `NewMommoView`)
+- Mömmö-näkymä (luokka `MommoView`)
+- Kaikki mömmöt -näkymä (luokka `AllMommosView`)
 
-Kaikkien näkymien lopullisesta näyttämisestä vastaa ui.py:n luokka UI. Näkymät kutsuvat service-paketin toimintoja.
+Lisäksi käyttöliittymän muodostamiseen osallistuvat luokat `UiTheme` ja `DrawMommo`.
+
+Kaikkien näkymien lopullisesta näyttämisestä vastaa `ui.py`:n luokka `UI`. Näkymät kutsuvat service-paketin toimintoja.
 
 ## Toiminnallisuus
 
