@@ -23,8 +23,6 @@ sillä niiden testaaminen on tässä projektissa epäoleellista ja liaan haastee
 
 ### Testauskattavuus
 
-(https://user-images.githubusercontent.com/75887936/168489723-babefc72-6d7f-4089-b4b6-1495aec87f01.png)
-
 Testien ulkopuolelle jää käyttöliittymä ja sovelluksen käynnistävä moduuli. Lopullinen haarautumakattavuus
 on 83%
 
