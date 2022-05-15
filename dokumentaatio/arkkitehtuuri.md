@@ -83,6 +83,8 @@ sequenceDiagram
   UI->UI: mommo_view()
 ```
 **Tempun tekeminen**
+`MommoService` luokalle välitetään tieto siitä, mikä temppu suorittetaan. `MommoRepository` palauttaa listan,
+joka sisältää tiedot mömmön tempuista. Jos mömmö osaa tempun, eli tempun arvo on 100, `MommoService` palauttaa arvon True ja `DrawMommo` piirtää tempun. Muuten `MommoService` kasvattaa tempun osaamisarvoa, jonka `MommoRepository` tallentaa. Lisäksi `MommoService` palauttaa arvon False käyttöliittymälle, joka piirtää käyttöliittymään viestin: "Mömmö harjoittelee..." 
 ```mermaid
 sequenceDiagram
   actor User
@@ -95,7 +97,8 @@ sequenceDiagram
   MommoService->>MommoRepository: do_trick(trick)
   MommoRepository-->>MommoService: trick_list
   MommoService-->>UI: False
-  MommoService -->UI: True
+  MommoService-->>MommoRepository: save_trick(mommo_id, trick_list)
+  MommoService-->UI: True
   UI->UI: _show_message()
   UI->DrawMommo: draw_jump()
 ```
