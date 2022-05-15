@@ -26,4 +26,3 @@ sillä niiden testaaminen on tässä projektissa epäoleellista ja liaan haastee
 Testien ulkopuolelle jää käyttöliittymä ja sovelluksen käynnistävä moduuli. Lopullinen haarautumakattavuus
 on 83%
 
-
