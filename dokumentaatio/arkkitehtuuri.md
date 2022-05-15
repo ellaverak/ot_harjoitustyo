@@ -95,11 +95,15 @@ create user(username, password, role)
 ```bash
 login(username, password)
 ```
-- kirjaa käyttäjän sisään
+- kirjaa käyttäjän sisään.
 ```bash
 logout()
 ```
-- kirjaa käyttäjän ulos
+- kirjaa käyttäjän ulos.
+```bash
+visit(self, visit_id)
+```
+- asettaa vierailtavan käyttäjän id-tunnuksen.
 
 **MommoService-luokka**
 
@@ -118,7 +122,7 @@ create_mommo(name)
 ```
 - luo uuden mömmön
 ```bash
-login_mommo(visit_user_id, visit)
+login_mommo(visit_user_id)
 ```
 - kirjaa mömmön sisään
 ```bash
