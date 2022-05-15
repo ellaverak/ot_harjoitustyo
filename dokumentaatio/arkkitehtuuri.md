@@ -59,13 +59,13 @@ Lisäksi `MommoService` käyttää joitain `UserService`-luokan toimintoja.
 
 ## Käyttöliittymä
 
-Käyttöliittymä sisältää seuraavat näkymät:
-- Päänäkymä (luokka `MainView`)
-- Kirjautumisnäkymä (luokka `LoginView`)
-- Rekisteröitymisnäkymä (luokka `RegisterView`)
-- Uusi mömmö -näkymä (luokka `NewMommoView`)
-- Mömmö-näkymä (luokka `MommoView`)
-- Kaikki mömmöt -näkymä (luokka `AllMommosView`)
+Käyttöliittymä sisältää seuraavat näkymät (luokat suluissa):
+- Päänäkymä (`MainView`)
+- Kirjautumisnäkymä (`LoginView`)
+- Rekisteröitymisnäkymä (`RegisterView`)
+- Uusi mömmö -näkymä (`NewMommoView`)
+- Mömmö-näkymä (`MommoView`)
+- Kaikki mömmöt -näkymä (`AllMommosView`)
 
 Lisäksi käyttöliittymän muodostamiseen osallistuvat luokat `UiTheme` ja `DrawMommo`.
 
