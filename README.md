@@ -1,6 +1,4 @@
-# ot_harjoitutustyo
-
-## Mömmöystävä
+# Mömmöystävä
 
 Mömmöystävä on ikioma virtuaalilemmikkisi!
 
