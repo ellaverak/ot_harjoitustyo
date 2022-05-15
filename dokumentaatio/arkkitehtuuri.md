@@ -82,6 +82,23 @@ sequenceDiagram
   MommoService-->>UI: mommo
   UI->UI: mommo_view()
 ```
+**Tempun tekeminen**
+```mermaid
+sequenceDiagram
+  actor User
+  participant DrawMommo
+  participant UI
+  participant MommoService
+  participant MommoRepository
+  User->>UI: click "Hyppää" button
+  UI->>MommoService: do_trick(trick)
+  MommoService->>MommoRepository: do_trick(trick)
+  MommoRepository-->>MommoService: trick_list
+  MommoService-->>UI: False
+  MommoService -->UI: True
+  UI->UI: _show_message()
+  UI->DrawMommo: draw_jump()
+```
 
 ## Käyttöliittymä
 
