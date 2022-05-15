@@ -16,6 +16,8 @@ Mömmöystävä on ikioma virtuaalilemmikkisi!
 
 [arkkitehtuuri.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 
+[testausdokumentti.md](https://github.com/ellaverak/ot_harjoitustyo/blob/main/dokumentaatio/testausdokumentti.md)
+
 ### Release
 
 [release viikko 5](https://github.com/ellaverak/ot_harjoitustyo/releases/tag/viikko5)
