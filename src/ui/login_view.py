@@ -72,9 +72,10 @@ class LoginView:
         """
 
         username_label = ttk.Label(
-            master=self._frame, text='Anna käyttäjätunnus', style="TLabel", font=("Algerian", 15))
+            master=self._frame, text='Anna käyttäjätunnus', style="Medium.TLabel")
 
-        self._username_entry = ttk.Entry(master=self._frame, font=("Algerian",15))
+        self._username_entry = ttk.Entry(
+            master=self._frame, font=("Algerian", 15))
 
         username_label.grid(row=1, column=0, pady=5)
         self._username_entry.grid(row=2, column=0)
@@ -83,9 +84,11 @@ class LoginView:
         """alustaa salasanakentän.
         """
 
-        password_label = ttk.Label(master=self._frame, text='Anna salasana', style="TLabel", font=("Algerian", 15))
+        password_label = ttk.Label(
+            master=self._frame, text='Anna salasana', style="Medium.TLabel")
 
-        self._password_entry = ttk.Entry(master=self._frame, font=("Algerian",15))
+        self._password_entry = ttk.Entry(
+            master=self._frame, font=("Algerian", 15))
         password_label.grid(row=3, column=0, pady=5)
         self._password_entry.grid(row=4, column=0)
 
@@ -94,7 +97,8 @@ class LoginView:
         """
 
         self._frame = ttk.Frame(master=self._root, style="TFrame")
-        login_label = ttk.Label(master=self._frame, text="Kirjaudu sisään", font=("Algerian", 20))
+        login_label = ttk.Label(
+            master=self._frame, text="Kirjaudu sisään", style="Big.TLabel")
         self._error_variable = StringVar(self._frame)
 
         self._error_label = ttk.Label(
@@ -119,7 +123,7 @@ class LoginView:
         accept_button = ttk.Button(
             master=self._frame,
             text="Hyväksy",
-            style="Login.TButton",
+            style="Basic.TButton",
             command=self._login_user
         )
 

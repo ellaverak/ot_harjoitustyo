@@ -57,7 +57,7 @@ class AllMommosView:
         )
 
         mommo_owner_label = ttk.Label(
-            master=self._frame, text=f"omistaja: {mommo[2]}", style="Mommo.TLabel")
+            master=self._frame, text=f"omistaja: {mommo[2]}", style="Small.TLabel")
 
         mommo_button.grid(row=i+1, column=0, pady=5)
         mommo_owner_label.grid(row=i+1, column=1)
@@ -67,7 +67,8 @@ class AllMommosView:
         """
 
         self._frame = ttk.Frame(master=self._root, style="TFrame")
-        main_label = ttk.Label(master=self._frame, text="Mömmöystävät", style="TLabel", font=("Algerian", 20))
+        main_label = ttk.Label(
+            master=self._frame, text="Mömmöystävät", style="Big.TLabel")
 
         i = 1
         for mommo in self._all_mommos:

@@ -201,8 +201,8 @@ class DrawMommo:
 
         self._frame = ttk.Frame(master=self._root, style="TFrame")
         self._canvas = Canvas(master=self._frame, bg="#d9ead3",
-                              height=140, width=400)
+                              height=140, width=600)
 
         self._draw_position_1()
 
-        self._canvas.grid(row=0, column=0)
+        self._canvas.grid(row=1, column=0)

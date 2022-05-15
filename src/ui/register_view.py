@@ -1,4 +1,4 @@
-from tkinter import Checkbutton, ttk, constants, StringVar, IntVar
+from tkinter import ttk, constants, StringVar, IntVar
 from services.user_service import user_service, PasswordLengthError, UsernameLengthError, UsernameExistsError
 
 
@@ -79,11 +79,12 @@ class RegisterView:
         """
 
         username_label = ttk.Label(
-            master=self._frame, text='Anna uusi käyttäjätunnus', style="TLabel", font=("Algerian", 15))
+            master=self._frame, text='Anna uusi käyttäjätunnus', style="Medium.TLabel")
 
-        self._username_entry = ttk.Entry(master=self._frame, font=("Algerian",15))
+        self._username_entry = ttk.Entry(
+            master=self._frame, font=("Algerian", 15))
 
-        username_label.grid(row=1, column=0,pady=5)
+        username_label.grid(row=1, column=0, pady=5)
         self._username_entry.grid(row=2, column=0)
 
     def _initialize_password_field(self):
@@ -91,9 +92,10 @@ class RegisterView:
         """
 
         password_label = ttk.Label(
-            master=self._frame, text='Anna uusi salasana', style="TLabel", font=("Algerian", 15))
+            master=self._frame, text='Anna uusi salasana', style="Medium.TLabel")
 
-        self._password_entry = ttk.Entry(master=self._frame, font=("Algerian",15))
+        self._password_entry = ttk.Entry(
+            master=self._frame, font=("Algerian", 15))
 
         password_label.grid(row=3, column=0, pady=5)
         self._password_entry.grid(row=4, column=0)
@@ -102,7 +104,8 @@ class RegisterView:
         """alustaa ylläpitäjävalinnan.
         """
 
-        role_label = ttk.Label(master=self._frame, text="Rooli", style="TLabel", font=("Algerian",15))
+        role_label = ttk.Label(
+            master=self._frame, text="Rooli", style="Medium.TLabel")
 
         self._checkvar = IntVar()
 
@@ -123,7 +126,8 @@ class RegisterView:
         """
 
         self._frame = ttk.Frame(master=self._root, style="TFrame")
-        register_label = ttk.Label(master=self._frame, text="Luo käyttäjä", style="TLabel", font=("Algerian", 20))
+        register_label = ttk.Label(
+            master=self._frame, text="Luo käyttäjä", style="Big.TLabel")
         self._error_variable = StringVar(self._frame)
 
         self._error_label = ttk.Label(
@@ -150,7 +154,7 @@ class RegisterView:
             master=self._frame,
             text="Hyväksy",
             command=self._register_user,
-            style="Register.TButton"
+            style="Basic.TButton"
         )
 
         accept_button.config(width=10)

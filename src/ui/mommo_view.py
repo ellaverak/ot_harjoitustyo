@@ -148,15 +148,15 @@ class MommoView:
         """
 
         mommo_name_stat = ttk.Label(
-            master=self._frame, text=mommo_service.mommo.name, style="Mommo.TLabel")
+            master=self._frame, text=mommo_service.mommo.name, style="Small.TLabel")
         mommo_hunger_stat = ttk.Label(
-            master=self._frame, text=mommo_service.mommo.hunger, style="Mommo.TLabel")
+            master=self._frame, text=mommo_service.mommo.hunger, style="Small.TLabel")
         mommo_thirst_stat = ttk.Label(
-            master=self._frame, text=mommo_service.mommo.thirst, style="Mommo.TLabel")
+            master=self._frame, text=mommo_service.mommo.thirst, style="Small.TLabel")
         mommo_clenliness_stat = ttk.Label(
-            master=self._frame, text=mommo_service.mommo.clenliness, style="Mommo.TLabel")
+            master=self._frame, text=mommo_service.mommo.clenliness, style="Small.TLabel")
         mommo_happiness_stat = ttk.Label(
-            master=self._frame, text=mommo_service.mommo.happiness, style="Mommo.TLabel")
+            master=self._frame, text=mommo_service.mommo.happiness, style="Small.TLabel")
 
         mommo_name_stat.grid(row=1, column=1, pady=5)
         mommo_hunger_stat.grid(row=2, column=1, pady=5)
@@ -182,7 +182,8 @@ class MommoView:
         """alustaa näkymän perustilan.
         """
 
-        tricks_label = ttk.Label(master=self._frame, text="Temput", style="Mommo.TLabel")
+        tricks_label = ttk.Label(
+            master=self._frame, text="Temput", style="Small.TLabel")
 
         self._trick_variable = StringVar(self._frame)
 
@@ -197,7 +198,7 @@ class MommoView:
             master=self._frame,
             text="Mömmöystävät",
             command=self._open_all_mommos_view,
-            style="Login.TButton"
+            style="Basic.TButton"
         )
 
         all_mommos_button.config(width=15)
@@ -226,8 +227,8 @@ class MommoView:
         self._trick_label = ttk.Label(
             master=self._frame,
             textvariable=self._trick_variable,
-            foreground='purple',
-            style="Mommo.TLabel"
+            foreground="#be7e9e",
+            style="Small.TLabel"
         )
 
         tricks_label.grid(row=1, column=4)
@@ -284,14 +285,19 @@ class MommoView:
         """alustaa näkymän.
         """
 
-        self._frame = ttk.Frame(master=self._root, style="Mommo.TFrame")
-        mommo_label = ttk.Label(master=self._frame, text="Mömmöystävä", font=("Algerian", 20))
-        mommo_name_label = ttk.Label(master=self._frame, text="Nimi:", style="Mommo.TLabel")
-        mommo_hunger_label = ttk.Label(master=self._frame, text="Nälkäisyys", style="Mommo.TLabel")
-        mommo_thirst_label = ttk.Label(master=self._frame, text="Janoisuus:", style="Mommo.TLabel")
-        mommo_clenliness_label = ttk.Label(master=self._frame, text="Puhtaus:", style="Mommo.TLabel")
+        self._frame = ttk.Frame(master=self._root, style="TFrame")
+        mommo_label = ttk.Label(
+            master=self._frame, text="Mömmöystävä", style="Big.TLabel")
+        mommo_name_label = ttk.Label(
+            master=self._frame, text="Nimi:", style="Small.TLabel")
+        mommo_hunger_label = ttk.Label(
+            master=self._frame, text="Nälkäisyys", style="Small.TLabel")
+        mommo_thirst_label = ttk.Label(
+            master=self._frame, text="Janoisuus:", style="Small.TLabel")
+        mommo_clenliness_label = ttk.Label(
+            master=self._frame, text="Puhtaus:", style="Small.TLabel")
         mommo_happiness_label = ttk.Label(
-            master=self._frame, text="Onnellisuus:", style="Mommo.TLabel")
+            master=self._frame, text="Onnellisuus:", style="Small.TLabel")
 
         self._initialize_mommo()
         self._initialize_draw_mommo()
@@ -320,4 +326,3 @@ class MommoView:
         mommo_happiness_label.grid(row=5, column=0)
 
         pet_button.grid(row=5, column=2, padx=5, pady=5)
-

@@ -66,9 +66,10 @@ class NewMommoView:
         """alustaa nimikentän.
         """
 
-        name_label = ttk.Label(master=self._frame, text='Anna mömmöllesi nimi', font=("Algerian",15))
+        name_label = ttk.Label(
+            master=self._frame, text='Anna mömmöllesi nimi', style="Medium.TLabel")
 
-        self._name_entry = ttk.Entry(master=self._frame, font=("Algerian",15))
+        self._name_entry = ttk.Entry(master=self._frame, font=("Algerian", 15))
 
         name_label.grid(row=2, column=0, pady=5)
         self._name_entry.grid(row=3, column=0)
@@ -79,7 +80,7 @@ class NewMommoView:
 
         self._frame = ttk.Frame(master=self._root, style="TFrame")
         new_mommo_label = ttk.Label(
-            master=self._frame, text="Uusi mömmöystävä", style="TLabel", font=("Algerian", 20))
+            master=self._frame, text="Uusi mömmöystävä", style="Big.TLabel")
         self._error_variable = StringVar(self._frame)
 
         self._error_label = ttk.Label(
@@ -96,7 +97,7 @@ class NewMommoView:
             master=self._frame,
             text="Hyväksy",
             command=self._create_new_mommo,
-            style="Login.TButton"
+            style="Basic.TButton"
         )
 
         accept_button.config(width=10)
