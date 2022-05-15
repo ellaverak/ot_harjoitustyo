@@ -65,6 +65,24 @@ Lisäksi `MommoService` käyttää joitain `UserService`-luokan toimintoja.
       }
 ```
 
+### Sekvenssikaaviot
+Esimerkkejä toiminnallisuuksista
+
+**Uuden mömmön luominen**
+```mermaid
+sequenceDiagram
+  actor User
+  participant UI
+  participant MommoService
+  participant MommoRepository
+  User->>UI: click "Hyväksy" button
+  UI->>MommoService: create_mommo(name)
+  MommoService->>MommoRepository: create_mommo(name)
+  MommoRepository-->>MommoService: mommo
+  MommoService-->>UI: mommo
+  UI->UI: mommo_view()
+```
+
 ## Käyttöliittymä
 
 Käyttöliittymä sisältää seuraavat näkymät (luokat suluissa):
