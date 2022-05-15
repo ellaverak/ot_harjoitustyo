@@ -3,7 +3,7 @@
 Sovelluksessa voi hoitaa omaa virtuaalilemmikkiä ja opettaa sille temppuja.
 Tietokannat pitävät kirjaa käyttäjistä sekä käyttäjien lemmikeistä ja niihin liittyvistä tiedoista ja temppujen osaamistasosta.
 
-**KAIKKI PERUSTOIMINNOT OVAT VALMIINA**
+**KAIKKI PERUSTOIMINNOT TEHTY**
 
 ## Käyttäjäroolit
 - tavallinen käyttäjä **tehty**
