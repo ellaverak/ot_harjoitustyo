@@ -22,6 +22,8 @@ Mömmöystävä on ikioma virtuaalilemmikkisi!
 
 [release viikko 6](https://github.com/ellaverak/ot_harjoitustyo/releases/tag/viiko6)
 
+[Mömmöystävä v3.0 viikko 7](https://github.com/ellaverak/ot_harjoitustyo/releases/tag/viikko7final)
+
 ## Sovelluksen asennus
 
 1. Lataa zip-tiedosto koneelle kohdasta **Release**:
