@@ -1,3 +1,5 @@
+# Changelog
+
 - tietokannan alustustoiminto lisätty
 - ensimmäinen versio päänäkymästä luotu
 - ensimmäinen versio uuden käyttäjän luominen -näkymästä luotu
