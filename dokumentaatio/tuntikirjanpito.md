@@ -24,13 +24,13 @@
 | 2.5. | 2       | Lisäsin silitä mömmöä -toiminnon |
 | 2.5. | 3       | Lisäsin listan muista mömmöistä |
 | 2.5. | 1       | aloitin tekemään funktioita toisen mömmön katselua varten |
-| 3.5. | 1       | Korjasin error-viestin näkyvyyttä. |
-| 4.5. | 0.5     | Korjasin säikeiden sammumisen. |
-| 4.5. | 2     | Tein toiminnon toisten mömmöjen luona vierailuun. |
-| 4.5. | 1     | Lisäsin mahdollisuuden rekisteröityä ylläpitäjänä ja lisäsin ylläpito-toimintoja. |
-| 6.5. | 2     | Lisäsin temput. |
-| 11.5. | 4     | Lisäsin mömmön perusanimaation mömmönäkymään. |
-| 11.5. | 2     | Lisäsin temppuanimaatiot. |
-| 11.5. | 1     | Lisäsin silitysanimaation. |
-| 15.5. | 3     | Lisäsin ulkoasun. |
+| 3.5. | 1       | Korjasin error-viestin näkyvyyttä |
+| 4.5. | 0.5     | Korjasin säikeiden sammumisen |
+| 4.5. | 2     | Tein toiminnon toisten mömmöjen luona vierailuun |
+| 4.5. | 1     | Lisäsin mahdollisuuden rekisteröityä ylläpitäjänä ja lisäsin ylläpito-toimintoja |
+| 6.5. | 2     | Lisäsin temput |
+| 11.5. | 4     | Lisäsin mömmön perusanimaation mömmönäkymään |
+| 11.5. | 2     | Lisäsin temppuanimaatiot |
+| 11.5. | 1     | Lisäsin silitysanimaation |
+| 15.5. | 3     | Lisäsin ulkoasun |
 | yht. | 55       | |
